@@ -1,8 +1,8 @@
 <?php
-$CHfw_themeName = 'CHfw-';//for include data
-$CHfw_prefix_staff = $CHfw_themeName . "staffSetting_";
-$CHfw_OptionsPageSettingstaff = array(
-	'name' => $CHfw_prefix_staff . 'meta-box-page',
+$stnc_wp_kiosk_themeName = 'stnc_wp_kiosk-';//for include data
+$stnc_wp_kiosk_prefix_staff = $stnc_wp_kiosk_themeName . "staffSetting_";
+$stnc_wp_kiosk_OptionsPageSettingstaff = array(
+	'name' => $stnc_wp_kiosk_prefix_staff . 'meta-box-page',
 	'nonce' => 'st_studio_staff',
 	'title' => __('Doctor Info', 'chthemes-staff'),
 	'page' => 'staff',
@@ -15,7 +15,7 @@ $CHfw_OptionsPageSettingstaff = array(
 	'fields' => array(
 
 		array(
-			'name' => $CHfw_prefix_staff . 'title',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'title',
 			'title' => __('Title', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter title ", 'chthemes-staff'),
@@ -24,7 +24,7 @@ $CHfw_OptionsPageSettingstaff = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'gender',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'gender',
 			'title' => __('Gender of doctor', 'chthemes-staff'),
 			'type' => 'select',
 			'description' => __("Select gender", 'chthemes-staff'),
@@ -32,13 +32,13 @@ $CHfw_OptionsPageSettingstaff = array(
 			'class' => '',
 			'class_li' => '',
 			'options' => array(
-				'male' => __('Male', 'chfw-lang'),
-				'female' => __('Female', 'chfw-lang'),
+				'male' => __('Male', 'stnc_wp_kiosk-lang'),
+				'female' => __('Female', 'stnc_wp_kiosk-lang'),
 			)
 		),
 
 		array(
-			'name' => $CHfw_prefix_staff . 'birth',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'birth',
 			'title' => __('Date of birth', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter date of birth.", 'chthemes-staff'),
@@ -47,7 +47,7 @@ $CHfw_OptionsPageSettingstaff = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'adress',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'adress',
 			'title' => __('Adress ', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter Adress", 'chthemes-staff'),
@@ -56,7 +56,7 @@ $CHfw_OptionsPageSettingstaff = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'email',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'email',
 			'title' => __('Email', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter email adress", 'chthemes-staff'),
@@ -65,7 +65,7 @@ $CHfw_OptionsPageSettingstaff = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'phone',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'phone',
 			'title' => __('Phone', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter phone", 'chthemes-staff'),
@@ -75,7 +75,7 @@ $CHfw_OptionsPageSettingstaff = array(
 		),
 
 		array(
-			'name' => $CHfw_prefix_staff . 'website',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'website',
 			'title' => __('Website', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter staff member's Google+ profile URL.", 'chthemes-staff'),
@@ -86,7 +86,7 @@ $CHfw_OptionsPageSettingstaff = array(
 
 		array(
 			'name' => 'page_header_type_info',
-			'title' => __('Professional Skills', 'chfw-lang'),
+			'title' => __('Professional Skills', 'stnc_wp_kiosk-lang'),
 			'type' => 'info',
 			'description' => '',
 			'style' => '',
@@ -95,7 +95,7 @@ $CHfw_OptionsPageSettingstaff = array(
 			'extra' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'expertise',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'expertise',
 			'title' => __('Expertise', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => '',
@@ -104,7 +104,7 @@ $CHfw_OptionsPageSettingstaff = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'education',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'education',
 			'title' => __('Education', 'chthemes-staff'),
 			'type' => 'textarea',
 			'description' => '',
@@ -115,7 +115,7 @@ $CHfw_OptionsPageSettingstaff = array(
 
 
 		array(
-			'name' => $CHfw_prefix_staff . 'degree',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'degree',
 			'title' => __('Degree', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => '',
@@ -126,7 +126,7 @@ $CHfw_OptionsPageSettingstaff = array(
 
 
 		array(
-			'name' => $CHfw_prefix_staff . 'experience',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'experience',
 			'title' => __('Experience', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => '',
@@ -137,7 +137,7 @@ $CHfw_OptionsPageSettingstaff = array(
 
 
 		array(
-			'name' => $CHfw_prefix_staff . 'profession',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'profession',
 			'title' => __('Profession', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => '',
@@ -153,10 +153,10 @@ $CHfw_OptionsPageSettingstaff = array(
 
 /*LOCATIONS */
 
-$CHfw_themeName = 'CHfw-';//for include data
-$CHfw_prefix_staff = $CHfw_themeName . "staffLocation-";
-$CHfw_OptionsPageSettingstaffLocaiton = array(
-	'name' => $CHfw_prefix_staff . 'meta-box-page',
+$stnc_wp_kiosk_themeName = 'stnc_wp_kiosk-';//for include data
+$stnc_wp_kiosk_prefix_staff = $stnc_wp_kiosk_themeName . "staffLocation-";
+$stnc_wp_kiosk_OptionsPageSettingstaffLocaiton = array(
+	'name' => $stnc_wp_kiosk_prefix_staff . 'meta-box-page',
 	'nonce' => 'st_studio_staff',
 	'title' => __('Location Info', 'chthemes-staff'),
 	'page' => 'locations',
@@ -168,7 +168,7 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 	'fields' => array(
 
 		array(
-			'name' => $CHfw_prefix_staff . 'adress',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'adress',
 			'title' => __('Adress', 'chthemes-staff'),
 			'type' => 'textarea',
 			'description' => __("Enter adress info", 'chthemes-staff'),
@@ -177,7 +177,7 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'zipCode',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'zipCode',
 			'title' => __('Zip Code', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter zip code", 'chthemes-staff'),
@@ -188,7 +188,7 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 
 
 		array(
-			'name' => $CHfw_prefix_staff . 'email',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'email',
 			'title' => __('Email', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter email adress", 'chthemes-staff'),
@@ -197,7 +197,7 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 			'class_li' => '',
 		),
 		array(
-			'name' => $CHfw_prefix_staff . 'phone',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'phone',
 			'title' => __('Phone', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter phone", 'chthemes-staff'),
@@ -207,7 +207,7 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 		),
 
 		array(
-			'name' => $CHfw_prefix_staff . 'website',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'website',
 			'title' => __('Website', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter staff member's Google+ profile URL.", 'chthemes-staff'),
@@ -217,7 +217,7 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 		),
 
 		array(
-			'name' => $CHfw_prefix_staff . 'latitude',
+			'name' => $stnc_wp_kiosk_prefix_staff . 'latitude',
 			'title' => __('Lat,Long', 'chthemes-staff'),
 			'type' => 'text',
 			'description' => __("Enter Latitude and Longitude eq 40.741895,-73.989308 / web site  https://www.gps-coordinates.net/  ", 'chthemes-staff'),
@@ -229,8 +229,8 @@ $CHfw_OptionsPageSettingstaffLocaiton = array(
 	
 
 		array(
-			'name' => $CHfw_prefix_staff . 'media',
-			'title' => __('Images', 'chfw-lang'),
+			'name' => $stnc_wp_kiosk_prefix_staff . 'media',
+			'title' => __('Images', 'stnc_wp_kiosk-lang'),
 			'type' => 'media-gallery',
 			'description' => __('Select a custom uploaded image.', 'chthemes-staff'),
 			'style' => 'color:#fff;box-shadow:none;',

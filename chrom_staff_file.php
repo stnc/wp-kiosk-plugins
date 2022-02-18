@@ -1,6 +1,6 @@
 <?php
 // register our form css
-function stncForm2_register_js()
+function stnc_wp_kiosk_register_js()
 {
     // Register the JS file with a unique handle, file location, and an array of dependencies
     wp_enqueue_script("dropzone",  plugins_url('../assets/js/dropzone.min.js', __FILE__), array('jquery'));
@@ -23,26 +23,21 @@ function stncForm2_register_js()
     //   wp_enqueue_script('stnc_upload');
 }
 
-add_action('wp_enqueue_scripts', 'stncForm2_register_js');
+add_action('wp_enqueue_scripts', 'stnc_wp_kiosk_register_js');
 
 // load css into the website's front-end
-function stncForm2_enqueue_style()
+function stnc_wp_kiosk_enqueue_style()
 {
     global $post_type;
 
     if( 'staff' == $post_type ){
-    wp_enqueue_style('stnc-style', plugins_url('assets/css/min/CHfw-admin.min.css', __FILE__));
+    wp_enqueue_style('stnc-style', plugins_url('assets/css/min/stnc_wp_kiosk-admin.min.css', __FILE__));
     }
 }
-add_action('admin_enqueue_scripts', 'stncForm2_enqueue_style');
+add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_enqueue_style');
 
 
-function dropzone3_enqueue_style2()
-{
-    wp_enqueue_style('dropzone3', "https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css");
-    wp_enqueue_style('stnc-style', plugins_url('../assets/css/stncForm.css', __FILE__));
-}
-add_action('wp_enqueue_scripts', 'dropzone3_enqueue_style2');
+
 
 
 /*
@@ -66,33 +61,33 @@ add_action( 'login_enqueue_scripts', 'mytheme_enqueue_login_style' );
 */
 
 
-define('CHfw_Staff_PATH', plugin_dir_path(__FILE__) . 'includes/');
+define('stnc_wp_kiosk_Staff_PATH', plugin_dir_path(__FILE__) . 'includes/');
 
 // Load plugin text-domain
 
-$locale = apply_filters('plugin_locale', get_locale(), 'CHfw-staff');
+$locale = apply_filters('plugin_locale', get_locale(), 'stnc_wp_kiosk-staff');
 
-load_textdomain('CHfw-staff', WP_LANG_DIR . 'CHfw-staff/CHfw-staff-' . $locale . '.mo');
-load_plugin_textdomain('CHfw-staff', false, plugin_basename(dirname(__FILE__)) . '/languages');
+load_textdomain('stnc_wp_kiosk-staff', WP_LANG_DIR . 'stnc_wp_kiosk-staff/stnc_wp_kiosk-staff-' . $locale . '.mo');
+load_plugin_textdomain('stnc_wp_kiosk-staff', false, plugin_basename(dirname(__FILE__)) . '/languages');
 
 
-function CHfw_register_post_type_staff()
+function stnc_wp_kiosk_register_post_type_staff()
 {
     $singular = 'Staff';
-    $plural = __('Staff', 'CHfw-Staff');
+    $plural = __('Staff', 'stnc_wp_kiosk-Staff');
     $slug = str_replace(' ', '_', strtolower($singular));
     $labels = array(
         'name' => $plural,
         'singular_name' => $singular,
-        'add_new' => __('Add New', 'CHfw-staff'),
-        'add_new_item' => __('Add New Staff ', 'CHfw-staff'),
-        'edit' => __('Edit', 'CHfw-staff'),
-        'edit_item' => __('Edit Staff ', 'CHfw-staff'),
-        'new_item' => __('New Staff ', 'CHfw-staff'),
-        'view' => __('View Staff ', 'CHfw-staff'),
-        'view_item' => __('View Staff ', 'CHfw-staff'),
-        'search_term' => __('Search Staff ', 'CHfw-staff'),
-        'parent' => __('Parent Staff ', 'CHfw-staff'),
+        'add_new' => __('Add New', 'stnc_wp_kiosk-staff'),
+        'add_new_item' => __('Add New Staff ', 'stnc_wp_kiosk-staff'),
+        'edit' => __('Edit', 'stnc_wp_kiosk-staff'),
+        'edit_item' => __('Edit Staff ', 'stnc_wp_kiosk-staff'),
+        'new_item' => __('New Staff ', 'stnc_wp_kiosk-staff'),
+        'view' => __('View Staff ', 'stnc_wp_kiosk-staff'),
+        'view_item' => __('View Staff ', 'stnc_wp_kiosk-staff'),
+        'search_term' => __('Search Staff ', 'stnc_wp_kiosk-staff'),
+        'parent' => __('Parent Staff ', 'stnc_wp_kiosk-staff'),
         'not_found' => 'No Staff  found',
         'not_found_in_trash' => 'No Staff in Trash',
 
@@ -131,44 +126,44 @@ function CHfw_register_post_type_staff()
 
 }
 
-add_action('init', 'CHfw_register_post_type_staff');
+add_action('init', 'stnc_wp_kiosk_register_post_type_staff');
 
 
-require(CHfw_Staff_PATH . "class-staff-member.php");
+require(stnc_wp_kiosk_Staff_PATH . "class-staff-member.php");
 
 
-$CHfw_staff_ch_postID = isset($_GET['post']) ? $_GET['post'] : null;//post  id  for edit
+$stnc_wp_kiosk_staff_ch_postID = isset($_GET['post']) ? $_GET['post'] : null;//post  id  for edit
 
-$CHfw_staff_post_type_ch = get_post_type($CHfw_staff_ch_postID);//get type
+$stnc_wp_kiosk_staff_post_type_ch = get_post_type($stnc_wp_kiosk_staff_ch_postID);//get type
 
-$CHfw_staff_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
+$stnc_wp_kiosk_staff_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
 
-if ($CHfw_staff_post_type_post == 'staff' or $CHfw_staff_post_type_ch == 'staff') {
+if ($stnc_wp_kiosk_staff_post_type_post == 'staff' or $stnc_wp_kiosk_staff_post_type_ch == 'staff') {
     if (is_admin()) {
-        add_action('load-post.php', 'CHfw_staff_init_metabox');
-        add_action('load-post-new.php', 'CHfw_staff_init_metabox');
+        add_action('load-post.php', 'stnc_wp_kiosk_staff_init_metabox');
+        add_action('load-post-new.php', 'stnc_wp_kiosk_staff_init_metabox');
     }
 }
 
 /*
  * Staff Languages Support add 09-09-2017
  * */
-function CHfw_create_language_taxonomies()
+function stnc_wp_kiosk_create_language_taxonomies()
 {
     // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
-        'name' => __('Languages', 'CHfw-staff'),
-        'singular_name' => __('Languages', 'CHfw-staff'),
-        'add_new_item' => __('Add New Language ', 'CHfw-staff'),
-        'search_items' => __('Search Language', 'CHfw-staff'),
-        'popular_items' => __('Popular Language', 'CHfw-staff'),
-        'all_items' => __('All Languages', 'CHfw-staff'),
-        'parent_item' => __('Parent Language', 'CHfw-staff'),
-        'parent_item_colon' => __('Parent Language:', 'CHfw-staff'),
-        'edit_item' => __('Edit Language', 'CHfw-staff'),
-        'update_item' => __('Update Language', 'CHfw-staff'),
+        'name' => __('Languages', 'stnc_wp_kiosk-staff'),
+        'singular_name' => __('Languages', 'stnc_wp_kiosk-staff'),
+        'add_new_item' => __('Add New Language ', 'stnc_wp_kiosk-staff'),
+        'search_items' => __('Search Language', 'stnc_wp_kiosk-staff'),
+        'popular_items' => __('Popular Language', 'stnc_wp_kiosk-staff'),
+        'all_items' => __('All Languages', 'stnc_wp_kiosk-staff'),
+        'parent_item' => __('Parent Language', 'stnc_wp_kiosk-staff'),
+        'parent_item_colon' => __('Parent Language:', 'stnc_wp_kiosk-staff'),
+        'edit_item' => __('Edit Language', 'stnc_wp_kiosk-staff'),
+        'update_item' => __('Update Language', 'stnc_wp_kiosk-staff'),
 
-        'new_item_name' => __('New Language Name', 'CHfw-staff'),
+        'new_item_name' => __('New Language Name', 'stnc_wp_kiosk-staff'),
     );
     register_taxonomy('staff_languages', array('staff'), array(
         'hierarchical' => true,
@@ -180,27 +175,27 @@ function CHfw_create_language_taxonomies()
     ));
 }
 
-add_action('init', 'CHfw_create_language_taxonomies', 0);
+add_action('init', 'stnc_wp_kiosk_create_language_taxonomies', 0);
 /*
  * Staff location  Support add 09-09-2017
  * */
-function CHfw_create_slocation()
+function stnc_wp_kiosk_create_slocation()
 {
     $singular = 'Locations';
-    $plural = __('Locations', 'CHfw-Staff');
+    $plural = __('Locations', 'stnc_wp_kiosk-Staff');
     $slug = str_replace(' ', '_', strtolower($singular));
     $labels = array(
         'name' => $plural,
         'singular_name' => $singular,
-        'add_new' => __('Add Location', 'CHfw-staff'),
-        'add_new_item' => __('Add New Location ', 'CHfw-staff'),
-        'edit' => __('Edit', 'CHfw-staff'),
-        'edit_item' => __('Edit Location ', 'CHfw-staff'),
-        'new_item' => __('New Location ', 'CHfw-staff'),
-        'view' => __('View Location ', 'CHfw-staff'),
-        'view_item' => __('View Location ', 'CHfw-staff'),
-        'search_term' => __('Search Location ', 'CHfw-staff'),
-        'parent' => __('Parent Location ', 'CHfw-staff'),
+        'add_new' => __('Add Location', 'stnc_wp_kiosk-staff'),
+        'add_new_item' => __('Add New Location ', 'stnc_wp_kiosk-staff'),
+        'edit' => __('Edit', 'stnc_wp_kiosk-staff'),
+        'edit_item' => __('Edit Location ', 'stnc_wp_kiosk-staff'),
+        'new_item' => __('New Location ', 'stnc_wp_kiosk-staff'),
+        'view' => __('View Location ', 'stnc_wp_kiosk-staff'),
+        'view_item' => __('View Location ', 'stnc_wp_kiosk-staff'),
+        'search_term' => __('Search Location ', 'stnc_wp_kiosk-staff'),
+        'parent' => __('Parent Location ', 'stnc_wp_kiosk-staff'),
         'not_found' => 'No Location  found',
         'not_found_in_trash' => 'No Location in Trash',
 
@@ -238,27 +233,27 @@ function CHfw_create_slocation()
     register_post_type($slug, $args);
 }
 
-add_action('init', 'CHfw_create_slocation', 0);
+add_action('init', 'stnc_wp_kiosk_create_slocation', 0);
 
 
 /*------------------UPDATE STAFF---------------------*/
 
 //add_action( 'publish_staff', 'Staff_schedule_staff_expiration_event_insert' );
-function CHfw_Staff_schedule_staff_expiration_event_insert($post_id)
+function stnc_wp_kiosk_Staff_schedule_staff_expiration_event_insert($post_id)
 {
     // Schedule the actual event
     //wp_schedule_single_event( 30 * DAY_IN_SECONDS, 'updateCategories_staff_after_expiration_V1', array( $post_id ) );//insert
-    CHfw_updateCategories_staff_after_expiration($post_id);
+    stnc_wp_kiosk_updateCategories_staff_after_expiration($post_id);
     write_log("run");
 
 }
 
 
-add_action('CHfw_updateCategories_staff_after_expiration', 'CHfw_updateCategories_staff_after_expiration', 10, 1);
+add_action('stnc_wp_kiosk_updateCategories_staff_after_expiration', 'stnc_wp_kiosk_updateCategories_staff_after_expiration', 10, 1);
 // This function will run once the 'addCategories_staff_after_expiration' is called
 
 
-function CHfw_updateCategories_staff_after_expiration($post_id)
+function stnc_wp_kiosk_updateCategories_staff_after_expiration($post_id)
 {
 
     global $wpdb;
@@ -328,33 +323,33 @@ function CHfw_updateCategories_staff_after_expiration($post_id)
     }
 
 
-    $selected_departman_id = CHfw_get_meta($post_id, 'display_doctor_department', 'CHfw_DoctorAndDepartmant_ForSingleStaffPage');
+    $selected_departman_id = stnc_wp_kiosk_get_meta($post_id, 'display_doctor_department', 'stnc_wp_kiosk_DoctorAndDepartmant_ForSingleStaffPage');
     if ($selected_departman_id != false) {//so I used wp_schedule_single_event() so if the value is not empty,
         $selected_departman_id = (int)$selected_departman_id;
     }
 
 
 // events is also using the metabase (doctor selected) )
-    $previously_added_values = get_post_meta($selected_departman_id, 'CHfw_mpevent_departmentForSingleEventPage');
+    $previously_added_values = get_post_meta($selected_departman_id, 'stnc_wp_kiosk_mpevent_departmentForSingleEventPage');
     $dilimler = explode(",", $previously_added_values[0]);
     array_push($dilimler, $added_booked_custom_calendars_term);
     $previously_added_values = implode(",", $dilimler);
-    update_post_meta($selected_departman_id, 'CHfw_mpevent_departmentForSingleEventPage', $previously_added_values);
+    update_post_meta($selected_departman_id, 'stnc_wp_kiosk_mpevent_departmentForSingleEventPage', $previously_added_values);
 }
 
 
 //  runs when a Post is update
-add_action('publish_staff', 'CHfw_Staff_schedule_staff_expiration_event_update');
-function CHfw_Staff_schedule_staff_expiration_event_update($post_id)
+add_action('publish_staff', 'stnc_wp_kiosk_Staff_schedule_staff_expiration_event_update');
+function stnc_wp_kiosk_Staff_schedule_staff_expiration_event_update($post_id)
 {
     // Schedule the actual event
     //updateCategories_staff_after_expiration( $post_id );
-    wp_schedule_single_event(strtotime("+2 seconds"), 'CHfw_updateCategories_staff_after_expiration', array($post_id));
+    wp_schedule_single_event(strtotime("+2 seconds"), 'stnc_wp_kiosk_updateCategories_staff_after_expiration', array($post_id));
 }
 
 
-add_action('pre_post_update', 'CHfw_post_updating_callback');
-function CHfw_post_updating_callback($post_id)
+add_action('pre_post_update', 'stnc_wp_kiosk_post_updating_callback');
+function stnc_wp_kiosk_post_updating_callback($post_id)
 {
     global $post;
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -371,8 +366,8 @@ function CHfw_post_updating_callback($post_id)
 }
 
 
-add_action('pre_delete_term', 'CHfw_prevent_terms_delete', 1, 2);
-function CHfw_prevent_terms_delete($term, $taxonomy)
+add_action('pre_delete_term', 'stnc_wp_kiosk_prevent_terms_delete', 1, 2);
+function stnc_wp_kiosk_prevent_terms_delete($term, $taxonomy)
 {
     global $wpdb;
     if (!current_user_can('manage_network')) {
@@ -382,18 +377,18 @@ function CHfw_prevent_terms_delete($term, $taxonomy)
 }
 
 
-require("includes/CHfw-staff-metabox-options.php");
+require("includes/stnc_wp_kiosk-staff-metabox-options.php");
 
 /*staff image size */
 if (function_exists('add_image_size')) {
-    add_image_size('CHfw-staffPostSize', 320, 320, false);
+    add_image_size('stnc_wp_kiosk-staffPostSize', 320, 320, false);
 }
 
 
 /*staff pagination fix*/
-$scFW_staffLimit_posts = isset($CHfw_rdx_options['staff_limit_posts']) ? $CHfw_rdx_options['staff_limit_posts'] : 5;
+$scFW_staffLimit_posts = isset($stnc_wp_kiosk_rdx_options['staff_limit_posts']) ? $stnc_wp_kiosk_rdx_options['staff_limit_posts'] : 5;
 
-function CHfw_mp_staff_posts_per_page($query)
+function stnc_wp_kiosk_mp_staff_posts_per_page($query)
 {
     global $scFW_staffLimit_posts;
     if (isset($query->query_vars['post_type'])) {
@@ -406,33 +401,33 @@ function CHfw_mp_staff_posts_per_page($query)
 }
 
 if (!is_admin()) {
-    add_filter('pre_get_posts', 'CHfw_mp_staff_posts_per_page');
+    add_filter('pre_get_posts', 'stnc_wp_kiosk_mp_staff_posts_per_page');
 }
 
 
-function CHfw_admin_menu()
+function stnc_wp_kiosk_admin_menu()
 {
-    add_submenu_page("edit.php?post_type=staff", __("Locations", 'mp-timetable'), __("Locations", 'mp-timetable'), "edit_posts", "edit.php?post_type=locations");//chfw condi
-    add_submenu_page("edit.php?post_type=staff", __("Add Locations", 'mp-timetable'), __("Add Locations", 'mp-timetable'), "edit_posts", "post-new.php?post_type=locations");//chfw add treatmens
+    add_submenu_page("edit.php?post_type=staff", __("Locations", 'mp-timetable'), __("Locations", 'mp-timetable'), "edit_posts", "edit.php?post_type=locations");//stnc_wp_kiosk condi
+    add_submenu_page("edit.php?post_type=staff", __("Add Locations", 'mp-timetable'), __("Add Locations", 'mp-timetable'), "edit_posts", "post-new.php?post_type=locations");//stnc_wp_kiosk add treatmens
 }
 
-add_action('admin_menu', 'CHfw_admin_menu');
+add_action('admin_menu', 'stnc_wp_kiosk_admin_menu');
 
 
-add_filter('manage_staff_posts_columns', 'CHfw_add_img_column');
-add_filter('manage_staff_posts_custom_column', 'CHfw_manage_img_column', 10, 2);
+add_filter('manage_staff_posts_columns', 'stnc_wp_kiosk_add_img_column');
+add_filter('manage_staff_posts_custom_column', 'stnc_wp_kiosk_manage_img_column', 10, 2);
 
 /*
 add custom_colum
 @use http://bit.ly/2zKE0k4
 */
-function CHfw_add_img_column($columns)
+function stnc_wp_kiosk_add_img_column($columns)
 {
     $columns['img'] = 'Featured Image';
     return $columns;
 }
 
-function CHfw_manage_img_column($column_name, $post_id)
+function stnc_wp_kiosk_manage_img_column($column_name, $post_id)
 {
     if ($column_name == 'img') {
         echo get_the_post_thumbnail($post_id, 'thumbnail');

@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name:Chrom Themes Staff
+Plugin Name:teknopark kiosk 
 Plugin URI:			
-Description: Staff Members plugin for the Nucleon theme.	
+Description: erciyes teknopark tv ekranları (by stnc)
 Version: 1.11.97
 Author: Chrom Themes
 Text Domain: chrom_staff

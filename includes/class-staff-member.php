@@ -1,17 +1,17 @@
 <?php
 
 
-$CHfw_meta_key_staff = 'CHfw-StaffLocation-Setting';
-$CHfw_postID = isset($_GET['post']) ? $_GET['post'] : null;//post  id  for edit
-$CHfw_post_type = (get_post_type($CHfw_postID));//get type
-$CHfw_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
+$stnc_wp_kiosk_meta_key_staff = 'stnc_wp_kiosk-StaffLocation-Setting';
+$stnc_wp_kiosk_postID = isset($_GET['post']) ? $_GET['post'] : null;//post  id  for edit
+$stnc_wp_kiosk_post_type = (get_post_type($stnc_wp_kiosk_postID));//get type
+$stnc_wp_kiosk_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
 
 
 /**
  * add_meta_boxes
  * @link https://developer.wordpress.org/reference/functions/add_meta_box/
  */
-class CHfw_metabox_engine_staff_member
+class stnc_wp_kiosk_metabox_engine_staff_member
 {
 	public $nonce = 'st_studio';
 	public $meta_key;
@@ -19,10 +19,10 @@ class CHfw_metabox_engine_staff_member
 	private $current_id;
 	private $SaveMethodSingle;
 
-	public function __construct($fields, $CHfw_meta_key_staff, $SaveMethodSingle = false)
+	public function __construct($fields, $stnc_wp_kiosk_meta_key_staff, $SaveMethodSingle = false)
 	{
 
-		$this->meta_key = $CHfw_meta_key_staff;
+		$this->meta_key = $stnc_wp_kiosk_meta_key_staff;
 		$this->SaveMethodSingle = $SaveMethodSingle;
 
 		if (is_admin()) {
@@ -131,7 +131,7 @@ print_r($this->fields);
 		echo '<div class="wp-core-ui  st_studio-Engine-Form" style="' . $fields['style'] . '"  class="' . $fields['class'] . $fields['name'] . '"><ul>';
 
 		if ($fields['title_h2']) {
-			echo '<li><h2  data-required="CHfw_pageSetting_background_repeat"><strong>' . $fields['title'] . '</strong></h2> </li>';
+			echo '<li><h2  data-required="stnc_wp_kiosk_pageSetting_background_repeat"><strong>' . $fields['title'] . '</strong></h2> </li>';
 		}
 		foreach ($fields['fields'] as $key => $values) {
 
@@ -257,7 +257,7 @@ print_r($this->fields);
 	                            <div class="images-container2">
                                 <input id="' . $values['name'] . '"   class="meta_field media_field_content"  data-value="' . implode(',', $imagewow2) . '"  value="' . implode(',', $imagesID) . '" 
                                   name="' . $values['name'] . '" type="hidden"   style="' . $values['style'] . '"/>
-	                            <input type="button" name="uploader" class="STNCupload_button button button-primary" value="' . __('Add Images', 'CHfw') . '">
+	                            <input type="button" name="uploader" class="STNCupload_button button button-primary" value="' . __('Add Images', 'stnc_wp_kiosk') . '">
 	                            </div>
 	                            </div>
 	                            </div>
@@ -401,47 +401,47 @@ print_r($this->fields);
 }
 
 
-function CHfw_staff_options_()
+function stnc_wp_kiosk_staff_options_()
 {
 	include('metabox_staff_options.php');
-	$ch_post_options_staff['0'] = $CHfw_OptionsPageSettingstaff;
+	$ch_post_options_staff['0'] = $stnc_wp_kiosk_OptionsPageSettingstaff;
 
-	$engine_page_staff = new CHfw_metabox_engine_staff_member($ch_post_options_staff, 'CHfw-StaffLocation-Setting', true);
+	$engine_page_staff = new stnc_wp_kiosk_metabox_engine_staff_member($ch_post_options_staff, 'stnc_wp_kiosk-StaffLocation-Setting', true);
 
 
 }
 
 
-if ($CHfw_post_type == 'staff') {
+if ($stnc_wp_kiosk_post_type == 'staff') {
 //staff
-	CHfw_staff_options_();
+	stnc_wp_kiosk_staff_options_();
 }
 
 
-if ($CHfw_post_type_post == 'staff') {
+if ($stnc_wp_kiosk_post_type_post == 'staff') {
 //staff
-	CHfw_staff_options_();
+	stnc_wp_kiosk_staff_options_();
 }
 
 
-function CHfw_staff_options_locaiton()
+function stnc_wp_kiosk_staff_options_locaiton()
 {
 	include('metabox_staff_options.php');
-	$ch_post_options_staff['0'] = $CHfw_OptionsPageSettingstaffLocaiton;
-	$engine_page_staff = new CHfw_metabox_engine_staff_member($ch_post_options_staff, 'CHfw-StaffLocation-Setting', false);
+	$ch_post_options_staff['0'] = $stnc_wp_kiosk_OptionsPageSettingstaffLocaiton;
+	$engine_page_staff = new stnc_wp_kiosk_metabox_engine_staff_member($ch_post_options_staff, 'stnc_wp_kiosk-StaffLocation-Setting', false);
 
 }
 
 
-if ($CHfw_post_type == 'locations') {
+if ($stnc_wp_kiosk_post_type == 'locations') {
 //staff
-	CHfw_staff_options_locaiton();
+	stnc_wp_kiosk_staff_options_locaiton();
 }
 
 
-if ($CHfw_post_type_post == 'locations') {
+if ($stnc_wp_kiosk_post_type_post == 'locations') {
 //staff
-	CHfw_staff_options_locaiton();
+	stnc_wp_kiosk_staff_options_locaiton();
 }
 
 
