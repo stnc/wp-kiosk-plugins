@@ -17,14 +17,12 @@ require(stnc_wp_kiosk_PATH . "sideBarMetaBox.php");
 
 require(stnc_wp_kiosk_PATH . "metabox_engine_class.php");
 
-// require(stnc_wp_kiosk_PATH . "kullanilamayan_ajax.php");
-
-require("extraOptions.php");
-
-
+require(stnc_wp_kiosk_PATH . "kullanilamayan_ajax.php");
 
 include ('register_css_js.php');
 
+require("extraOptions.php");
 
 include ('register_menu.php');//ek 1
+
 require("menuPages/ayarlar.php");//ek 2
