@@ -1,25 +1,6 @@
 <?php
 
 /***SIDEBAR Doctor select METABOX (ONLY STAFF )****/
-function stnc_wp_kiosk_doctor_selected_get_metaOLD($value)
-{
-	global $post;
-
-	$field = get_post_meta($post->ID, 'stnc_wp_kiosk_DoctorAndDepartmant_ForSingleStaffPage', true);
-	if (!empty($field)) {
-		if (array_key_exists($value, $field)) {
-			$field = $field[$value];
-		} else {
-			return '';
-		}
-	}
-
-	if (!empty($field)) {
-		return is_array($field) ? stripslashes_deep($field) : stripslashes(wp_kses_decode_entities($field));
-	} else {
-		return false;
-	}
-}
 
 function stnc_wp_kiosk_doctor_selected_get_meta_simple($value)
 {
@@ -249,7 +230,7 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 
 
 /*register metabox */
-function stnc_wp_kioskf_init_metabox()
+function stnc_wp_kiosk_staff_init_metabox()
 {
 	// add meta box
 	add_action('add_meta_boxes', 'stnc_wp_kiosk_doctor_selected_add_meta_box');

@@ -60,7 +60,7 @@ function stnc_wp_kiosk_register_post_type_staff()
 add_action('init', 'stnc_wp_kiosk_register_post_type_staff');
 
 
-require(stnc_wp_kiosk_PATH . "class-staff-member.php");
+require(stnc_wp_kiosk_PATH . "metabox_engine_class.php");
 
 
 $stnc_wp_kiosk_staff_ch_postID = isset($_GET['post']) ? $_GET['post'] : null;//post  id  for edit
@@ -336,15 +336,7 @@ if (!is_admin()) {
 }
 
 
-function stnc_wp_kiosk_admin_menu()
-{
-    add_submenu_page("edit.php?post_type=staff", __("Locations", 'mp-timetable'), __("Locations", 'mp-timetable'), "edit_posts", "edit.php?post_type=locations");//stnc_wp_kiosk condi
-    add_submenu_page("edit.php?post_type=staff", __("Add Locations", 'mp-timetable'), __("Add Locations", 'mp-timetable'), "edit_posts", "post-new.php?post_type=locations");//stnc_wp_kiosk add treatmens
-    add_submenu_page( "edit.php?post_type=staff", 'Ayarlar', 'Ayarlar', 'manage_options', 'stncFullPage', 'stncForm_adminMenu_About_contentsTest' ); ////burası alt kısım onun altında olacak olan bolum için 
 
-}
-
-add_action('admin_menu', 'stnc_wp_kiosk_admin_menu');
 
 
 add_filter('manage_staff_posts_columns', 'stnc_wp_kiosk_add_img_column');

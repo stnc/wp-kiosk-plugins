@@ -49,7 +49,7 @@ $stnc_wp_kiosk_OptionsPageSettingstaff = array(
 		array(
 			'name' => $stnc_wp_kiosk_prefix_staff . 'adress',
 			'title' => __('Adress ', 'chthemes-staff'),
-			'type' => 'text',
+			'type' => 'upload',
 			'description' => __("Enter Adress", 'chthemes-staff'),
 			'style' => '',
 			'class' => '',
