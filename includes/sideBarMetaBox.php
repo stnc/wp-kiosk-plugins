@@ -148,7 +148,7 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 	// 	update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_doctor_calendar', sanitize_text_field($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_calendar']));
 	// }
 
-	//locations  save
+	//locations  save -- bu çoklu seçim yapar
 	if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_locations'])) {
 		
 		foreach ($_POST['stnc_wp_kiosk_DrAndDep_display_locations'] as $selectedOption_locations) {
@@ -157,8 +157,6 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 		$selectedOptionlist_locations = implode(",", $selectedOptionlist_locations);
 		update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_locations', sanitize_text_field($selectedOptionlist_locations));
 	}
-
-
 }
 
 
