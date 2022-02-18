@@ -10,7 +10,9 @@ $stnc_wp_kiosk_staff_post_type_ch = get_post_type($stnc_wp_kiosk_staff_ch_postID
 $stnc_wp_kiosk_staff_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
 
 if ($stnc_wp_kiosk_staff_post_type_post == 'staff' or $stnc_wp_kiosk_staff_post_type_ch == 'staff') {
+	
     if (is_admin()) {
+	
         add_action('load-post.php', 'stnc_wp_kiosk_staff_init_metabox');
         add_action('load-post-new.php', 'stnc_wp_kiosk_staff_init_metabox');
     }
@@ -54,10 +56,13 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 		$list_location_db = stnc_wp_kiosk_doctor_selected_get_meta_simple('stnc_wp_kiosk_DrAndDep_display_locations');
 		$list_location_db = explode(',', $list_location_db);
 
+		print_r($list_location_db);
+		
+		/*
 		$args = array("posts_per_page" => 10, "orderby" => "comment_count", 'post_type' => 'locations',);
 		$posts_array = get_posts($args);
-
-
+print_r(	$posts_array);
+die;
 		if ($posts_array) {
 			foreach ($posts_array as $key => $location) {
 				$locations[$key]["id"] = $location->ID;
@@ -65,16 +70,28 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 			}
 		}
 
+*/
+
+$locations = [
+    ['id' => 1, 'title' => 'tree'],
+    ['id' => 2, 'title' => 'sun'],
+    ['id' => 3, 'title' => 'cloud'],
+];
 
 		foreach ($locations as $location) {
 			if (in_array($location['id'], $list_location_db)) {
 				$ch_yes = "selected";
+				echo      '<option '.$ch_yes.' value="'.$location['id'].' ">'.$location['title'].'</option>';
+				
 			} else {
 				$ch_yes = "";
+				echo      '<option '.$ch_yes.' value="'.$location['id'].' ">'.$location['title'].'</option>';
+
 			}
 			}
+			
 			?>
-            <option value="<?php echo $location['id'] ?>" <?php echo $ch_yes ?>><?php echo $location['title'] ?></option>
+       
 	
     </select>
 	<?php
@@ -111,28 +128,29 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
 		return $post_id;
 	}
-	//departman   save
-	if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_department'])) {
-		update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_doctor_department', sanitize_text_field($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_department']));
-	}
+	// //departman   save
+	// if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_department'])) {
+	// 	update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_doctor_department', sanitize_text_field($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_department']));
+	// }
 
-	//services save
-	if (isset($_POST['stnc_wp_kiosk_DrAndDep_program_and_services'])) {
-		foreach ($_POST['stnc_wp_kiosk_DrAndDep_program_and_services'] as $selectedOption) {
-			$selectedOptionlist[] = $selectedOption;
-		}
-		$selectedOptionlist = implode(",", $selectedOptionlist);
-		update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_program_and_services', sanitize_text_field($selectedOptionlist));
-	}
+	// //services save
+	// if (isset($_POST['stnc_wp_kiosk_DrAndDep_program_and_services'])) {
+	// 	foreach ($_POST['stnc_wp_kiosk_DrAndDep_program_and_services'] as $selectedOption) {
+	// 		$selectedOptionlist[] = $selectedOption;
+	// 	}
+	// 	$selectedOptionlist = implode(",", $selectedOptionlist);
+	// 	update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_program_and_services', sanitize_text_field($selectedOptionlist));
+	// }
 
 
-	//calendar  save
-	if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_calendar'])) {
-		update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_doctor_calendar', sanitize_text_field($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_calendar']));
-	}
+	// //calendar  save
+	// if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_calendar'])) {
+	// 	update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_doctor_calendar', sanitize_text_field($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_calendar']));
+	// }
 
 	//locations  save
 	if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_locations'])) {
+		
 		foreach ($_POST['stnc_wp_kiosk_DrAndDep_display_locations'] as $selectedOption_locations) {
 			$selectedOptionlist_locations[] = $selectedOption_locations;
 		}
@@ -142,3 +160,5 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 
 
 }
+
+
