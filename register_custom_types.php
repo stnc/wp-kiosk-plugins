@@ -1,5 +1,5 @@
 <?php
-function stnc_wp_kiosk_register_post_type_staff()
+function stnc_wp_kiosk_register_post_type()
 {
     $singular = 'Stnc Kiosk';
     $plural = __('Teknopark Ekran Resimleri', 'stnc_wp_kiosk-Staff');
@@ -38,7 +38,7 @@ function stnc_wp_kiosk_register_post_type_staff()
         'query_var' => true,
         'map_meta_cap' => true,
         'rewrite' => array(
-            'slug' => 'staff',
+            'slug' =>  $slug,
         ),
 
         'supports' => array(
@@ -53,7 +53,7 @@ function stnc_wp_kiosk_register_post_type_staff()
 
 }
 
-add_action('init', 'stnc_wp_kiosk_register_post_type_staff');
+add_action('init', 'stnc_wp_kiosk_register_post_type');
 
 ///bağlı kategori ekleme sisitemi 
 
@@ -61,7 +61,7 @@ add_action('init', 'stnc_wp_kiosk_register_post_type_staff');
 /*
  * Staff Languages Support add 09-09-2017
  * */
-function stnc_wp_kiosk_create_language_taxonomies()
+function stnc_wp_kiosk_create_cat_taxonomies()
 {
     // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
@@ -76,7 +76,7 @@ function stnc_wp_kiosk_create_language_taxonomies()
         'edit_item' => __('Bina Düzenle', 'stnc_wp_kiosk-staff'),
         'update_item' => __('Bina Güncelle', 'stnc_wp_kiosk-staff'),
 
-        'new_item_name' => __('Yeni Bina Adı', 'stnc_wp_kiosk-staff'),
+        'new_item_name' => __('Yeni Bina', 'stnc_wp_kiosk-staff'),
     );
     register_taxonomy('stnc_kiosk_binalar', array("stnc_kiosk"), array(
         'hierarchical' => true,
@@ -88,4 +88,4 @@ function stnc_wp_kiosk_create_language_taxonomies()
     ));
 }
 
-add_action('init', 'stnc_wp_kiosk_create_language_taxonomies', 0);
+add_action('init', 'stnc_wp_kiosk_create_cat_taxonomies', 0);
