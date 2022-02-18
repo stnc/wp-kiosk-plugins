@@ -1,16 +1,16 @@
 <?php
 function stnc_wp_kiosk_register_post_type_staff()
 {
-    $singular = 'Staff';
-    $plural = __('Staff', 'stnc_wp_kiosk-Staff');
+    $singular = 'Stnc Kiosk';
+    $plural = __('Teknopark Ekran Resimleri', 'stnc_wp_kiosk-Staff');
     $slug = str_replace(' ', '_', strtolower($singular));
     $labels = array(
         'name' => $plural,
         'singular_name' => $singular,
-        'add_new' => __('Add New', 'stnc_wp_kiosk-staff'),
-        'add_new_item' => __('Add New Staff ', 'stnc_wp_kiosk-staff'),
-        'edit' => __('Edit', 'stnc_wp_kiosk-staff'),
-        'edit_item' => __('Edit Staff ', 'stnc_wp_kiosk-staff'),
+        'add_new' => __('Yeni Resim Ekle', 'stnc_wp_kiosk-staff'),
+        'add_new_item' => __('Yeni Resim Ekle', 'stnc_wp_kiosk-staff'),
+        'edit' => __('Düzenle', 'stnc_wp_kiosk-staff'),
+        'edit_item' => __('Resim Düzenle ', 'stnc_wp_kiosk-staff'),
         'new_item' => __('New Staff ', 'stnc_wp_kiosk-staff'),
         'view' => __('View Staff ', 'stnc_wp_kiosk-staff'),
         'view_item' => __('View Staff ', 'stnc_wp_kiosk-staff'),
@@ -18,7 +18,6 @@ function stnc_wp_kiosk_register_post_type_staff()
         'parent' => __('Parent Staff ', 'stnc_wp_kiosk-staff'),
         'not_found' => 'No Staff  found',
         'not_found_in_trash' => 'No Staff in Trash',
-
     );
     $args = array(
         'label' => 'Staff',
@@ -29,8 +28,8 @@ function stnc_wp_kiosk_register_post_type_staff()
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_admin_bar' => true,
-        'menu_position' => 10,
-        'menu_icon' => 'dashicons-businessman',
+        'menu_position' => 30,
+        'menu_icon' => 'dashicons-images-alt2',
         'can_export' => true,
         'delete_with_user' => false,
         'hierarchical' => true,
@@ -66,26 +65,26 @@ function stnc_wp_kiosk_create_language_taxonomies()
 {
     // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
-        'name' => __('Languages', 'stnc_wp_kiosk-staff'),
-        'singular_name' => __('Languages', 'stnc_wp_kiosk-staff'),
-        'add_new_item' => __('Add New Language ', 'stnc_wp_kiosk-staff'),
-        'search_items' => __('Search Language', 'stnc_wp_kiosk-staff'),
-        'popular_items' => __('Popular Language', 'stnc_wp_kiosk-staff'),
-        'all_items' => __('All Languages', 'stnc_wp_kiosk-staff'),
-        'parent_item' => __('Parent Language', 'stnc_wp_kiosk-staff'),
-        'parent_item_colon' => __('Parent Language:', 'stnc_wp_kiosk-staff'),
-        'edit_item' => __('Edit Language', 'stnc_wp_kiosk-staff'),
-        'update_item' => __('Update Language', 'stnc_wp_kiosk-staff'),
+        'name' => __('Binalar', 'stnc_wp_kiosk-staff'),
+        'singular_name' => __('Binalar', 'stnc_wp_kiosk-staff'),
+        'add_new_item' => __('Yeni Bina Ekle ', 'stnc_wp_kiosk-staff'),
+        'search_items' => __('Bina Ara', 'stnc_wp_kiosk-staff'),
+        'popular_items' => __('Popular Bina', 'stnc_wp_kiosk-staff'),
+        'all_items' => __('Tüm Binalar', 'stnc_wp_kiosk-staff'),
+        'parent_item' => __('Alt kategori Bina', 'stnc_wp_kiosk-staff'),
+        'parent_item_colon' => __('Alt kategori Bina:', 'stnc_wp_kiosk-staff'),
+        'edit_item' => __('Bina Düzenle', 'stnc_wp_kiosk-staff'),
+        'update_item' => __('Bina Güncelle', 'stnc_wp_kiosk-staff'),
 
-        'new_item_name' => __('New Language Name', 'stnc_wp_kiosk-staff'),
+        'new_item_name' => __('Yeni Bina Adı', 'stnc_wp_kiosk-staff'),
     );
-    register_taxonomy('staff_languages', array('staff'), array(
+    register_taxonomy('stnc_kiosk_binalar', array("stnc_kiosk"), array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'query_var' => true,
 
-        'rewrite' => array('slug' => 'staff_languages'),
+        'rewrite' => array('slug' => 'stnc_kiosk_binalar'),
     ));
 }
 

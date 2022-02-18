@@ -11,10 +11,10 @@ jQuery(function () {
     /* ==========================================================================
      #Image picker init
      ========================================================================== */
-    jQuery(".image_select_metabox.show-labels").imagepicker({
-        hide_select: true,
-        show_label: true,
-    });
+    // jQuery(".image_select_metabox.show-labels").imagepicker({
+    //     hide_select: true,
+    //     show_label: true,
+    // });
 
     /* ==========================================================================
      #Metabox page select visible hide show
@@ -294,15 +294,15 @@ jQuery(function () {
      #POST FORMATS JS EVENTS
      ========================================================================== */
 
-    hideAllPostType();
+    // hideAllPostType();
 
-    //page load post_type show
-    jQuery.each(jQuery('#post-formats-select input'), function (index, value) {
-        if (jQuery(this).is(':checked')) {
-            var id = jQuery(this).attr("id");
-            jQuery("#wow_" + id + '_meta-box-page').show();
-        }
-    });
+    // //page load post_type show
+    // jQuery.each(jQuery('#post-formats-select input'), function (index, value) {
+    //     if (jQuery(this).is(':checked')) {
+    //         var id = jQuery(this).attr("id");
+    //         jQuery("#wow_" + id + '_meta-box-page').show();
+    //     }
+    // });
 
     /* ---------------------------------------------------------------------------
      * All format types selection hide

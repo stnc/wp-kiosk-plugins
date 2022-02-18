@@ -9,7 +9,7 @@ $stnc_wp_kiosk_staff_post_type_ch = get_post_type($stnc_wp_kiosk_staff_ch_postID
 
 $stnc_wp_kiosk_staff_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
 
-if ($stnc_wp_kiosk_staff_post_type_post == 'staff' or $stnc_wp_kiosk_staff_post_type_ch == 'staff') {
+if ($stnc_wp_kiosk_staff_post_type_post == 'stnc_kiosk' or $stnc_wp_kiosk_staff_post_type_ch == 'stnc_kiosk') {
 	
     if (is_admin()) {
 	
@@ -33,7 +33,7 @@ function stnc_wp_kiosk_doctor_selected_add_meta_box()
 		'stnc_wp_kiosk_DoctorAndDepartmant_ForSingleStaffPage_metabox',
 		__('Ayarlar', 'doctor_selected'),
 		'stnc_wp_kiosk_doctor_selected_html',
-		'staff',
+		'stnc_kiosk',
 		'side',
 		'default'
 	);
@@ -44,25 +44,22 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 {
 	wp_nonce_field('_doctor_selected_nonce', 'doctor_selected_nonce'); ?>
 
+<label for="stnc_wp_kiosk_DrAndDep_display_locations">
+    <?php _e('Ekranda Kalacağı Süre:', 'stnc_wp_kiosk-staff'); ?>
+</label>
+<br>
 
-    <br>
-    <label for="stnc_wp_kiosk_DrAndDep_display_locations">
-		<?php _e('Locations:', 'stnc_wp_kiosk-staff'); ?>
-    </label>
-    <br>
-
-    <select name="stnc_wp_kiosk_DrAndDep_display_locations[]" multiple id="stnc_wp_kiosk_DrAndDep_display_locations">
-		<?php
+<select name="stnc_wp_kiosk_DrAndDep_display_locations[]" id="stnc_wp_kiosk_DrAndDep_display_locations">
+    <?php
 		$list_location_db = stnc_wp_kiosk_doctor_selected_get_meta_simple('stnc_wp_kiosk_DrAndDep_display_locations');
 		$list_location_db = explode(',', $list_location_db);
 
 		print_r($list_location_db);
 		
 		/*
+		//burası custom post verisi okur --burada location ın verisi okunmuş 
 		$args = array("posts_per_page" => 10, "orderby" => "comment_count", 'post_type' => 'locations',);
 		$posts_array = get_posts($args);
-print_r(	$posts_array);
-die;
 		if ($posts_array) {
 			foreach ($posts_array as $key => $location) {
 				$locations[$key]["id"] = $location->ID;
@@ -73,9 +70,9 @@ die;
 */
 
 $locations = [
-    ['id' => 1, 'title' => 'tree'],
-    ['id' => 2, 'title' => 'sun'],
-    ['id' => 3, 'title' => 'cloud'],
+    ['id' => 1, 'title' => '30 saniye'],
+    ['id' => 2, 'title' => '40 saniye'],
+    ['id' => 3, 'title' => '50 saniye'],
 ];
 
 		foreach ($locations as $location) {
@@ -89,12 +86,9 @@ $locations = [
 
 			}
 			}
-			
 			?>
-       
-	
-    </select>
-	<?php
+</select>
+<?php
 }
 
 
@@ -158,5 +152,3 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 		update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_locations', sanitize_text_field($selectedOptionlist_locations));
 	}
 }
-
-

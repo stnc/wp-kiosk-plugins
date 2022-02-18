@@ -11,7 +11,7 @@ function stnc_wp_kiosk_post_updating_callback($post_id)
         return;
     }
     if (isset($post->post_status)){
-        if ($post->post_status == "publish" && $post->post_type == "staff") {
+        if ($post->post_status == "publish" && $post->post_type == "stnc_kiosk") {
             $display_before_title_read = get_the_title($post_id);
             update_post_meta($post_id, 'wow_BeforeTitle', $display_before_title_read);
 

@@ -26,7 +26,7 @@ function stnc_wp_kiosk_front_enqueue_style()
 {
     global $post_type;
 
-    if( 'staff' == $post_type ){
+    if( 'stnc_kiosk' == $post_type ){
     wp_enqueue_style('stnc-style', plugins_url('assets/css/min/stnc_wp_kiosk-admin.min.css', __FILE__));
     }
 }
@@ -56,7 +56,7 @@ function stnc_wp_kiosk_admin_enqueue_style()
     wp_enqueue_style('stnc-style-style2', plugins_url('assets/css/stnc_wp_kiosk_admin.css', __FILE__));
 }
 
-// if ((isset($_GET['post_type'])) && ($_GET['post_type'] === 'staff')) {
+// if ((isset($_GET['post_type'])) && ($_GET['post_type'] === 'stnc_kiosk')) {
 
 add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_admin_enqueue_style');
 add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_script_in_admin');
@@ -69,6 +69,8 @@ function stnc_wp_kiosk_script_in_admin($hook) {
     // wp_enqueue_script('stnc-bootstrap');   
     
     wp_register_script( 'stnc-admin',plugin_dir_url( __FILE__ ) . 'assets/js/CHfw-admin.js', '',true );
-    // wp_register_script( 'stnc-my',plugin_dir_url( __FILE__ ) . 'assets/js/my.js', '',true );
     wp_enqueue_script('stnc-admin');
+
+
+       // wp_register_script( 'stnc-my',plugin_dir_url( __FILE__ ) . 'assets/js/my.js', '',true );
 }

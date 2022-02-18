@@ -12,13 +12,13 @@ function stnc_wp_kiosk_staff_options_()
 }
 
 
-if ($stnc_wp_kiosk_post_type == 'staff') {
+if ($stnc_wp_kiosk_post_type == 'stnc_kiosk') {
 //staff
 	stnc_wp_kiosk_staff_options_();
 }
 
 
-if ($stnc_wp_kiosk_post_type_post == 'staff') {
+if ($stnc_wp_kiosk_post_type_post == 'stnc_kiosk') {
 //staff
 	stnc_wp_kiosk_staff_options_();
 }
