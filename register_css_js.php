@@ -1,5 +1,4 @@
 <?php 
-
 ////*************FRONTEnd register***********//////
 
 // register our form css --kapalı 
@@ -73,6 +72,3 @@ function stnc_wp_kiosk_script_in_admin($hook) {
     // wp_register_script( 'stnc-my',plugin_dir_url( __FILE__ ) . 'assets/js/my.js', '',true );
     wp_enqueue_script('stnc-admin');
 }
-
-
-

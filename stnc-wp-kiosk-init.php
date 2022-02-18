@@ -3,7 +3,7 @@
 Plugin Name:teknopark kiosk 
 Plugin URI:			
 Description: erciyes teknopark tv ekranları (by stnc)
-Version: 1.11.97
+Version: 2.0.0
 Author: Chrom Themes
 Text Domain: stnc-wp-kiosk
 Domain Path: /languages/
