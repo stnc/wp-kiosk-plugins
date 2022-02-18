@@ -76,12 +76,3 @@ function stnc_wp_kiosk_script_in_admin($hook) {
 
 
 
-function stnc_wp_kiosk_admin_menu()
-{
-    add_submenu_page("edit.php?post_type=staff", __("Locations", 'mp-timetable'), __("Locations", 'mp-timetable'), "edit_posts", "edit.php?post_type=locations");//stnc_wp_kiosk condi
-    add_submenu_page("edit.php?post_type=staff", __("Add Locations", 'mp-timetable'), __("Add Locations", 'mp-timetable'), "edit_posts", "post-new.php?post_type=locations");//stnc_wp_kiosk add treatmens
-    add_submenu_page( "edit.php?post_type=staff", 'Ayarlar', 'Ayarlar', 'manage_options', 'stncFullPage', 'stncForm_adminMenu_About_contentsTest' ); ////burası alt kısım onun altında olacak olan bolum için 
-
-}
-
-add_action('admin_menu', 'stnc_wp_kiosk_admin_menu');
