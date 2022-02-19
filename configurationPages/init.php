@@ -49,7 +49,7 @@ function stnc_wp_kiosk_configuration_content(){
             break;
           default:
           //
-          doviz_altin_ayarlari(); 
+          stp_api_options_page(); 
 
             break;
         endswitch; ?>
