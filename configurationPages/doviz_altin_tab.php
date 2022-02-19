@@ -4,7 +4,7 @@ add_action( 'admin_init', 'stncWpKiosk_Exchange_Settings_init' );
 function stncWpKiosk_Exchange_Settings_init(  ) {
     register_setting( 'stncWpKiosk_ExchangeConfig', 'stncWpKiosk_Exchange_Settings' );
     add_settings_section(
-        'stp_api_stpPlugin_section',
+        'stncWpKiosk_Exchange_section',
         __( 'Our Section Title', 'wordpress' ),
         'stncWpKiosk_Exchange_Settings_section_callback',
         'stncWpKiosk_ExchangeConfig'
@@ -13,9 +13,9 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
     add_settings_field(
         'stncWpKiosk_text_field_dolar',
         __( 'Dolar', 'wordpress' ),
-        'dolar_text_field_render',
+        'dolar_stncWpKiosk_text_field_render',
         'stncWpKiosk_ExchangeConfig',
-        'stp_api_stpPlugin_section'
+        'stncWpKiosk_Exchange_section'
     );
 
 
@@ -23,9 +23,17 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
     add_settings_field(
         'stncWpKiosk_text_field_euro',
         __( 'Euro', 'wordpress' ),
-        'euro_text_field_render',
+        'euro_stncWpKiosk_text_field_render',
         'stncWpKiosk_ExchangeConfig',
-        'stp_api_stpPlugin_section'
+        'stncWpKiosk_Exchange_section'
+    );
+
+    add_settings_field(
+        'stncWpKiosk_text_field_altin',
+        __( 'Altin', 'wordpress' ),
+        'altin_stncWpKiosk_text_field_render',
+        'stncWpKiosk_ExchangeConfig',
+        'stncWpKiosk_Exchange_section'
     );
 
 
@@ -35,11 +43,11 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
         __( 'Our Field 1 Title', 'wordpress' ),
         'stp_api_select_field_1_render',
         'stncWpKiosk_ExchangeConfig',
-        'stp_api_stpPlugin_section'
+        'stncWpKiosk_Exchange_section'
     );
 }
 
-function dolar_text_field_render(  ) {
+function dolar_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
     <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_dolar]' value='<?php echo $options['stncWpKiosk_text_field_dolar']; ?>'>
@@ -47,10 +55,17 @@ function dolar_text_field_render(  ) {
 }
 
 
-function euro_text_field_render(  ) {
+function euro_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
     <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_euro]' value='<?php echo $options['stncWpKiosk_text_field_euro']; ?>'>
+    <?php
+}
+
+function altin_stncWpKiosk_text_field_render(  ) {
+    $options = get_option( 'stncWpKiosk_Exchange_Settings' );
+    ?>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_altin]' value='<?php echo $options['stncWpKiosk_text_field_altin']; ?>'>
     <?php
 }
 
@@ -69,7 +84,7 @@ function stncWpKiosk_Exchange_Settings_section_callback(  ) {
     echo __( 'This Section Description', 'wordpress' );
 }
 
-function stp_api_options_page(  ) {
+function stncWpKiosk_config_doviz_altin_ayarlari(  ) {
     ?>
     <form action='options.php' method='post'>
         <h2>Sitepoint Settings API Admin Page</h2>
