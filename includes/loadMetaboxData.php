@@ -1,6 +1,4 @@
-
 <?php 
-
 function stnc_wp_kiosk_staff_options_()
 {
 	include('metabox_staff_options.php');
@@ -22,7 +20,3 @@ if ($stnc_wp_kiosk_post_type_post == 'stnc_kiosk') {
 //staff
 	stnc_wp_kiosk_staff_options_();
 }
-
-
-
-
