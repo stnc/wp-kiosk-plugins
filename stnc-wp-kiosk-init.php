@@ -23,6 +23,6 @@ include ('register_css_js.php');
 
 require("extraOptions.php");
 
-include ('register_menu.php');//ek 1
+include ('register_configurationPages.php');//ek 1
 
-require("menuPages/ayarlar.php");//ek 2
+include("configurationPages/init.php");//ek 2
