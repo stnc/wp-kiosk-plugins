@@ -1,8 +1,8 @@
 <?php
 
-/*staff image size */
+/* image size https://wpshout.com/wordpress-custom-image-sizes/*/
 if (function_exists('add_image_size')) {
-    add_image_size('stnc_wp_kiosk-staffPostSize', 1815, 2550, false);
+    add_image_size('stnc_wp_kiosk_size', 1815, 2550, false);
 }
 
 /*

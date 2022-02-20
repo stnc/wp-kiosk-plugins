@@ -54,7 +54,7 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 		$list_location_db = stnc_wp_kiosk_doctor_selected_get_meta_simple('stnc_wp_kiosk_DrAndDep_display_locations');
 		$list_location_db = explode(',', $list_location_db);
 
-		print_r($list_location_db);
+		//print_r($list_location_db);
 		
 		/*
 		//burası custom post verisi okur --burada location ın verisi okunmuş 
@@ -70,9 +70,9 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 */
 
 $locations = [
-    ['id' => 1, 'title' => '30 saniye'],
-    ['id' => 2, 'title' => '40 saniye'],
-    ['id' => 3, 'title' => '50 saniye'],
+    ['id' => 30, 'title' => '30 saniye'],
+    ['id' => 40, 'title' => '40 saniye'],
+    ['id' => 50, 'title' => '50 saniye'],
 ];
 
 		foreach ($locations as $location) {
