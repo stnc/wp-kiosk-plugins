@@ -1,4 +1,35 @@
 <?php 
+
+
+
+////*******************************************************************************//////
+////*******************************************************************************//////
+////*************admin panel register***********//////
+////*******************************************************************************//////
+////*******************************************************************************//////
+
+// load css into the website's front-end
+function stnc_wp_kiosk_admin_enqueue_style()
+{
+    // wp_enqueue_style('stnc-style-boot', plugins_url('assets/css/bootstrap.min.css', __FILE__))
+    wp_enqueue_style('stnc-style-style2', plugins_url('assets/css/stnc_wp_kiosk_admin.css', __FILE__));
+}
+
+
+
+
+function stnc_wp_kiosk_script_in_admin($hook) {
+    // wp_register_script( 'stnc-bootstrap',plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap.bundle.min.js', '',true );
+    // wp_enqueue_script('stnc-bootstrap');   
+    wp_register_script( 'stnc-admin',plugin_dir_url( __FILE__ ) . 'assets/js/CHfw-admin.js', '',true );
+    wp_enqueue_script('stnc-admin');
+       // wp_register_script( 'stnc-my',plugin_dir_url( __FILE__ ) . 'assets/js/my.js', '',true );
+}
+if  ($stnc_wp_kiosk_post_type === 'stnc_kiosk' || $stnc_wp_kiosk_post_type_post === 'stnc_kiosk') {
+    add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_admin_enqueue_style');
+    add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_script_in_admin');
+}
+
 ////*************FRONTEnd register***********//////
 
 // register our form css --kapalı 
@@ -41,36 +72,3 @@ $locale = apply_filters('plugin_locale', get_locale(), 'stnc_wp_kiosk-staff');
 
 load_textdomain('stnc_wp_kiosk-staff', WP_LANG_DIR . 'stnc_wp_kiosk-staff/stnc_wp_kiosk-staff-' . $locale . '.mo');
 load_plugin_textdomain('stnc_wp_kiosk-staff', false, plugin_basename(dirname(__FILE__)) . '/languages');
-
-
-////*******************************************************************************//////
-////*******************************************************************************//////
-////*************admin panel register***********//////
-////*******************************************************************************//////
-////*******************************************************************************//////
-
-// load css into the website's front-end
-function stnc_wp_kiosk_admin_enqueue_style()
-{
-    // wp_enqueue_style('stnc-style-boot', plugins_url('assets/css/bootstrap.min.css', __FILE__))
-    wp_enqueue_style('stnc-style-style2', plugins_url('assets/css/stnc_wp_kiosk_admin.css', __FILE__));
-}
-
-// if ((isset($_GET['post_type'])) && ($_GET['post_type'] === 'stnc_kiosk')) {
-
-add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_admin_enqueue_style');
-add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_script_in_admin');
-// }
-
-
-function stnc_wp_kiosk_script_in_admin($hook) {
-
-    // wp_register_script( 'stnc-bootstrap',plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap.bundle.min.js', '',true );
-    // wp_enqueue_script('stnc-bootstrap');   
-    
-    wp_register_script( 'stnc-admin',plugin_dir_url( __FILE__ ) . 'assets/js/CHfw-admin.js', '',true );
-    wp_enqueue_script('stnc-admin');
-
-
-       // wp_register_script( 'stnc-my',plugin_dir_url( __FILE__ ) . 'assets/js/my.js', '',true );
-}

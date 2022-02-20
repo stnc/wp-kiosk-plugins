@@ -11,8 +11,8 @@ add custom_colum
 */
 
 
-add_filter('manage_staff_posts_columns', 'stnc_wp_kiosk_add_img_column');
-add_filter('manage_staff_posts_custom_column', 'stnc_wp_kiosk_manage_img_column', 10, 2);
+add_filter('manage_stnc_kiosk_posts_columns', 'stnc_wp_kiosk_add_img_column');
+add_filter('manage_stnc_kiosk_posts_custom_column', 'stnc_wp_kiosk_manage_img_column', 10, 2);
 
 
 function stnc_wp_kiosk_add_img_column($columns)

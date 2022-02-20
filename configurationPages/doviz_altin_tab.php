@@ -35,13 +35,20 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
         'stncWpKiosk_ExchangeConfig',
         'stncWpKiosk_Exchange_section'
     );
+    add_settings_field(
+        'stncWpKiosk_text_field_ceyrek_altin',
+        __( 'Ceyrek Altin', 'wordpress' ),
+        'ceyrek_altin_stncWpKiosk_text_field_render',
+        'stncWpKiosk_ExchangeConfig',
+        'stncWpKiosk_Exchange_section'
+    );
 
 
 
     add_settings_field(
         'stncWpKiosk_select_field_1',
         __( 'Our Field 1 Title', 'wordpress' ),
-        'stp_api_select_field_1_render',
+        'stnc_api_select_field_1_render',
         'stncWpKiosk_ExchangeConfig',
         'stncWpKiosk_Exchange_section'
     );
@@ -69,7 +76,15 @@ function altin_stncWpKiosk_text_field_render(  ) {
     <?php
 }
 
-function stp_api_select_field_1_render(  ) {
+function ceyrek_altin_stncWpKiosk_text_field_render(  ) {
+    $options = get_option( 'stncWpKiosk_Exchange_Settings' );
+    ?>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_ceyrek_altin]' value='<?php echo $options['stncWpKiosk_text_field_ceyrek_altin']; ?>'>
+    <?php
+}
+
+
+function stnc_api_select_field_1_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
     <select name='stncWpKiosk_Exchange_Settings[stncWpKiosk_select_field_1]'>

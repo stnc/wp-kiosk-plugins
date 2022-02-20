@@ -1,13 +1,10 @@
 <?php
-$stnc_wp_kiosk_meta_key_staff = 'stnc_wp_kiosk-StaffLocation-Setting';
-$stnc_wp_kiosk_postID = isset($_GET['post']) ? $_GET['post'] : null;//post  id  for edit
-$stnc_wp_kiosk_post_type = (get_post_type($stnc_wp_kiosk_postID));//get type
-$stnc_wp_kiosk_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_type'] : 'post';//for new
+
 /**
  * add_meta_boxes
  * @link https://developer.wordpress.org/reference/functions/add_meta_box/
  */
-class stnc_wp_kiosk_metabox_engine_staff_member
+class stnc_wp_metabox_engine
 {
 	public $nonce = 'st_studio';
 	public $meta_key;
@@ -15,10 +12,10 @@ class stnc_wp_kiosk_metabox_engine_staff_member
 	private $current_id;
 	private $SaveMethodSingle;
 
-	public function __construct($fields, $stnc_wp_kiosk_meta_key_staff, $SaveMethodSingle = false)
+	public function __construct($fields, $stnc_wp_kiosk_meta_key_kiosk, $SaveMethodSingle = false)
 	{
 
-		$this->meta_key = $stnc_wp_kiosk_meta_key_staff;
+		$this->meta_key = $stnc_wp_kiosk_meta_key_kiosk;
 		$this->SaveMethodSingle = $SaveMethodSingle;
 
 		if (is_admin()) {
