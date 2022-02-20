@@ -17,9 +17,7 @@ function stnc_wp_kiosk_post_updating_callback($post_id)
 
         }
     }
-
 }
-
 
 add_action('pre_delete_term', 'stnc_wp_kiosk_prevent_terms_delete', 1, 2);
 function stnc_wp_kiosk_prevent_terms_delete($term, $taxonomy)

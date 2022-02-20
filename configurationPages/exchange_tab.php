@@ -5,7 +5,7 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
     register_setting( 'stncWpKiosk_ExchangeConfig', 'stncWpKiosk_Exchange_Settings' );
     add_settings_section(
         'stncWpKiosk_Exchange_section',
-        __( 'Doviz Altin Ayalari', 'wordpress' ),
+        __( 'Doviz Altin Ayarlari', 'wordpress' ),
         'stncWpKiosk_Exchange_Settings_section_callback',
         'stncWpKiosk_ExchangeConfig'
     );
@@ -99,7 +99,7 @@ function stncWpKiosk_Exchange_Settings_section_callback(  ) {
     echo __( 'bu konuda ayrintili bilgi icin bu sayfaya bakiniz ', 'wordpress' );
 }
 
-function stncWpKiosk_config_doviz_altin_ayarlari(  ) {
+function stncWpKiosk_config_exchange(  ) {
     ?>
     <form action='options.php' method='post'>
         <?php
