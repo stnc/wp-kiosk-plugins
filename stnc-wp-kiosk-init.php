@@ -16,7 +16,7 @@ $stnc_wp_kiosk_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_
 
 
 
-define('stnc_wp_kiosk_PATH', plugin_dir_path(__FILE__) . 'includes/');
+define('stnc_wp_kiosk_PATH', plugin_dir_path(__FILE__) . 'metaBox/');
 
 include ('register_custom_types.php');
 

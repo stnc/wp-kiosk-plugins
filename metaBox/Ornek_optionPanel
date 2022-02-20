@@ -1,6 +1,6 @@
-<?php 
+< ?php 
 // scilent is golden
-
+///--------------------------------------ceyrek altin section----------------------------------------/////
 // add_action( 'admin_menu', 'stp_api_add_admin_menu' );
 // add_action( 'admin_init', 'stp_api_settings_init' );
 

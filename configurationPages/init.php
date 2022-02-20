@@ -36,11 +36,15 @@ function stnc_wp_kiosk_configuration_content(){
         <!-- Here are our tabs -->
         <nav class="nav-tab-wrapper">
           <a href="?post_type=stnc_kiosk&page=stncFullPage" class="nav-tab <?php if($tab===null):?>nav-tab-active<?php endif; ?>">Doviz & Altin Ayarlari</a>
+          <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=havaDurumu" class="nav-tab <?php if($tab==='hava'):?>nav-tab-active<?php endif; ?>">Hava Durumu Ayarlari</a>
           <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=yenileme" class="nav-tab <?php if($tab==='yenileme'):?>nav-tab-active<?php endif; ?>">Yenileme Ayarlari</a>
           <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=tricks" class="nav-tab <?php if($tab==='tricks'):?>nav-tab-active<?php endif; ?>">Tools</a>
         </nav>
         <div class="tab-content">
         <?php switch($tab) :
+          case 'hava':
+            echo 'ahava durumu ayalari';
+            break;
           case 'yenileme':
             echo 'yenileme ayalari';
             break;

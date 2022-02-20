@@ -27,7 +27,7 @@ function stnc_wp_kiosk_script_in_admin($hook) {
 }
 if  ($stnc_wp_kiosk_post_type === 'stnc_kiosk' || $stnc_wp_kiosk_post_type_post === 'stnc_kiosk') {
     add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_admin_enqueue_style');
-    add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_script_in_admin');
+    add_action('admin_enqueue_sxcripts', 'stnc_wp_kiosk_script_in_admin');
 }
 
 ////*************FRONTEnd register***********//////

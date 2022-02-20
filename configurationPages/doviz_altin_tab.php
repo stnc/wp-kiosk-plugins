@@ -5,7 +5,7 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
     register_setting( 'stncWpKiosk_ExchangeConfig', 'stncWpKiosk_Exchange_Settings' );
     add_settings_section(
         'stncWpKiosk_Exchange_section',
-        __( 'Our Section Title', 'wordpress' ),
+        __( 'Doviz Altin Ayalari', 'wordpress' ),
         'stncWpKiosk_Exchange_Settings_section_callback',
         'stncWpKiosk_ExchangeConfig'
     );
@@ -96,13 +96,12 @@ function stnc_api_select_field_1_render(  ) {
 }
 
 function stncWpKiosk_Exchange_Settings_section_callback(  ) {
-    echo __( 'This Section Description', 'wordpress' );
+    echo __( 'bu konuda ayrintili bilgi icin bu sayfaya bakiniz ', 'wordpress' );
 }
 
 function stncWpKiosk_config_doviz_altin_ayarlari(  ) {
     ?>
     <form action='options.php' method='post'>
-        <h2>Sitepoint Settings API Admin Page</h2>
         <?php
         settings_fields( 'stncWpKiosk_ExchangeConfig' );
         do_settings_sections( 'stncWpKiosk_ExchangeConfig' );
