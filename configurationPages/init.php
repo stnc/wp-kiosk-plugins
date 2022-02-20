@@ -26,19 +26,17 @@ function stnc_wp_kiosk_configuration_content(){
           case 'hava':
              stncWpKiosk_config_weather();
             break;
-          case 'yenileme':
-            echo 'yenileme ayalari';
+          case 'other':
+            stncWpKiosk_config_Other();
             break;
-    
           default:
           stncWpKiosk_config_exchange(); 
             break;
         endswitch; ?>
         </div>
       </div>
-
-
     <?php
 }
 require ('exchange_tab.php'); 
 require ('weather_tab.php'); 
+require ('other_tab.php'); 
