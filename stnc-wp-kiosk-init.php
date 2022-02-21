@@ -33,3 +33,20 @@ require("extraOptions.php");
 include ('register_configurationPages.php');//ek 1
 
 include("configurationPages/init.php");//ek 2
+
+
+
+
+function example_ajax_request() {
+    $nonce = $_POST['nonce'];
+    if ( ! wp_verify_nonce( $nonce, 'stnc-kiosk-ajax-script' ) ) {
+        die( 'Nonce value cannot be verified.' );
+    }
+   // wp_send_json_success( 'It works' );
+
+}
+
+add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
+ 
+// If you wanted to also use the function for non-logged in users (in a theme for example)
+add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' );
