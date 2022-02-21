@@ -17,9 +17,9 @@ function stnc_wp_kiosk_configuration_content(){
         <h1>Teknopark Ekranlar Ayarlamalar Bolumu <?php //echo esc_html( get_admin_page_title() ); ?></h1>
         <!-- Here are our tabs -->
         <nav class="nav-tab-wrapper">
-          <a href="?post_type=stnc_kiosk&page=stncFullPage" class="nav-tab <?php if($tab===null):?>nav-tab-active<?php endif; ?>">Doviz & Altin Ayarlari</a>
-          <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=hava" class="nav-tab <?php if($tab==='hava'):?>nav-tab-active<?php endif; ?>">Hava Durumu Ayarlari</a>
-          <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=other" class="nav-tab <?php if($tab==='other'):?>nav-tab-active<?php endif; ?>">Diger Ayarlar</a>
+          <a href="?post_type=stnc_kiosk&page=stncFullPage" class="nav-tab <?php if($tab===null):?>nav-tab-active<?php endif; ?>">Döviz & Altın Ayarları</a>
+          <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=hava" class="nav-tab <?php if($tab==='hava'):?>nav-tab-active<?php endif; ?>">Hava Durumu Ayarları</a>
+          <a href="?post_type=stnc_kiosk&page=stncFullPage&tab=other" class="nav-tab <?php if($tab==='other'):?>nav-tab-active<?php endif; ?>">Diğer Ayarlar</a>
         </nav>
         <div class="tab-content">
         <?php switch($tab) :

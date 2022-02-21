@@ -44,6 +44,26 @@ function example_ajax_request() {
     }
    // wp_send_json_success( 'It works' );
 
+   $optionsExchange = get_option('stncWpKiosk_Exchange_Settings');
+   $optionsWeather = get_option('stncWpKiosk_Weather_Settings');
+//    print_r ( $optionsWeather);
+
+   $newOptions = array(
+    "jsonData" => array(          
+    'dolar' => $optionsExchange ["stncWpKiosk_text_field_dolar"],
+    'euro' => $optionsExchange ["stncWpKiosk_text_field_euro"],
+    'altin' => $optionsExchange ["stncWpKiosk_text_field_altin"],
+    'ceyrek_altin' => $optionsExchange ["stncWpKiosk_text_field_ceyrek_altin"],
+    //hava durumu 
+    'weatherTodayDegree' => $optionsWeather ["stncWpKiosk_text_field_weather_degree"],
+    'weatherTodayDescription' => $optionsWeather ["stncWpKiosk_text_field_weather_description"],
+    'weatherTodayNight' => $optionsWeather ["stncWpKiosk_text_field_weather_night"],
+    'weatherTodayHumidity' => $optionsWeather ["stncWpKiosk_text_field_weather_humidity"],
+    'weatherTodayIcon' => $optionsWeather ["stncWpKiosk_text_field_weather_icon"],
+    ));
+          
+   echo json_encode($newOptions);
+   die;
 }
 
 add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );

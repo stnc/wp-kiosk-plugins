@@ -7,7 +7,13 @@
  *@since stnc-kiosk 2.0
  */
 
-
+/*
+    ?bina parametesi kaldı 
+    resım sıralaması kaldı 
+    6 gunluk hava durumunun ekranda gorunme suresi	
+    Resimlerin Siralanma Sekli	
+    6 gunluk hava durumu	
+*/
 
 // https://stackoverflow.com/questions/28249774/add-custom-css-to-a-page-template-in-wordpress
 //https://stackoverflow.com/questions/20780422/wordpress-get-plugin-directory
@@ -54,6 +60,8 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
 </select>*/
 
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -77,23 +85,15 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
-
     <!-- Favicons -->
-
     <meta name="theme-color" content="#7952b3">
-
-
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.5/video-js.min.css" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-
-
-
+    
     <style>
     body {
         background-color: #000;
@@ -340,7 +340,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
 
     .single-weather-widget .details {
-        font-family: Roboto, sans-serif;
+     
         display: flex;
         flex-direction: column;
 
@@ -350,7 +350,8 @@ $myposts_display_doctor_department = get_posts($mp_events);
     }
 
     .exchange {
-        margin-top: 30px;
+        margin-top: 15px;
+        
         text-align: center;
     }
 
@@ -463,7 +464,8 @@ $video=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_Metabox_video' );
 //echo esc_attr(trim(CHfw_get_metaSingle(get_the_ID(), 'CHfw-staffSetting_title', $CHfw_meta_key_staff))) . ' ' . get_the_title() 
 if(!empty($video)):
 ?>
-  <div class="swiper-slide videoSlide" data-swiper-autoplay="<?php echo $time[0] ?>">
+                                        <div class="swiper-slide videoSlide"
+                                            data-swiper-autoplay="<?php echo $time[0] ?>">
                                             <div style="background-color: #000;" class="container-fluid-sel h-100">
                                                 <div class="row h-100">
                                                     <div class="col-12 my-auto">
@@ -546,7 +548,8 @@ if(!empty($video)):
                             <div class="col-md-6 col-sm-6 col-lg-6">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-lg-12">
-                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan Cuma</div>
+                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
+                                            Cuma</div>
                                     </div>
                                 </div>
                             </div>
@@ -627,6 +630,9 @@ if(!empty($video)):
                                                 </div>
                                             </div>
                                         </div>
+
+
+
                                         <div class="swiper-slide">
                                             <div class="single-weather-widget">
                                                 <div class="row">
@@ -894,7 +900,6 @@ if(!empty($video)):
         },
         timeOut);
     */
-
     function ajaxCall() {
         fetch("/ajaxApi?bina=", {
                 method: 'GET',
@@ -939,6 +944,8 @@ if(!empty($video)):
                 console.log("error")
             });
     }
+
+  
     var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
         "Kasım", "Aralık");
     var gunler = new Array("Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi");
@@ -953,6 +960,68 @@ if(!empty($video)):
         document.getElementById("tarih").innerHTML = gun + " " + aylar[ay] + " " + gunler[haftagun];
     }
     tarih();
+
+    function run() {
+
+        const ajax_obj = {
+            nonce: "<?php echo wp_create_nonce('stnc-kiosk-ajax-script')?>",
+            ajaxurl: "<?php echo admin_url( 'admin-ajax.php' )?>",
+        };
+
+ 
+        const data = new FormData();
+
+data.append( 'action', 'example_ajax_request' );
+data.append( 'nonce', ajax_obj.nonce );
+
+        fetch(ajax_obj.ajaxurl, {
+  method: "POST",
+  credentials: 'same-origin',
+  body: data,
+})
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    console.log("error")
+                }
+            })
+            .then(data => {
+                console.log(data)
+                console.log(data.renewal)
+                document.getElementById("jsonDolarData").innerHTML = data.jsonData.dolar;
+                document.getElementById("jsonEuroData").innerHTML = data.jsonData.euro;
+                document.getElementById("jsonAltinData").innerHTML = data.jsonData.altin;
+                document.getElementById("jsonCeyrekAltinData").innerHTML = data.jsonData.ceyrek_altin;
+                document.getElementById("weatherTodayDegreeJson").innerHTML = data.jsonData.weatherTodayDegree;
+                document.getElementById("weatherTodayDescriptionJson").innerHTML = data.jsonData.weatherTodayDescription;
+                document.getElementById("weatherTodayNightJson").innerHTML = data.jsonData.weatherTodayNight;
+
+                document.getElementById("weatherTodayHumidityJson").innerHTML = data.jsonData.weatherTodayHumidity;
+                document.getElementById("weatherTodayIconJson").src = data.jsonData.weatherTodayIcon;
+
+                if (data.jsonData.pageRenewStatus) {
+                    location.reload()
+                }
+                //  else if (data.jsonData.location_Href ) {
+                //     window.location.href = data.jsonData.location_Href_Path ;
+                //   } 
+                else {
+                    console.log("error")
+                }
+            })
+            .catch((error) => {
+                console.log("error")
+            });
+    }
+
+
+
+
+    setInterval(function() {
+            run();
+        },
+        5000);
     </script>
 </body>
 

@@ -43,15 +43,6 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
         'stncWpKiosk_Exchange_section'
     );
 
-
-
-    add_settings_field(
-        'stncWpKiosk_select_field_1',
-        __( 'Our Field 1 Title', 'wordpress' ),
-        'stnc_api_select_field_1_render',
-        'stncWpKiosk_ExchangeConfig',
-        'stncWpKiosk_Exchange_section'
-    );
 }
 
 function dolar_stncWpKiosk_text_field_render(  ) {
@@ -84,16 +75,7 @@ function ceyrek_altin_stncWpKiosk_text_field_render(  ) {
 }
 
 
-function stnc_api_select_field_1_render(  ) {
-    $options = get_option( 'stncWpKiosk_Exchange_Settings' );
-    ?>
-    <select name='stncWpKiosk_Exchange_Settings[stncWpKiosk_select_field_1]'>
-        <option value='1' <?php selected( $options['stncWpKiosk_select_field_1'], 1 ); ?>>Option 1</option>
-        <option value='2' <?php selected( $options['stncWpKiosk_select_field_1'], 2 ); ?>>Option 2</option>
-    </select>
 
-<?php
-}
 
 function stncWpKiosk_Exchange_Settings_section_callback(  ) {
     echo __( 'bu konuda ayrintili bilgi icin bu sayfaya bakiniz ', 'wordpress' );

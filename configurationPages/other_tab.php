@@ -46,8 +46,8 @@ function Other_picture_sort_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Other_Settings' );
     ?>
     <select name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_sort]'>
-        <option value='id' <?php selected( $options['stncWpKiosk_text_field_Other_sort'], 'id' ); ?>>ID durumuna gore</option>
-        <option value='date' <?php selected( $options['stncWpKiosk_text_field_Other_sort'], 'date' ); ?>>Tarihine Gore</option>
+        <option value='id' <?php selected( $options['stncWpKiosk_text_field_Other_sort'], 'id' ); ?>>ID durumuna Göre</option>
+        <option value='date' <?php selected( $options['stncWpKiosk_text_field_Other_sort'], 'date' ); ?>>Tarihine Göre</option>
     </select>
 <small>Eger tarih secerseniz resim deki eklenme tarihini degistirerek resimlerin siralamasini degistirebilirsiniz</small>
 <?php
