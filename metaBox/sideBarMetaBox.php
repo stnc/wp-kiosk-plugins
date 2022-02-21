@@ -44,18 +44,17 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 {
 	wp_nonce_field('_doctor_selected_nonce', 'doctor_selected_nonce'); ?>
 
-<label for="stnc_wp_kiosk_DrAndDep_display_locations">
-    <?php _e('Ekranda Kalacağı Süre:', 'stnc_wp_kiosk-staff'); ?>
+<label for="stnc_wp_kiosk_slide_time_metaBox">
+    <?php _e('Resimin yada videonun ekranda bekleme süresi:', 'stnc_wp_kiosk-staff'); ?>
 </label>
 <br>
 
-<select name="stnc_wp_kiosk_DrAndDep_display_locations[]" id="stnc_wp_kiosk_DrAndDep_display_locations">
+<select name="stnc_wp_kiosk_slide_time_metaBox[]" id="stnc_wp_kiosk_slide_time_metaBox">
     <?php
-		$list_location_db = stnc_wp_kiosk_doctor_selected_get_meta_simple('stnc_wp_kiosk_DrAndDep_display_locations');
+		$list_location_db = stnc_wp_kiosk_doctor_selected_get_meta_simple('stnc_wp_kiosk_slide_time_metaBox');
 		$list_location_db = explode(',', $list_location_db);
 
 		//print_r($list_location_db);
-		
 		/*
 		//burası custom post verisi okur --burada location ın verisi okunmuş 
 		$args = array("posts_per_page" => 10, "orderby" => "comment_count", 'post_type' => 'locations',);
@@ -65,14 +64,15 @@ function stnc_wp_kiosk_doctor_selected_html($post)
 				$locations[$key]["id"] = $location->ID;
 				$locations[$key]["title"] = $location->post_title;
 			}
-		}
-
-*/
+		} */
 
 $locations = [
-    ['id' => 30, 'title' => '30 saniye'],
-    ['id' => 40, 'title' => '40 saniye'],
-    ['id' => 50, 'title' => '50 saniye'],
+    ['id' => 20000, 'title' => '20 saniye'],
+    ['id' => 30000, 'title' => '30 saniye'],
+    ['id' => 35000, 'title' => '35 saniye'],
+    ['id' => 40000, 'title' => '40 saniye'],
+    ['id' => 50000, 'title' => '50 saniye'],
+    ['id' => 60000, 'title' => '60 saniye'],
 ];
 
 		foreach ($locations as $location) {
@@ -90,11 +90,6 @@ $locations = [
 </select>
 <?php
 }
-
-
-
-
-
 
 /***SIDEBAR Doctor select METABOX (ONLY STAFF ) -- kayıt yapıyor sanırım ****/
 
@@ -122,6 +117,7 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
 		return $post_id;
 	}
+	//bunlar metabox okuma ornekleri 
 	// //departman   save
 	// if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_department'])) {
 	// 	update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_doctor_department', sanitize_text_field($_POST['stnc_wp_kiosk_DrAndDep_display_doctor_department']));
@@ -143,12 +139,12 @@ function stnc_wp_kiosk_doctor_selected_save($post_id)
 	// }
 
 	//locations  save -- bu çoklu seçim yapar
-	if (isset($_POST['stnc_wp_kiosk_DrAndDep_display_locations'])) {
+	if (isset($_POST['stnc_wp_kiosk_slide_time_metaBox'])) {
 		
-		foreach ($_POST['stnc_wp_kiosk_DrAndDep_display_locations'] as $selectedOption_locations) {
+		foreach ($_POST['stnc_wp_kiosk_slide_time_metaBox'] as $selectedOption_locations) {
 			$selectedOptionlist_locations[] = $selectedOption_locations;
 		}
 		$selectedOptionlist_locations = implode(",", $selectedOptionlist_locations);
-		update_post_meta($post_id, 'stnc_wp_kiosk_DrAndDep_display_locations', sanitize_text_field($selectedOptionlist_locations));
+		update_post_meta($post_id, 'stnc_wp_kiosk_slide_time_metaBox', sanitize_text_field($selectedOptionlist_locations));
 	}
 }

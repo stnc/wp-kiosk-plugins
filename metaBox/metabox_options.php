@@ -1,6 +1,6 @@
 <?php
-$stnc_wp_kiosk_themeName = 'stnc_wp_kiosk-';//for include data
-$stnc_wp_kiosk_prefix_kiosk = $stnc_wp_kiosk_themeName . "kiosk_Setting_";
+$stnc_wp_kiosk_themeName = 'stnc_wp_kiosk';//for include data
+$stnc_wp_kiosk_prefix_kiosk = $stnc_wp_kiosk_themeName . "_Metabox_";
 $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 	'name' => $stnc_wp_kiosk_prefix_kiosk . 'meta-box-page',
 	'nonce' => 'st_studio_kiosk',
@@ -16,8 +16,8 @@ $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 
 		array(
 			'name' => 'page_header_type_info',
-			'title' => __('Lutfen eklediginiz resimin televizyon ekranlarinda iyi gorunmesi icin <span style="color:red">1815 px(genislik) * 2510 px (yukseklik) de</span> olmasina dikkat ediniz
-			. <br> Resimi sistem tarafindan 1815*2510 px ayarlanacak sekilde yaptim ama belirtilen genislik ve yukseklikden dusuk olursa resim kalitesi televizyonda kotu gorunecektir.', 'stnc_wp_kiosk-lang'),
+			'title' => __('Lütfen eklediğiniz resimin televizyon ekranlarında iyi görünmesi icin <span style="color:red">1815 px(genislik) * 2510 px (yukseklik) de</span> olmasına dikkat ediniz
+			. <br> Resimi sistem tarafindan 1815*2510 px e tekrar boyutlandırılacak şekilde yaptim ama belirtilen genişlik ve yükseklikden düşük olursa resim kalitesi televizyonda kötü görünecektir.', 'stnc_wp_kiosk-lang'),
 			'type' => 'info',
 			'description' => '',
 			'style' => '',
@@ -41,19 +41,17 @@ $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 		// ),
 
 	
-		// array(
-		// 	'name' => $stnc_wp_kiosk_prefix_kiosk . 'adress',
-		// 	'title' => __('Adress ', 'chthemes-kiosk'),
-		// 	'type' => 'upload',
-		// 	'description' => __("Enter Adress", 'chthemes-kiosk'),
-		// 	'style' => '',
-		// 	'class' => '',
-		// 	'class_li' => '',
-		// ),
+		array(
+			'name' => $stnc_wp_kiosk_prefix_kiosk . 'video',
+			'title' => __('Video', 'chthemes-kiosk'),
+			'type' => 'upload',
+			'button_text' => 'Video Yükle / Seç',
+			'description' => __("Eğer video Eklenecekse burayı kullanınız, eğer video eklenmişse oncelik video da olacaktır", 'chthemes-kiosk'),
+			'style' => '',
+			'class' => '',
+			'class_li' => '',
+		),
 	
-
-
-
 		// array(
 		// 	'name' => $stnc_wp_kiosk_prefix_kiosk . 'expertise',
 		// 	'title' => __('Expertise', 'chthemes-kiosk'),
@@ -65,9 +63,9 @@ $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 		// ),
 		array(
 			'name' => $stnc_wp_kiosk_prefix_kiosk . 'explanation',
-			'title' => __('Ek Açıklama', 'chthemes-kiosk'),
+			'title' => __('Ek Açıklama / Not', 'chthemes-kiosk'),
 			'type' => 'textarea',
-			'description' => '',
+			'description' => 'Ekranda gösterilmez sadece not yazmak içindir',
 			'style' => '',
 			'class' => '',
 			'class_li' => '',
