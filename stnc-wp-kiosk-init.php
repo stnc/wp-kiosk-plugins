@@ -55,9 +55,9 @@ function example_ajax_request() {
     'altin' => $optionsExchange ["stncWpKiosk_text_field_altin"],
     'ceyrek_altin' => $optionsExchange ["stncWpKiosk_text_field_ceyrek_altin"],
     //hava durumu 
-    'weatherTodayDegree' => $optionsWeather ["stncWpKiosk_text_field_weather_degree"],
+    'weatherTodayDegree' => round($optionsWeather ["stncWpKiosk_text_field_weather_degree"]),
     'weatherTodayDescription' => $optionsWeather ["stncWpKiosk_text_field_weather_description"],
-    'weatherTodayNight' => $optionsWeather ["stncWpKiosk_text_field_weather_night"],
+    'weatherTodayNight' => round($optionsWeather ["stncWpKiosk_text_field_weather_night"]),
     'weatherTodayHumidity' => $optionsWeather ["stncWpKiosk_text_field_weather_humidity"],
     'weatherTodayIcon' => $optionsWeather ["stncWpKiosk_text_field_weather_icon"],
     ));

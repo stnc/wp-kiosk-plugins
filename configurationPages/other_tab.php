@@ -23,9 +23,9 @@ function stncWpKiosk_Other_Settings_init(  ) {
 
         
     add_settings_field(
-        'stncWpKiosk_text_field_Other_sixDay_open_close',
-        __( '6 gunluk hava durumu', 'wordpress' ),
-        'Other_weather_sixDay_open_close_stncWpKiosk_text_field_render',
+        'stncWpKiosk_text_field_Other_WeatherShowType',
+        __( 'Hava Durumu Gösterim Tipi', 'wordpress' ),
+        'Other_weather_Other_WeatherShowType_stncWpKiosk_text_field_render',
         'stncWpKiosk_OtherConfig',
         'stncWpKiosk_Other_section'
     );
@@ -66,15 +66,15 @@ function Other_weather_time_stncWpKiosk_text_field_render(  ) {
 <?php
 }
 
-function Other_weather_sixDay_open_close_stncWpKiosk_text_field_render(  ) {
+function Other_weather_Other_WeatherShowType_stncWpKiosk_text_field_render() {
     $options = get_option( 'stncWpKiosk_Other_Settings' );
     ?>
-    <select name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_sixDay_open_close]'>
-        <option value='1' <?php selected( $options['stncWpKiosk_text_field_Other_sixDay_open_close'], 1 ); ?>>Ekranda Gorunsun</option>
-        <option value='2' <?php selected( $options['stncWpKiosk_text_field_Other_sixDay_open_close'], 2 ); ?>>Ekranda Gorunmesin</option>
-
+    <select name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_WeatherShowType]'>
+        <option value='1' <?php selected( $options['stncWpKiosk_text_field_Other_WeatherShowType'], 1 ); ?>>Tek Günlük Hava Durumu Görünsün</option>
+        <option value='6' <?php selected( $options['stncWpKiosk_text_field_Other_WeatherShowType'], 6 ); ?>>6  Günlük Hava Durumu Görünsün</option>
+        <option value='both' <?php selected( $options['stncWpKiosk_text_field_Other_WeatherShowType'], "both" ); ?>>Her Ikısı de Görünsün</option>
+        <option value='close' <?php selected( $options['stncWpKiosk_text_field_Other_WeatherShowType'], "close" ); ?>>Hava Durumu Kapalı Olsun</option>
     </select>
-
 <?php
 }
 

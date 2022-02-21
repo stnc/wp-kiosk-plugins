@@ -92,7 +92,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> -->
     
     <style>
     body {
@@ -295,7 +295,6 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     .single-weather-widget .temperature {
         color: white;
-        font-weight: 100;
         font-size: 5em;
     }
 
@@ -325,13 +324,14 @@ $myposts_display_doctor_department = get_posts($mp_events);
     .single-weather-widget .wind {
         color: #d2e9fa;
         font-size: 1.6em;
-        font-weight: 300;
+        font-weight: bold;
         margin-left: 8px;
     }
 
     .single-weather-widget .summaryText {
         margin: 0;
         text-transform: capitalize;
+        font-weight: bold;
     }
 
     .single-weather-widget .wind {
@@ -421,6 +421,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
 </head>
 
 <body>
+    <div class="selmanTunc">ayrancık</div>
     <div class="container-fluid ">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
@@ -561,6 +562,9 @@ if(!empty($video)):
                             <div class="col-sm-7 col-md-7 col-lg-7">
                                 <div class="swiper-container-weather">
                                     <div class="swiper-wrapper">
+
+
+
                                         <div class="swiper-slide">
                                             <div class="weather-panel">
                                                 <div class="row">
@@ -638,7 +642,7 @@ if(!empty($video)):
                                                 <div class="row">
                                                     <div class="col-sm-8 col-md-8 ">
                                                         <div class="details">
-                                                            <div class="temperature">1°</div>
+                                                            <div class=" temperature"><span class="weatherTodayDegreeJson">1</span> <span>°</span> </div>
                                                             <div class="summary">
                                                                 <p class="summaryText">Açık</p>
                                                             </div>
@@ -649,7 +653,7 @@ if(!empty($video)):
                                                     <div class="col-sm-4 col-md-4">
                                                         <figure
                                                             class="mx-auto justify-content-center align-self-center float-right">
-                                                            <img src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
+                                                            <img  src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
                                                                 height="150px" width="250px" class="img-fluid" alt="">
                                                         </figure>
 
@@ -678,7 +682,7 @@ if(!empty($video)):
                                         <div class="exchange">
                                             <i class="fa fa-usd" aria-hidden="true"></i>
                                             <br>
-                                            <span id="jsonDolarData"> 13.49 </span> <span class="birim">TL</span>
+                                            <span id="jsonDolarData"> 00 </span> <span class="birim">TL</span>
                                             <br>
                                             <strong style="color: white; "> Dolar </strong>
                                         </div>
@@ -689,7 +693,7 @@ if(!empty($video)):
                                             <i class="fa fa-euro" aria-hidden="true"></i>
                                             <br>
                                             <!-- ₺ -->
-                                            <span id="jsonEuroData"> 15.30 </span><span class="birim"> TL</span>
+                                            <span id="jsonEuroData"> 00 </span><span class="birim"> TL</span>
                                             <br>
                                             <strong style="color: white; "> Euro </strong>
                                         </div>
@@ -701,7 +705,7 @@ if(!empty($video)):
                                         <div class="exchange">
                                             <i class="fa fa-sun-o" aria-hidden="true"> </i>
                                             <br>
-                                            <span id="jsonAltinData"> 793.57 </span> <span class="birim">TL</span>
+                                            <span id="jsonAltinData"> 00 </span> <span class="birim">TL</span>
                                             <br>
                                             <strong style="color: white; "> Altın </strong>
                                         </div>
@@ -712,7 +716,7 @@ if(!empty($video)):
                                             <i class="fa fa-sun-o" aria-hidden="true"> </i>
                                             <br>
 
-                                            <span id="jsonCeyrekAltinData"> 1291.57 </span> <span
+                                            <span id="jsonCeyrekAltinData"> 00 </span> <span
                                                 class="birim">TL</span>
                                             <br> <strong style="color: white; "> Çeyrek altın </strong>
                                         </div>
@@ -733,9 +737,18 @@ if(!empty($video)):
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js" integrity="sha512-BrvVYNhKh6yST24E5DY/LopLO5d+8KYmIXyrpBIJ2PK+CyyJw/cLSG/BfJomWLC1IblNrmiJWGlrGueKLd/Ekw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.5/video.min.js"></script>
     <script>
+
+
+      
+
+    
+        
+
+
     var swiper = new Swiper('.swiper-container', {
 
         autoHeight: false, //enable auto height
@@ -900,50 +913,7 @@ if(!empty($video)):
         },
         timeOut);
     */
-    function ajaxCall() {
-        fetch("/ajaxApi?bina=", {
-                method: 'GET',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    console.log("error")
-                }
-            })
-            .then(data => {
-                console.log(data.renewal)
-                document.getElementById("jsonDolarData").innerHTML = data.jsonData.dolar;
-                document.getElementById("jsonEuroData").innerHTML = data.jsonData.euro;
-                document.getElementById("jsonAltinData").innerHTML = data.jsonData.altin;
-                document.getElementById("jsonCeyrekAltinData").innerHTML = data.jsonData.ceyrek_altin;
-                document.getElementById("weatherTodayDegreeJson").innerHTML = data.jsonData.weatherTodayDegree;
-                document.getElementById("weatherTodayDescriptionJson").innerHTML = data.jsonData
-                    .weatherTodayDescription;
-                document.getElementById("weatherTodayDescriptionJson").innerHTML = data.jsonData
-                    .weatherTodayDescription;
-                document.getElementById("weatherTodayNightJson").innerHTML = data.jsonData.weatherTodayNight;
-                document.getElementById("weatherTodayNightJson").innerHTML = data.jsonData.weatherTodayNight;
-                document.getElementById("weatherTodayHumidityJson").innerHTML = data.jsonData.weatherTodayHumidity;
-                document.getElementById("weatherTodayIconJson").src = data.jsonData.weatherTodayIcon;
-
-                if (data.jsonData.pageRenewStatus) {
-                    location.reload()
-                }
-                //  else if (data.jsonData.location_Href ) {
-                //     window.location.href = data.jsonData.location_Href_Path ;
-                //   } 
-                else {
-                    console.log("error")
-                }
-            })
-            .catch((error) => {
-                console.log("error")
-            });
-    }
+  
 
   
     var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
@@ -968,17 +938,15 @@ if(!empty($video)):
             ajaxurl: "<?php echo admin_url( 'admin-ajax.php' )?>",
         };
 
- 
         const data = new FormData();
-
-data.append( 'action', 'example_ajax_request' );
-data.append( 'nonce', ajax_obj.nonce );
+        data.append( 'action', 'example_ajax_request' );
+        data.append( 'nonce', ajax_obj.nonce );
 
         fetch(ajax_obj.ajaxurl, {
-  method: "POST",
-  credentials: 'same-origin',
-  body: data,
-})
+            method: "POST",
+            credentials: 'same-origin',
+            body: data,
+            })
             .then(response => {
                 if (response.ok) {
                     return response.json()
@@ -987,12 +955,17 @@ data.append( 'nonce', ajax_obj.nonce );
                 }
             })
             .then(data => {
-                console.log(data)
-                console.log(data.renewal)
-                document.getElementById("jsonDolarData").innerHTML = data.jsonData.dolar;
-                document.getElementById("jsonEuroData").innerHTML = data.jsonData.euro;
-                document.getElementById("jsonAltinData").innerHTML = data.jsonData.altin;
-                document.getElementById("jsonCeyrekAltinData").innerHTML = data.jsonData.ceyrek_altin;
+                // console.log(data)
+                // console.log(data.renewal)
+                $('#jsonDolarData').html( data.jsonData.dolar);
+                $('#jsonEuroData').html( data.jsonData.euro);
+                $('#jsonAltinData').html( data.jsonData.altin);
+                $('#jsonCeyrekAltinData').html( data.jsonData.ceyrek_altin);
+                $('.weatherTodayDegreeJson').html( data.jsonData.weatherTodayDegree);
+                // document.getElementById("jsonDolarData").innerHTML = data.jsonData.dolar;
+                // document.getElementById("jsonEuroData").innerHTML = data.jsonData.euro;
+                // document.getElementById("jsonAltinData").innerHTML = data.jsonData.altin;
+                // document.getElementById("jsonCeyrekAltinData").innerHTML = data.jsonData.ceyrek_altin;
                 document.getElementById("weatherTodayDegreeJson").innerHTML = data.jsonData.weatherTodayDegree;
                 document.getElementById("weatherTodayDescriptionJson").innerHTML = data.jsonData.weatherTodayDescription;
                 document.getElementById("weatherTodayNightJson").innerHTML = data.jsonData.weatherTodayNight;
