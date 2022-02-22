@@ -34,7 +34,43 @@ include ('register_configurationPages.php');//ek 1
 
 include("configurationPages/init.php");//ek 2
 
+function gun_Kısaltma($gun) {
+    switch($gun) :
+        case "Pazartesi":
+            $kisaIsım="PZT";
+          break;
+        
+          case 'Salı':
+            $kisaIsım="SAL";
+          break;
+          
+        
+        case 'Çarşamba':
+            $kisaIsım="ÇAR";
+        break;
 
+        case 'Perşembe':
+            $kisaIsım="PER";
+        break;
+
+        case 'Cuma':
+            $kisaIsım="CUM";
+        break;
+
+        case 'Cumartesi':
+            $kisaIsım="CMT";
+        break;
+
+        case 'Pazar':
+            $kisaIsım="PAZ";
+        break;
+
+        default:
+             $kisaIsım="PZT";
+          break;
+      endswitch;
+      return $kisaIsım;
+}
 
 
 function example_ajax_request() {
@@ -44,12 +80,55 @@ function example_ajax_request() {
     }
    // wp_send_json_success( 'It works' );
 
+
+   $optionsWeather6Today = get_option('stncWpKiosk_Weather_Today');
+   $weather6Today = json_decode($optionsWeather6Today, true);
+//    print_r ( $weather6Today);
+   date_default_timezone_set('Europe/Istanbul');
+//    $date = date('m/d/Y h:i:s a', time());
+   $today = date('d.m.Y');
+//    echo $gun = date('l');
+//    echo    $date;
+   foreach ($weather6Today["result"] as $key => $row ) { 
+       if ( $today==$row["date"]){
+        $myopt = array(
+            'stncWpKiosk_text_field_weather_date' => $row ["date"],
+            'stncWpKiosk_text_field_weather_day' => $row ["day"],
+            'stncWpKiosk_text_field_weather_degree' => $row ["degree"],
+            'stncWpKiosk_text_field_weather_description' => $row ["description"],
+            'stncWpKiosk_text_field_weather_description_en' => $row ["status"],
+            'stncWpKiosk_text_field_weather_night' => $row ["night"],
+            'stncWpKiosk_text_field_weather_humidity' => $row ["humidity"],
+            'stncWpKiosk_text_field_weather_icon' => $row ["icon"],
+            );
+        update_option('stncWpKiosk_Weather_Settings', $myopt);
+        unset ($weather6Today["result"][$key]);
+       }
+   }
+
+
+//    print_r ( $weather6Today);
+   $NEWweather6Today = array();
+   $i=1;
+   foreach ($weather6Today["result"] as $key => $row ) { 
+    
+   
+    $NEWweather6Today['weatherToday'.$i.'_gun']  =gun_Kısaltma($row ["date"]) ;
+    $NEWweather6Today['weatherToday'.$i.'_icon'] =$row ["icon"];
+    $NEWweather6Today['weatherToday'.$i.'_degree'] =round($row ["degree"]);
+    $NEWweather6Today['weatherToday'.$i.'_night'] =round($row ["night"]);
+     
+     $i++;
+}
+
+// print_r ( $NEWweather6Today);
+
    $optionsExchange = get_option('stncWpKiosk_Exchange_Settings');
    $optionsWeather = get_option('stncWpKiosk_Weather_Settings');
-//    print_r ( $optionsWeather);
 
    $newOptions = array(
     "jsonData" => array(          
+
     'dolar' => $optionsExchange ["stncWpKiosk_text_field_dolar"],
     'euro' => $optionsExchange ["stncWpKiosk_text_field_euro"],
     'altin' => $optionsExchange ["stncWpKiosk_text_field_altin"],
@@ -61,8 +140,18 @@ function example_ajax_request() {
     'weatherTodayHumidity' => $optionsWeather ["stncWpKiosk_text_field_weather_humidity"],
     'weatherTodayIcon' => $optionsWeather ["stncWpKiosk_text_field_weather_icon"],
     ));
-          
-   echo json_encode($newOptions);
+    //taihi de sunucuda ceksın guncellesın 
+    // json datayı curl ceksın
+    // guncellesın wo optionda guncelleme yapsın   
+    //elimizde 7 gunluk hava durumu var 
+    //her kontrolde bugunku hava durumuna bakacak --bugunun tarıhı https://www.merdincz.com/Php-Turkce-Gunler-Aylar/
+
+
+
+   $data=(array_merge($newOptions,$NEWweather6Today));
+
+
+   echo json_encode($data);
    die;
 }
 
