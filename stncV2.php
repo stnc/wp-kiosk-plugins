@@ -427,7 +427,6 @@ $myposts_display_doctor_department = get_posts($mp_events);
 </head>
 
 <body>
-    <div class="selmanTunc">ayrancık</div>
     <div class="container-fluid ">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
@@ -604,25 +603,25 @@ if(!empty($video)):
                                                                 <h3 class="h5">PAZ</h3>
                                                                 <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png"
                                                                     alt="">
-                                                                <span> 2°/-2°</span>
+                                                                <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
                                                             </li>
                                                             <li class="col-xs-4 col-sm-2 text-center weatherToday3">
                                                                 <h3 class="h5">PZT</h3>
                                                                 <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png"
                                                                     alt="">
-                                                                <span> 2°/-1°</span>
+                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
                                                             </li>
                                                             <li class="col-xs-4 col-sm-2 text-center weatherToday4">
                                                                 <h3 class="h5">SAL</h3>
                                                                 <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png"
                                                                     alt="">
-                                                                <span> 4°/-1°</span>
+                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
                                                             </li>
                                                             <li class="col-xs-4 col-sm-2 text-center weatherToday5">
                                                                 <h3 class="h5">ÇAR</h3>
                                                                 <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png"
                                                                     alt="">
-                                                                <span> 3°/-1°</span>
+                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
 
 
                                                             </li>
@@ -630,7 +629,7 @@ if(!empty($video)):
                                                                 <h3 class="h5">PER</h3>
                                                                 <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png"
                                                                     alt="">
-                                                                <span> 2°/-1°</span>
+                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
                                                             </li>
 
                                                         </ul>
@@ -970,13 +969,16 @@ if(!empty($video)):
                 $('.weatherTodayDescriptionJson').html( data.jsonData.weatherTodayDescription);
                 $('.weatherTodayNightJson').html( data.jsonData.weatherTodayNight);
                 $('.weatherTodayHumidityJson').html( data.jsonData.weatherTodayHumidity);
-             
-                
                 $('.weatherTodayIconJson').attr('src',data.jsonData.weatherTodayIcon);
+    
+                $.each(data.jsonData.todays, function(key, value){
+                    $('.weatherToday'+key+' h3').html( value.weatherToday_gun);
+                    $('.weatherToday'+key+' .night').html( value.weatherToday_night);
+                    $('.weatherToday'+key+' .day').html( value.weatherToday_degree);
+                    $('.weatherToday'+key+' img').attr('src',value.weatherToday_icon);
+              })
 
-
-                
-                $('.weatherToday3_degree').html( data.jsonData.weatherToday3_degree);
+            
                 // if (data.jsonData.pageRenewStatus) {
                 //     location.reload()
                 // }
@@ -988,7 +990,7 @@ if(!empty($video)):
                 // }
             })
             .catch((error) => {
-                console.log("error")
+                console.log("error2")
             });
     }
 

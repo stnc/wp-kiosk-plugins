@@ -108,21 +108,29 @@ function example_ajax_request() {
 
 
 //    print_r ( $weather6Today);
-   $NEWweather6Today = array();
+$NEWweather6Today = array();
    $i=1;
-   foreach ($weather6Today["result"] as $key => $row ) { 
+   foreach ($weather6Today["result"] as $key2 => $row2 ) { 
     
-   
-    $NEWweather6Today['weatherToday'.$i.'_gun']  =gun_Kısaltma($row ["date"]) ;
-    $NEWweather6Today['weatherToday'.$i.'_icon'] =$row ["icon"];
-    $NEWweather6Today['weatherToday'.$i.'_degree'] =round($row ["degree"]);
-    $NEWweather6Today['weatherToday'.$i.'_night'] =round($row ["night"]);
+
+        $NEWweather6Today[ $i]['weatherToday_gun'] = gun_Kısaltma($row2 ["day"]);
+        $NEWweather6Today[ $i]['weatherToday_icon'] = $row2 ["icon"] ;
+        $NEWweather6Today[ $i]['weatherToday_degree'] = round($row2 ["degree"]) ;
+        $NEWweather6Today[ $i]['weatherToday_night'] = round($row2 ["night"] );
+
+        
+    
+
+    // $NEWweather6Today['weatherToday_gun'.$i.''][$i]  =gun_Kısaltma($row2 ["day"]) ;
+    // $NEWweather6Today['weatherToday_icon'.$i.''][$i]  =$row2 ["icon"];
+    // $NEWweather6Today['weatherToday_degree'.$i.''][$i]  =round($row2 ["degree"]);
+    // $NEWweather6Today['weatherToday_night'.$i.''][$i]  =round($row2 ["night"]);
      
-     $i++;
+      $i++;
 }
 
 // print_r ( $NEWweather6Today);
-
+// die;
    $optionsExchange = get_option('stncWpKiosk_Exchange_Settings');
    $optionsWeather = get_option('stncWpKiosk_Weather_Settings');
 
@@ -139,6 +147,7 @@ function example_ajax_request() {
     'weatherTodayNight' => round($optionsWeather ["stncWpKiosk_text_field_weather_night"]),
     'weatherTodayHumidity' => $optionsWeather ["stncWpKiosk_text_field_weather_humidity"],
     'weatherTodayIcon' => $optionsWeather ["stncWpKiosk_text_field_weather_icon"],
+    "todays" =>$NEWweather6Today
     ));
     //taihi de sunucuda ceksın guncellesın 
     // json datayı curl ceksın
@@ -147,11 +156,7 @@ function example_ajax_request() {
     //her kontrolde bugunku hava durumuna bakacak --bugunun tarıhı https://www.merdincz.com/Php-Turkce-Gunler-Aylar/
 
 
-
-   $data=(array_merge($newOptions,$NEWweather6Today));
-
-
-   echo json_encode($data);
+   echo json_encode($newOptions);
    die;
 }
 

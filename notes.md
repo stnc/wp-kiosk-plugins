@@ -6,6 +6,7 @@ sidebar metabox isimleri değişecek
 
 çoklu dil eklenebilir 
 
+apiyi kapatma olayi olsun 
 
 slide genel gorunme suresi 
 
