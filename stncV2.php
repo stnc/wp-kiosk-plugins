@@ -330,8 +330,12 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     .single-weather-widget .summaryText {
         margin: 0;
-        text-transform: capitalize;
+     
         font-weight: bold;
+    }
+
+    .weatherTodayDescriptionJson{
+        text-transform: capitalize;
     }
 
     .single-weather-widget .wind {
@@ -417,6 +421,8 @@ $myposts_display_doctor_department = get_posts($mp_events);
         float: right;
         font-size: 40px;
     }
+
+ 
     </style>
 </head>
 
@@ -570,51 +576,49 @@ if(!empty($video)):
                                                 <div class="row">
                                                     <div class="col-sm-8 col-lg-8">
                                                         <div class="weather-panel-top">
-                                                            <h2>Kayseri<br><small>Nem Oranı: %70</small></h2>
+                                                            <h2>Kayseri<br><small>Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></small></h2>
                                                             <p class="h3">
-                                                                <img class="weather-panel-top-img"
-                                                                    src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png"
-                                                                    alt="">
-                                                                Açık
+                                                                <img class="weather-panel-top-img weatherTodayIconJson" src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="weather">
+                                                                 <span class="weatherTodayDescriptionJson">Açık</span>
                                                             </p>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-4 col-lg-4 text-center">
                                                         <div class="h1 temperature">
-                                                            <span>2°</span>
+                                                            <span class="weatherTodayDegreeJson">2</span> <span>°</span>
                                                             <br>
-                                                            <small>2° / -1°</small>
+                                                            <small>Gece Sıcaklığı  <span class="weatherTodayNightJson">0</span> <span>°</span>  </small>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-12">
                                                         <ul class="list-inline row forecast">
-                                                            <li class="col-xs-4 col-sm-2 text-center">
+                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday1">
                                                                 <h3 class="h5">CMT</h3>
                                                                 <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png"
                                                                     alt="">
                                                                 <span> 3°/-3°</span>
                                                             </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center">
+                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday2">
                                                                 <h3 class="h5">PAZ</h3>
                                                                 <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png"
                                                                     alt="">
                                                                 <span> 2°/-2°</span>
                                                             </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center">
+                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday3">
                                                                 <h3 class="h5">PZT</h3>
                                                                 <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png"
                                                                     alt="">
                                                                 <span> 2°/-1°</span>
                                                             </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center">
+                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday4">
                                                                 <h3 class="h5">SAL</h3>
                                                                 <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png"
                                                                     alt="">
                                                                 <span> 4°/-1°</span>
                                                             </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center">
+                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday5">
                                                                 <h3 class="h5">ÇAR</h3>
                                                                 <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png"
                                                                     alt="">
@@ -622,7 +626,7 @@ if(!empty($video)):
 
 
                                                             </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center">
+                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday6">
                                                                 <h3 class="h5">PER</h3>
                                                                 <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png"
                                                                     alt="">
@@ -644,16 +648,16 @@ if(!empty($video)):
                                                         <div class="details">
                                                             <div class=" temperature"><span class="weatherTodayDegreeJson">1</span> <span>°</span> </div>
                                                             <div class="summary">
-                                                                <p class="summaryText">Açık</p>
+                                                                <p class="summaryText weatherTodayDescriptionJson">Açık</p>
                                                             </div>
-                                                            <div class="precipitation">Gece Sıcaklığı: -3° </div>
-                                                            <div class="wind">Nem: %58</div>
+                                                            <div class="precipitation">Gece Sıcaklığı: <span class="weatherTodayNightJson">0</span><span>°</span> </div>
+                                                            <div class="wind">Nem: <span>%</span><span class="weatherTodayHumidityJson">0</span> </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4">
                                                         <figure
                                                             class="mx-auto justify-content-center align-self-center float-right">
-                                                            <img  src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
+                                                            <img  class="weatherTodayIconJson" src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
                                                                 height="150px" width="250px" class="img-fluid" alt="">
                                                         </figure>
 
@@ -961,27 +965,27 @@ if(!empty($video)):
                 $('#jsonEuroData').html( data.jsonData.euro);
                 $('#jsonAltinData').html( data.jsonData.altin);
                 $('#jsonCeyrekAltinData').html( data.jsonData.ceyrek_altin);
+
                 $('.weatherTodayDegreeJson').html( data.jsonData.weatherTodayDegree);
-                // document.getElementById("jsonDolarData").innerHTML = data.jsonData.dolar;
-                // document.getElementById("jsonEuroData").innerHTML = data.jsonData.euro;
-                // document.getElementById("jsonAltinData").innerHTML = data.jsonData.altin;
-                // document.getElementById("jsonCeyrekAltinData").innerHTML = data.jsonData.ceyrek_altin;
-                document.getElementById("weatherTodayDegreeJson").innerHTML = data.jsonData.weatherTodayDegree;
-                document.getElementById("weatherTodayDescriptionJson").innerHTML = data.jsonData.weatherTodayDescription;
-                document.getElementById("weatherTodayNightJson").innerHTML = data.jsonData.weatherTodayNight;
+                $('.weatherTodayDescriptionJson').html( data.jsonData.weatherTodayDescription);
+                $('.weatherTodayNightJson').html( data.jsonData.weatherTodayNight);
+                $('.weatherTodayHumidityJson').html( data.jsonData.weatherTodayHumidity);
+             
+                
+                $('.weatherTodayIconJson').attr('src',data.jsonData.weatherTodayIcon);
 
-                document.getElementById("weatherTodayHumidityJson").innerHTML = data.jsonData.weatherTodayHumidity;
-                document.getElementById("weatherTodayIconJson").src = data.jsonData.weatherTodayIcon;
 
-                if (data.jsonData.pageRenewStatus) {
-                    location.reload()
-                }
-                //  else if (data.jsonData.location_Href ) {
-                //     window.location.href = data.jsonData.location_Href_Path ;
-                //   } 
-                else {
-                    console.log("error")
-                }
+                
+                $('.weatherToday3_degree').html( data.jsonData.weatherToday3_degree);
+                // if (data.jsonData.pageRenewStatus) {
+                //     location.reload()
+                // }
+                // //  else if (data.jsonData.location_Href ) {
+                // //     window.location.href = data.jsonData.location_Href_Path ;
+                // //   } 
+                // else {
+                //     console.log("error")
+                // }
             })
             .catch((error) => {
                 console.log("error")
