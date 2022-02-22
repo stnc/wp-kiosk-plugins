@@ -11,8 +11,8 @@
     ?bina parametesi kaldı 
     resım sıralaması kaldı 
     6 gunluk hava durumunun ekranda gorunme suresi	
-    Resimlerin Siralanma Sekli	
     6 gunluk hava durumu	
+    doviz gorunsun gorunmesin ayari 
 */
 
 // https://stackoverflow.com/questions/28249774/add-custom-css-to-a-page-template-in-wordpress
