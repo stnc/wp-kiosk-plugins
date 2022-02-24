@@ -330,12 +330,17 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     .single-weather-widget .summaryText {
         margin: 0;
-     
         font-weight: bold;
     }
 
     .weatherTodayDescriptionJson{
         text-transform: capitalize;
+    }
+
+    .todays6{
+       margin-top: 10px;
+        margin-bottom: 20px;
+        display: block;
     }
 
     .single-weather-widget .wind {
@@ -425,160 +430,17 @@ $myposts_display_doctor_department = get_posts($mp_events);
  
     </style>
 </head>
+<?php
+function weather6today(){ ?>
 
-<body>
-    <div class="container-fluid ">
-        <div class="row">
-            <div class="col-sm-12 col-lg-12">
-
-                <div class="col-sm-12 col-lg-12">
-                    <div class="stnc-kiosk-top">
-                        <div class="row">
-
-                            <div class="col-sm-12 col-lg-12">
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-
-                                        <?php
-
-
-$query = array(
-    // 'offset' => -1,
-    'post_type' => 'stnc_kiosk',
-    'posts_per_page' => -1,
-    'numberposts' => -1,
-    "orderby" => "post_date",
-    "order" => "DESC",
-    "post_status" => "publish",
-    'parent' => 0,
-    'tax_query' => array(
-        'relation' => 'OR',
-        array(
-            'taxonomy' => 'stnc_kiosk_binalar',
-            'field' => 'term_id',
-            'terms' => 22,//$root_categories[0]->term_id,
-            'include_children' => true,
-        ),
-    )
-);
-$loop = new WP_Query( $query ); 
-while ( $loop->have_posts() ) : $loop->the_post(); 
-$imagewow = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'stnc_wp_kiosk_size' );
-$time=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_slide_time_metaBox' );
-$video=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_Metabox_video' );
-// the_post_thumbnail( 'stnc_wp_kiosk_size' );
-//echo esc_attr(trim(CHfw_get_metaSingle(get_the_ID(), 'CHfw-staffSetting_title', $CHfw_meta_key_staff))) . ' ' . get_the_title() 
-if(!empty($video)):
-?>
-                                        <div class="swiper-slide videoSlide"
-                                            data-swiper-autoplay="<?php echo $time[0] ?>">
-                                            <div style="background-color: #000;" class="container-fluid-sel h-100">
-                                                <div class="row h-100">
-                                                    <div class="col-12 my-auto">
-                                                        <video muted loop controls
-                                                            class="video-js vjs-default-skin vjs-big-play-centered"
-                                                            style="background-color: #000;" controls preload="auto"
-                                                            width="100%" height="100%" data-setup='{"fluid": true}'>
-                                                            <source src="<?php echo $video[0] ?>" type="video/mp4">
-                                                        </video>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php 
- else :
-?>
-                                        <div class="swiper-slide" data-swiper-autoplay="<?php echo $time[0] ?>">
-                                            <img src="<?php echo $imagewow[0] ?>" class="img-fluid">
-                                        </div>
-                                        <?php endif; ?>
-                                        <?php endwhile; ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-lg-12">
-                    <div class="stnc-kiosk-bottom">
-
-                        <div class="row">
-                            <!-- date time start -->
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-lg-12">
-                                        <!-- CLOCK -->
-                                        <div class="clock">
-
-
-                                            <!-- HOUR -->
-                                            <div class="numbers">
-                                                <p class="hours"></p>
-                                                <p class="placeholder">88</p>
-                                            </div>
-
-                                            <div class="colon">
-                                                <p>:</p>
-                                            </div>
-
-                                            <!-- MINUTE -->
-                                            <div class="numbers">
-                                                <p class="minutes"></p>
-                                                <p class="placeholder">88</p>
-                                            </div>
-
-                                            <div class="colon">
-                                                <p>:</p>
-                                            </div>
-
-                                            <!-- SECOND -->
-                                            <div class="numbers">
-                                                <p class="seconds"></p>
-                                                <p class="placeholder">88</p>
-                                            </div>
-
-                                        </div><!-- END CLOCK -->
-
-
-                                    </div>
-                                    <!-- <div class="col-md-12 col-sm-12 col-lg-12">
-                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
-                                            Cuma</div>
-                                    </div> -->
-                                </div>
-                            </div>
-                            <!-- date time !!end -->
-
-                            <!-- news start -->
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-lg-12">
-                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
-                                            Cuma</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- news  !!end -->
-                        </div>
-
-                        <div class="row">
-                            <!-- weather start -->
-                            <div class="col-sm-7 col-md-7 col-lg-7">
-                                <div class="swiper-container-weather">
-                                    <div class="swiper-wrapper">
-
-
-
-                                        <div class="swiper-slide">
-                                            <div class="weather-panel">
+<div class="weather-panel">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-lg-8">
                                                         <div class="weather-panel-top">
-                                                            <h2>Kayseri<br><small>Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></small></h2>
+                                                            <h2><span class="weatherTodayDayJson">Pazartesi</span><br><small>Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></small></h2>
                                                             <p class="h3">
                                                                 <img class="weather-panel-top-img weatherTodayIconJson" src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="weather">
-                                                                 <span class="weatherTodayDescriptionJson">Açık</span>
+                                                                 <span class="weatherTodayDescriptionJson todays6">Açık</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -636,12 +498,11 @@ if(!empty($video)):
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-
-
-                                        <div class="swiper-slide">
-                                            <div class="single-weather-widget">
+?>   
+<?php 
+}
+ function singleWeather(){ ?>
+           <div class="single-weather-widget">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-md-8 ">
                                                         <div class="details">
@@ -657,7 +518,7 @@ if(!empty($video)):
                                                         <figure
                                                             class="mx-auto justify-content-center align-self-center float-right">
                                                             <img  class="weatherTodayIconJson" src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
-                                                                height="150px" width="250px" class="img-fluid" alt="">
+                                                                height="250px" width="250px" class="img-fluid" alt="">
                                                         </figure>
 
                                                     </div>
@@ -665,17 +526,195 @@ if(!empty($video)):
 
                                             </div>
 
-                                        </div>
+  ?>
+  <?php 
+ }
+?>
 
+
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+
+                <div class="col-sm-12 col-lg-12">
+                    <div class="stnc-kiosk-top">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-lg-12">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+
+                                        <?php
+
+$options = get_option( 'stncWpKiosk_Other_Settings' );
+$order=$options ["stncWpKiosk_text_field_Other_orderby"];
+$query = array(
+    // 'offset' => -1,
+    'post_type' => 'stnc_kiosk',
+    'posts_per_page' => -1,
+    'numberposts' => -1,
+    "orderby" =>$order,
+    "order" => "DESC",
+    "post_status" => "publish",
+    'parent' => 0,
+    'tax_query' => array(
+        'relation' => 'OR',
+        array(
+            'taxonomy' => 'stnc_kiosk_binalar',
+            'field' => 'term_id',
+            'terms' => 22,//$root_categories[0]->term_id,
+            'include_children' => true,
+        ),
+    )
+);
+$loop = new WP_Query( $query ); 
+while ( $loop->have_posts() ) : $loop->the_post(); 
+$imagewow = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'stnc_wp_kiosk_size' );
+$time=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_slide_time_metaBox' );
+$video=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_Metabox_video' );
+// the_post_thumbnail( 'stnc_wp_kiosk_size' );
+//echo esc_attr(trim(CHfw_get_metaSingle(get_the_ID(), 'CHfw-staffSetting_title', $CHfw_meta_key_staff))) . ' ' . get_the_title() 
+// print_r($video);
+// die;
+if(!empty($video[0])):
+?>
+                                        <div class="swiper-slide videoSlide"
+                                            data-swiper-autoplay="<?php echo $time[0] ?>">
+                                            <div style="background-color: #000;" class="container-fluid-sel h-100">
+                                                <div class="row h-100">
+                                                    <div class="col-12 my-auto">
+                                                        <video muted loop controls
+                                                            class="video-js vjs-default-skin vjs-big-play-centered"
+                                                            style="background-color: #000;" controls preload="auto"
+                                                            width="100%" height="100%" data-setup='{"fluid": true}'>
+                                                            <source src="<?php echo $video[0] ?>" type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php 
+ else :
+?>
+                                        <div class="swiper-slide" data-swiper-autoplay="<?php echo $time[0] ?>">
+                                            <img src="<?php echo $imagewow[0] ?>" class="img-fluid">
+                                        </div>
+                                        <?php endif; ?>
+                                        <?php endwhile; ?>
                                     </div>
                                 </div>
-
-                                <!-- burada slider hava durumu   -->
-
                             </div>
+                        </div>
+                    </div>
+                </div>
+<?php
+$options_Other = get_option( 'stncWpKiosk_Other_Settings' );
+// print_r($options );
+ $WeatherShowType=$options_Other ["stncWpKiosk_text_field_Other_WeatherShowType"];
+// echo "<br>";
+ $WeatherExchangeStatus=$options_Other ["stncWpKiosk_text_field_Other_exchange_status"];
+ $WeatherWeatherRenewTime=$options_Other ["stncWpKiosk_text_field_Other_exchange_weather_renew_time"];
+ $Other6todayTime=$options_Other ["stncWpKiosk_text_field_Other_6today_time"];
+ $OtherAllPageRenew=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
+
+ ?>
+                <div class="col-sm-12 col-lg-12">
+                    <div class="stnc-kiosk-bottom">
+
+                        <div class="row">
+                            <!-- date time start -->
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-lg-12">
+                                        <!-- CLOCK -->
+                                        <div class="clock">
+
+
+                                            <!-- HOUR -->
+                                            <div class="numbers">
+                                                <p class="hours"></p>
+                                                <p class="placeholder">88</p>
+                                            </div>
+
+                                            <div class="colon">
+                                                <p>:</p>
+                                            </div>
+
+                                            <!-- MINUTE -->
+                                            <div class="numbers">
+                                                <p class="minutes"></p>
+                                                <p class="placeholder">88</p>
+                                            </div>
+
+                                            <div class="colon">
+                                                <p>:</p>
+                                            </div>
+
+                                            <!-- SECOND -->
+                                            <div class="numbers">
+                                                <p class="seconds"></p>
+                                                <p class="placeholder">88</p>
+                                            </div>
+
+                                        </div><!-- END CLOCK -->
+
+
+                                    </div>
+                                    <!-- <div class="col-md-12 col-sm-12 col-lg-12">
+                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
+                                            Cuma</div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- date time !!end -->
+
+                            <!-- time start -->
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-lg-12">
+                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
+                                            Cuma</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- time  !!end -->
+                        </div>
+
+                        <div class="row">
+                            <!-- weather start -->
+                            <?php
+if  ($WeatherShowType != "close"){ ?>
+  <div class="col-sm-7 col-md-7 col-lg-7">
+    <?php     
+    if  ($WeatherShowType == "tek") { 
+    singleWeather();
+    } else if  ($WeatherShowType == "alti") { 
+    weather6today();
+    }
+    else if ( $WeatherShowType == "both") { ?>
+      <div class="swiper-container-weather">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                             <?php  weather6today(); ?>
+                                        </div>
+                                        <div class="swiper-slide">
+                                           <?php singleWeather(); ?>
+                                        </div>
+                                   </div>
+     </div>
+    <?php   
+    }
+?>
+                            </div>
+                            <?php   
+    }
+?>
                             <!-- weather  !!end -->
 
                             <!-- doviz start -->
+                            <?php
+if  ($WeatherExchangeStatus == "hayir"){ ?>
                             <div class="col-md-5 col-sm-5 col-lg-5">
 
                                 <div class="row">
@@ -729,6 +768,7 @@ if(!empty($video)):
                                 </div>
 
                             </div>
+ <?php } ?>
                             <!-- doviz  !!end -->
 
                         </div>
@@ -745,21 +785,16 @@ if(!empty($video)):
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.5/video.min.js"></script>
     <script>
 
-
-      
-
-    
-        
-
+    var timeOut = <?php echo $WeatherWeatherRenewTime;?>;
+    var OtherAllPageRenew = <?php echo $OtherAllPageRenew;?>;
 
     var swiper = new Swiper('.swiper-container', {
-
         autoHeight: false, //enable auto height
         spaceBetween: 20,
         centeredSlides: true,
         effect: 'fade',
         autoplay: {
-            delay: 30000,
+            delay: <?php echo $Other6todayTime;?>,
             disableOnInteraction: false,
         },
         loop: true,
@@ -881,7 +916,7 @@ if(!empty($video)):
             shadowScale: 0.94,
         },
         autoplay: {
-            delay: 4000,
+            delay: <?php echo $WeatherWeatherRenewTime?>,
             disableOnInteraction: false,
         },
         loop: true,
@@ -900,25 +935,12 @@ if(!empty($video)):
     </script>
 
     <script>
-    //1000 one second 
+     //1000 one second 
     //1 minute  =  60*1000 = 60000 one minute 
-
-
 
     // 15 minute 15*60000
     //45 minute 
-    // var timeOut =45*60000;
-
-    /*
-    var timeOut = 60 * 60000;
-    setInterval(function() {
-            ajaxCall();
-        },
-        timeOut);
-    */
-  
-
-  
+    var timeOut =45*60000;
     var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
         "Kasım", "Aralık");
     var gunler = new Array("Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi");
@@ -942,7 +964,7 @@ if(!empty($video)):
         };
 
         const data = new FormData();
-        data.append( 'action', 'example_ajax_request' );
+        data.append( 'action', 'stncStatus_ajax_request' );
         data.append( 'nonce', ajax_obj.nonce );
 
         fetch(ajax_obj.ajaxurl, {
@@ -969,6 +991,7 @@ if(!empty($video)):
                 $('.weatherTodayDescriptionJson').html( data.jsonData.weatherTodayDescription);
                 $('.weatherTodayNightJson').html( data.jsonData.weatherTodayNight);
                 $('.weatherTodayHumidityJson').html( data.jsonData.weatherTodayHumidity);
+                $('.weatherTodayDayJson').html( data.jsonData.weatherTodayDay);
                 $('.weatherTodayIconJson').attr('src',data.jsonData.weatherTodayIcon);
     
                 $.each(data.jsonData.todays, function(key, value){
@@ -977,7 +1000,7 @@ if(!empty($video)):
                     $('.weatherToday'+key+' .day').html( value.weatherToday_degree);
                     $('.weatherToday'+key+' img').attr('src',value.weatherToday_icon);
               })
-
+           
             
                 // if (data.jsonData.pageRenewStatus) {
                 //     location.reload()
@@ -994,13 +1017,20 @@ if(!empty($video)):
             });
     }
 
-
-
-
-    setInterval(function() {
+        setTimeout(function() {
             run();
-        },
-        5000);
+        }, 5000);
+
+        //tum sayfa yenilenme 
+       setInterval(function() {
+          location.reload()
+       },OtherAllPageRenew);
+
+          //dolar hava durumu  yenilenme 
+        setInterval(function() {
+            ajaxCall();
+        },timeOut);
+        
     </script>
 </body>
 
