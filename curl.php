@@ -1,7 +1,27 @@
 <?php
+
+
+  /*
+  //cpanel cron komutları 
+  //çalışan 
+  wget -q -O /dev/null "http://yeni.erciyesteknopark.com/curl.php?dghjghhdd=sssd&action=hava" > /dev/null 2>&1
+  wget -q -O /dev/null "http://yeni.erciyesteknopark.com/curl.php?dghjghhdd=sssd&action=exchange" > /dev/null 2>&1
+
+  
+  //çalışmadı tekrar denenebilir 
+  wget -q --spider 'http://yeni.erciyesteknopark.com/curl.php?dghjghhdd=sssd&action=hava'	
+  
+  */
 //dolar cek
 $apiKey = "4RfMup6BllrkoMTz4rwZu2:0blygMZDxJtI3lyqhDblpC";
-if (isset($_GET['action']) && $_GET['action'] == "exchange")
+
+/* DÖVİZ */
+/* DÖVİZ */
+/* DÖVİZ */
+/* DÖVİZ */
+/* DÖVİZ */
+
+if (isset($_GET['sageon']) && $_GET['sageon'] == "exchange")
   {
 
     $piyasalar = array();
@@ -37,7 +57,7 @@ if (isset($_GET['action']) && $_GET['action'] == "exchange")
       }
     else
       {
-        echo $responseExchange;
+       // echo $responseExchange;
       }
 
     //--------------------------------
@@ -73,16 +93,8 @@ if (isset($_GET['action']) && $_GET['action'] == "exchange")
       }
     else
       {
-        echo $response_gold;
+       // echo $response_gold;
       }
-
-    // option7 := entity.Options{OptionName: "hayvan_dusuk_agirligi", OptionValue: "0-200"}
-    // db.Debug().Create(&option7)
-    
-
-    // row := r.db.Debug().Table(optionTableName).Select("option_id").Where("option_name = ?", name).Row()
-    // row.Scan(&returnValue)
-    
 
     $piyasalar['stncWpKiosk_text_field_dolar'] = $exchange["result"][0]["selling"];
     $piyasalar['stncWpKiosk_text_field_euro'] = $exchange["result"][1]["selling"];
@@ -94,15 +106,17 @@ if (isset($_GET['action']) && $_GET['action'] == "exchange")
     $serialize_php = serialize($piyasalar);
     // print_r($serialize_php);
 
-    // veriTabaniIslemleri("stncWpKiosk_Exchange_Settings",$serialize_php);
-
-    
+    veriTabaniIslemleri("stncWpKiosk_Exchange_Settings",$serialize_php);
   }
-/*
-a:4:{s:28:"stncWpKiosk_text_field_dolar";s:5:"15.00";s:27:"stncWpKiosk_text_field_euro";s:5:"16.00";s:28:"stncWpKiosk_text_field_altin";s:3:"458";s:35:"stncWpKiosk_text_field_ceyrek_altin";s:3:"800";}
-*/
 
-if (isset($_GET['action']) && $_GET['action'] == "hava"){
+
+
+  /* HAVA */
+  /* HAVA */
+  /* HAVA */
+  /* HAVA */
+  /* HAVA */
+if (isset($_GET['sageon']) && $_GET['sageon'] == "hava"){
 
   $curl = curl_init();
   
@@ -128,12 +142,9 @@ if (isset($_GET['action']) && $_GET['action'] == "hava"){
   if ($err) {
     echo "cURL Error #:" . $err;
   } else {
-    echo $response;
+    // echo $response;
   }
 
-
-
-  
   veriTabaniIslemleri("stncWpKiosk_Weather_Today",$response);
 
   }
@@ -143,34 +154,43 @@ if (isset($_GET['action']) && $_GET['action'] == "hava"){
 
   function veriTabaniIslemleri($optionName,$optionValue){
 
-    //////
-    $dbhost = 'localhost';
-    $dbuser = 'root';
-    $dbpass = 'qggmkvwm';
-    $dbname = 'summit';
 
-    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+    
+    $env="pro";
+
+    if ($env=="dev"){
+      define( 'DB_NAME', 'summit' );
+      /** MySQL database username */
+      define( 'DB_USER', 'root' );
+      /** MySQL database password */
+      define( 'DB_PASSWORD', 'qggmkvwm' );
+      /** MySQL hostname */
+      define( 'DB_HOST', 'localhost' );
+      $table_prefix = 'wp_';
+    } else {
+      include ("wp-config.php");
+    }
+    
+    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     $mysqli->set_charset("utf8");
-    if ($mysqli->connect_errno)
-      {
-        printf("Connect failed: %s<br />", $mysqli→connect_error);
+    if ($mysqli->connect_errno) {
+      //  printf("Connect failed: %s<br />", $mysqli->connect_error);
         exit();
       }
     // printf('Connected successfully.<br />');
 
-    $sql = "SELECT option_id FROM wp_options WHERE option_name = '".$optionName."'";
+    $sql = "SELECT option_id FROM ".$table_prefix."options WHERE option_name = '".$optionName."'";
 
     $result = $mysqli->query($sql);
     // print_r($result);
-    if ($result)
-      {
+    if ($result) {
         if ($result->num_rows > 0)
           {
             // Associative array
             $row = $result->fetch_assoc();
             $row["option_id"];
           //  echo $sql2 = "UPDATE wp_options set option_value = '".$serialize_php."' where option_id = ".$row["option_id"]."";
-            $sql2 = "UPDATE wp_options SET option_value = '".$optionValue."' WHERE option_id = ".$row["option_id"]."";
+           $sql2 = "UPDATE ".$table_prefix."options SET option_value = '".$optionValue."' WHERE option_id = ".$row["option_id"]."";
 
           if ($mysqli->query($sql2)) {
               // printf("Table updated successfully.<br />");
@@ -180,12 +200,13 @@ if (isset($_GET['action']) && $_GET['action'] == "hava"){
           }
         else
           {
-            echo "No record found";
+           // echo "No record found";
           }
       }
     else
       {
-        echo "Error in ";
+      //  echo "Error in ";
       }
 
   }
+

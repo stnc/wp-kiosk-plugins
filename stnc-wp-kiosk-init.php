@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name:teknopark kiosk 
+Plugin Name: Teknopark Kiosk 
 Plugin URI:			
-Description: erciyes teknopark tv ekranları (by stnc)
+Description: Erciyes Teknopark Tv Ekranları (by stnc)
 Version: 2.0.0
-Author: Chrom Themes
+Author: https://github.com/stnc/wp-kiosk-plugins
 Text Domain: stnc-wp-kiosk
 Domain Path: /languages/
 */ 

@@ -34,6 +34,10 @@ function stnc_wp_kiosk_about(){
          collect api kapanırsa eğer elle güncelleme veya başka bir api ye geçiniz 
          bunun için curlddasfdsds.php dosyasını yazılımcı arkadaşa güncelletebilirsiniz.
 
+
+         veriyi  pluginin adresi içindeki curl dosyasi yapar 
+         cpanel e şu parametreleri ekle 
+         
          </div>
       </div>
     <?php
