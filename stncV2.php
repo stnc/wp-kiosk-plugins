@@ -940,7 +940,7 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
 
     // 15 minute 15*60000
     //45 minute 
-    var timeOut =45*60000;
+    // var timeOut =45*60000;
     var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
         "Kasım", "Aralık");
     var gunler = new Array("Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi");
@@ -956,7 +956,7 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
     }
     tarih();
 
-    function run() {
+    function ajaxCall() {
 
         const ajax_obj = {
             nonce: "<?php echo wp_create_nonce('stnc-kiosk-ajax-script')?>",
@@ -1018,8 +1018,8 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
     }
 
         setTimeout(function() {
-            run();
-        }, 5000);
+            ajaxCall();
+        }, 3000);
 
         //tum sayfa yenilenme 
        setInterval(function() {

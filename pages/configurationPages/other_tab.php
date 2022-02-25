@@ -99,8 +99,9 @@ function Other_exchange_status_stncWpKiosk_text_field_render() {
     $options = get_option( 'stncWpKiosk_Other_Settings' );
     ?>
     <select name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_exchange_status]'>
-        <option value="evet" <?php selected( $options['stncWpKiosk_text_field_Other_exchange_status'],"evet" ); ?>>Evet</option>
+    
         <option value="hayir" <?php selected( $options['stncWpKiosk_text_field_Other_exchange_status'], "hayir" ); ?>>Hayır</option>
+        <option value="evet" <?php selected( $options['stncWpKiosk_text_field_Other_exchange_status'],"evet" ); ?>>Evet</option>
     </select>
 <?php
 }

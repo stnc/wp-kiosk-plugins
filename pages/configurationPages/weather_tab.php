@@ -100,8 +100,11 @@ function weather_icon_stncWpKiosk_text_field_render(  ) {
     $options = get_option('stncWpKiosk_Weather_Settings');
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_icon]' value='<?php echo $options['stncWpKiosk_text_field_weather_icon']; ?>'>
+  <?php if ($options['stncWpKiosk_text_field_weather_icon']!=""):
+    ?>
     <img src="<?php echo $options['stncWpKiosk_text_field_weather_icon']; ?>" alt="" style="width: 85px; height: 100px;">
     <?php
+      endif;
 }
 function weather_description_stncWpKiosk_text_field_render(  ) {
     $options = get_option('stncWpKiosk_Weather_Settings');
