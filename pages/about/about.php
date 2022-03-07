@@ -20,6 +20,7 @@ function stnc_wp_kiosk_about(){
     padding: 1px 12px;"
     >
     <p>Eklenti Selman Tunç tarafından geliştirilmiştir. sorularınız için selmantunc@gmail.com adresine mail atınız.</p>
+   <a target="_blank" href="/kiosk/?onizleme=1">Televizyon Ekranları Önizleme Sayfası</a>
          <p>Bu yazılım <a href="https://collectapi.com/">collect api</a> sisteminden veri çeker</p>
          <p> <a href="https://collectapi.com/"> collect api de</a>  şu gmail adresine bağlıdır  erciyes.teknopark.it@gmail.com</p>
          <br>

@@ -23,12 +23,22 @@ function stnc_wp_kiosk_script_in_admin($hook) {
     // wp_enqueue_script('stnc-bootstrap');   
     wp_register_script( 'stnc-admin',plugin_dir_url( __FILE__ ) . 'assets/js/CHfw-admin.js', '',true );
     wp_enqueue_script('stnc-admin');
+
+
+    wp_register_script( 'stnc-time',plugin_dir_url( __FILE__ ) . 'assets/js/jquery.countdown.min.js', '',true );
+    wp_enqueue_script('stnc-time');
+
+
        // wp_register_script( 'stnc-my',plugin_dir_url( __FILE__ ) . 'assets/js/my.js', '',true );
 }
+
+
 if  ($stnc_wp_kiosk_post_type === 'stnc_kiosk' || $stnc_wp_kiosk_post_type_post === 'stnc_kiosk') {
     add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_admin_enqueue_style');
     add_action('admin_enqueue_scripts', 'stnc_wp_kiosk_script_in_admin');
 }
+
+
 
 ////*************FRONTEnd register***********//////
 

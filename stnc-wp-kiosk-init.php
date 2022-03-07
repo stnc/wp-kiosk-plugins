@@ -24,7 +24,7 @@ require(stnc_wp_kiosk_PATH . "sideBarMetaBox.php");
 
 require(stnc_wp_kiosk_PATH . "metabox_engine_class.php");
 
-require(stnc_wp_kiosk_PATH . "kullanilamayan_ajax.php");
+// require(stnc_wp_kiosk_PATH . "kullanilamayan_ajax.php");
 
 include ('register_css_js.php');
 
@@ -34,4 +34,5 @@ include ('register_Pages.php');//ek 1
 
 include("pages/configurationPages/init.php");//ek 2
 include("pages/about/about.php");//ek 2
+include("pages/onizleme/onizleme.php");//ek 2
 include("stnc-kiosk-ajax.php");
