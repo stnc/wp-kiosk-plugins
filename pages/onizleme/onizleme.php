@@ -33,6 +33,6 @@ function stnc_wp_kiosk_onizleme(){
     </html>
      
     
-     <iframe src="/kiosk" name="iframe_a" style="width:100%;height:1980px" frameborder="0" allowfullscreen ></iframe>
+     <iframe src="/kiosk/?onizleme=1" name="iframe_a" style="width:100%;height:1980px" frameborder="0" allowfullscreen ></iframe>
     <?php
     }
