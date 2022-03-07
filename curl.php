@@ -101,6 +101,7 @@ if (isset($_GET['sageon']) && $_GET['sageon'] == "exchange")
 
     $piyasalar['stncWpKiosk_text_field_altin'] = $gold_price["result"][0]["selling"];
     $piyasalar['stncWpKiosk_text_field_ceyrek_altin'] = $gold_price["result"][1]["selling"];
+    $piyasalar['stncWpKiosk_text_field_guncelleme_zamani'] =  date('d.m.Y h:i:s a', time());
 
     // print_r($piyasalar);
     $serialize_php = serialize($piyasalar);
@@ -152,10 +153,9 @@ if (isset($_GET['sageon']) && $_GET['sageon'] == "hava"){
 
 
 
+
   function veriTabaniIslemleri($optionName,$optionValue){
 
-
-    
     $env="pro";
 
     if ($env=="dev"){

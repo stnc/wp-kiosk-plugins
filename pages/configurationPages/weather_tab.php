@@ -77,6 +77,14 @@ function stncWpKiosk_Weather_Settings_init(  ) {
         'stncWpKiosk_Weather_section'
     ); 
 
+    add_settings_field(
+        'stncWpKiosk_Weather_Today',
+        __( '7 Günlük Hava Bilgisi ', 'wordpress' ),
+        'weather_humidity_stncWpKiosk_read_field_render',
+        'stncWpKiosk_WeatherConfig',
+        'stncWpKiosk_Weather_section'
+    ); 
+
 }
 
 function weather_day_stncWpKiosk_text_field_render(  ) {
@@ -140,12 +148,24 @@ function weather_night_stncWpKiosk_text_field_render(  ) {
 
 function weather_humidity_stncWpKiosk_text_field_render(  ) {
     $options = get_option('stncWpKiosk_Weather_Settings');
+    
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_humidity]' 
     value='<?php echo $options['stncWpKiosk_text_field_weather_humidity']; ?>'>
     <?php
 }
 
+
+function weather_humidity_stncWpKiosk_read_field_render(  ) {
+    $optionsWeather6Today = get_option('stncWpKiosk_Weather_Today');
+  //  $weather6Today = json_decode($optionsWeather6Today, true);
+    ?>
+<textarea rows="4" cols="50">
+<?php echo $optionsWeather6Today; ?>
+</textarea>
+<small>kaydetmek için değildir,  bilgi amaclidir</small>
+    <?php
+}
 
 function stncWpKiosk_Weather_Settings_section_callback(  ) {
     echo __( 'bu konuda ayrintili bilgi icin bu sayfaya bakiniz ', 'wordpress' );

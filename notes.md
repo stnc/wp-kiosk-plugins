@@ -1,6 +1,7 @@
 özel sayfasında hangi ekran seçeceğini bilgisi olmalı 
 sliderları gosterirken eğer resim ekli değilse onu göstermesin 
 
+api key değişecek hakkında kısmına gmail adresi yazılacak 
 
 
 

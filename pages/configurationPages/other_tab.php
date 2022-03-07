@@ -12,6 +12,16 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_OtherConfig'
     );
 
+
+    add_settings_field(
+        'stncWpKiosk_text_field_Other_apikey',
+        __( 'Collect Api Key', 'wordpress' ),
+        'Other_weather_Other_apikey_stncWpKiosk_text_field_render',
+        'stncWpKiosk_OtherConfig',
+        'stncWpKiosk_Other_section'
+    ); 
+    
+    
     add_settings_field(
         'stncWpKiosk_text_field_Other_orderby',
         __( 'Resimlerin Sıralanma Şekli', 'wordpress' ),
@@ -67,6 +77,13 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_OtherConfig',
         'stncWpKiosk_Other_section'
     ); 
+}
+
+function Other_weather_Other_apikey_stncWpKiosk_text_field_render(  ) {
+    $options = get_option( 'stncWpKiosk_Exchange_Settings' );
+    ?>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_Other_apikey]' value='<?php echo $options['stncWpKiosk_text_field_Other_apikey']; ?>'>
+    <?php
 }
 
 function Other_picture_sort_stncWpKiosk_text_field_render(  ) {
