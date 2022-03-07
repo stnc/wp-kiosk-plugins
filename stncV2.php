@@ -7,6 +7,14 @@
  *@since stnc-kiosk 2.0
  */
 
+
+$options_Other = get_option( 'stncWpKiosk_Other_Settings' );
+// print_r($options );
+ $domainName=$options_Other ["stncWpKiosk_text_field_domain_name"];
+ $allPageRenewTime=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
+// echo "<br>";
+
+
 /*
     ?bina parametesi kaldı 
     resım sıralaması kaldı 
@@ -76,7 +84,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
     <title>Erciyes Teknopark KİOSK V2.00</title>
     <meta name="robots" content="noindex">
 
-    <link rel="canonical" href="https://kiosk.erciyesteknopark.com/">
+    <link rel="canonical" href="<?php echo  $domainName?>">
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -549,6 +557,11 @@ function weather6today(){ ?>
 
 $options = get_option( 'stncWpKiosk_Other_Settings' );
 $order=$options ["stncWpKiosk_text_field_Other_orderby"];
+
+if ($order==""){
+    $order="id";
+}
+
 $query = array(
     // 'offset' => -1,
     'post_type' => 'stnc_kiosk',
@@ -623,6 +636,19 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
                     <div class="stnc-kiosk-bottom">
 
                         <div class="row">
+
+                             <!-- time start -->
+                             <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-lg-12">
+                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
+                                            Cuma</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- time  !!end -->
+
+                            
                             <!-- date time start -->
                             <div class="col-md-6 col-sm-6 col-lg-6">
                                 <div class="row">
@@ -669,16 +695,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
                             </div>
                             <!-- date time !!end -->
 
-                            <!-- time start -->
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-lg-12">
-                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
-                                            Cuma</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- time  !!end -->
+                       
                         </div>
 
                         <div class="row">
@@ -1021,10 +1038,17 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
             ajaxCall();
         }, 3000);
 
-        //tum sayfa yenilenme 
+    //     //tum sayfa yenilenme 
+    //    setInterval(function() {
+    //       location.reload()
+    //    },OtherAllPageRenew);
+
+
        setInterval(function() {
-          location.reload()
-       },OtherAllPageRenew);
+        window.location.href = "<?php echo  $domainName?>" ;
+       },  <?php echo  $allPageRenewTime?>);
+
+
 
           //dolar hava durumu  yenilenme 
         setInterval(function() {

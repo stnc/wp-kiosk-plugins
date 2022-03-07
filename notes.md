@@ -1,5 +1,7 @@
 özel sayfasında hangi ekran seçeceğini bilgisi olmalı 
-sliderları gosterirken eğer resim ekli değilse onu göstermesin 
+özel sliderları gosterirken eğer resim ekli değilse onu göstermesin 
+özel front dakı tarıhı de duzeltsın
+
 sonraki guncellemeye ne kadar kaldi saati jquery.countdown.min.js eklendi 
     <div class="col-md-6"> 
     <h1 class="title"><b>Bitmesine Kalan Süre</b></h1>

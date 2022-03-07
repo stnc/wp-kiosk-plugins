@@ -12,15 +12,21 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_OtherConfig'
     );
 
-
     add_settings_field(
         'stncWpKiosk_text_field_Other_apikey',
         __( 'Collect Api Key', 'wordpress' ),
-        'Other_weather_Other_apikey_stncWpKiosk_text_field_render',
+        'Other_weather_apikey_stncWpKiosk_text_field_render',
         'stncWpKiosk_OtherConfig',
         'stncWpKiosk_Other_section'
     ); 
     
+    add_settings_field(
+        'stncWpKiosk_text_field_domain_name',
+        __( 'Domain Ismi', 'wordpress' ),
+        'Other_weather_domainName_stncWpKiosk_text_field_render',
+        'stncWpKiosk_OtherConfig',
+        'stncWpKiosk_Other_section'
+    ); 
     
     add_settings_field(
         'stncWpKiosk_text_field_Other_orderby',
@@ -30,8 +36,7 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_Other_section'
     ); 
     
-
-        
+ 
     add_settings_field(
         'stncWpKiosk_text_field_Other_WeatherShowType',
         __( 'Hava Durumu Gösterim Tipi', 'wordpress' ),
@@ -39,9 +44,6 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_OtherConfig',
         'stncWpKiosk_Other_section'
     );
-
-
-
     
     add_settings_field(
         'stncWpKiosk_text_field_Other_exchange_status',
@@ -58,8 +60,6 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_OtherConfig',
         'stncWpKiosk_Other_section'
     ); 
-
-
 
     add_settings_field(
         'stncWpKiosk_text_field_Other_exchange_weather_renew_time',
@@ -79,19 +79,30 @@ function stncWpKiosk_Other_Settings_init(  ) {
     ); 
 }
 
-function Other_weather_Other_apikey_stncWpKiosk_text_field_render(  ) {
-    $options = get_option( 'stncWpKiosk_Exchange_Settings' );
+function Other_weather_apikey_stncWpKiosk_text_field_render(  ) {
+    $options = get_option( 'stncWpKiosk_Other_Settings' );
     ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_Other_apikey]' value='<?php echo $options['stncWpKiosk_text_field_Other_apikey']; ?>'>
+    <input type='text' name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_apikey]' value='<?php echo $options['stncWpKiosk_text_field_Other_apikey']; ?>'>
+    <small><a href="https://collectapi.com/tr/" target="_blank">Collectapi Web Sitesi </a></small>
     <?php
 }
 
-function Other_picture_sort_stncWpKiosk_text_field_render(  ) {
+
+function Other_weather_domainName_stncWpKiosk_text_field_render(  ) {
+    $options = get_option( 'stncWpKiosk_Other_Settings' );
+    ?>
+    <input type='text' name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_domain_name]' value='<?php echo $options['stncWpKiosk_text_field_domain_name']; ?>'>
+    <small>Eğer domain ismi değişirse yada kıosk gosterim sayfası değişirse buraya belirtiniz, <br> bazı durumlarda televızyonları açmadan sistemin kendisini güncelleme yapması için gereklidir.</small>
+    <?php
+}
+
+
+function Other_picture_sort_stncWpKiosk_text_field_render() {
     $options = get_option( 'stncWpKiosk_Other_Settings' );
     ?>
     <select name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_orderby]'>
-        <option value='id' <?php selected( $options['stncWpKiosk_text_field_Other_orderby'], 'id' ); ?>>ID durumuna Göre</option>
-        <option value='date' <?php selected( $options['stncWpKiosk_text_field_Other_orderby'], 'post_date' ); ?>>Tarihine Göre</option>
+        <option value='id' <?php selected( $options['stncWpKiosk_text_field_Other_orderby'], 'id' ); ?> >  ID durumuna Göre</option>
+        <option value='post_date' <?php selected( $options['stncWpKiosk_text_field_Other_orderby'], 'post_date' ); ?>>Tarihine Göre</option>
     </select>
 <small>Eger tarih secerseniz resim deki eklenme tarihini degistirerek resimlerin siralamasini degistirebilirsiniz</small>
 <?php
