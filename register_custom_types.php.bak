@@ -28,7 +28,7 @@ function stnc_wp_kiosk_register_post_type()
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_admin_bar' => true,
-        'menu_position' => 66,
+        'menu_position' => 30,
         'menu_icon' => 'dashicons-images-alt2',
         'can_export' => true,
         'delete_with_user' => false,
