@@ -657,7 +657,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
                             <div class="row">
 
                                 <!-- time start -->
-                                <div class="col-md-8 col-sm-8 col-lg-8">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-lg-12">
                                             <div id="tarih" class="tarih justify-content-center align-self-center ">2
@@ -670,7 +670,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
 
                                 <!-- date time start -->
-                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-lg-12">
                                             <!-- CLOCK -->
