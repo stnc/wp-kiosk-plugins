@@ -200,7 +200,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
     .tarih {
         display: block;
-        font-size: 50px;
+        font-size: 3.5em;
         margin-top: 15px;
         margin-bottom: 15px;
         color: #fff;

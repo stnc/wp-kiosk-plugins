@@ -95,10 +95,10 @@ $NEWweather6Today = array();
    $newOptions = array(
     "jsonData" => array(          
 
-    'dolar' => $optionsExchange ["stncWpKiosk_text_field_dolar"],
-    'euro' => $optionsExchange ["stncWpKiosk_text_field_euro"],
-    'altin' => $optionsExchange ["stncWpKiosk_text_field_altin"],
-    'ceyrek_altin' => $optionsExchange ["stncWpKiosk_text_field_ceyrek_altin"],
+    'dolar' =>  round($optionsExchange ["stncWpKiosk_text_field_dolar"],2) ,
+    'euro' =>  round($optionsExchange ["stncWpKiosk_text_field_euro"],2) ,
+    'altin' =>  round($optionsExchange ["stncWpKiosk_text_field_altin"],2) ,
+    'ceyrek_altin' =>  round($optionsExchange ["stncWpKiosk_text_field_ceyrek_altin"],2) ,
     //hava durumu 
     'weatherTodayDegree' => round($optionsWeather ["stncWpKiosk_text_field_weather_degree"]),
     'weatherTodayDescription' => $optionsWeather ["stncWpKiosk_text_field_weather_description"],
