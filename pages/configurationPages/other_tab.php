@@ -81,7 +81,7 @@ function stncWpKiosk_Other_Settings_init(  ) {
 
     add_settings_field(
         'stncWpKiosk_allPage_last_update',
-        __( 'Sayfanın güncellenmesi için kalan süre  ', 'wordpress' ),
+        __( 'Televizyonların güncellenmesi için kalan süre ', 'wordpress' ),
         'Other_exchange_weather_renewUpdatetime_stncWpKiosk_text_field_render',
         'stncWpKiosk_OtherConfig',
         'stncWpKiosk_Other_section'
