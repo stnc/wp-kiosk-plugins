@@ -200,7 +200,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
     .tarih {
         display: block;
-        font-size: 3.5em;
+        font-size: 2.5em;
         margin-top: 15px;
         margin-bottom: 15px;
         color: #fff;
@@ -377,7 +377,9 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
     .forecast img {
         width: 40px;
-        margin-left: 35px;
+    /* margin-left: 35px; */
+    text-align: center;
+    margin: 12px;
     }
 
 
@@ -393,8 +395,9 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
     }
 
     .weather-panel-top p {
-        float: right;
-        font-size: 40px;
+        float: right; */
+    font-size: 40px;
+    text-align: center;
     }
     </style>
 </head>
@@ -657,7 +660,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
                             <div class="row">
 
                                 <!-- time start -->
-                                <div class="col-md-8 col-sm-8 col-lg-8">
+                                <div class="col-md-7 col-sm-7 col-lg-7">
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-lg-12">
                                             <div id="tarih" class="tarih justify-content-center align-self-center ">2
@@ -670,7 +673,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
 
                                 <!-- date time start -->
-                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                <div class="col-md-5 col-sm-5 col-lg-5">
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-lg-12">
                                             <!-- CLOCK -->
