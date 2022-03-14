@@ -47,6 +47,11 @@ function stnc_wp_kiosk_about(){
          <br>
          plugin içinde bulunan curl.php yedek amaçlıdır, kullanılmaz
          <br>         
+
+         https://erciyesteknopark.com/curl.php?dghjghhdd=sssd&sageon=hava
+         <br>    
+         https://erciyesteknopark.com/curl.php?dghjghhdd=sssd&sageon=exchange
+
          </div>
       </div>
     <?php

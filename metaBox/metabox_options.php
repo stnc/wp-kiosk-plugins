@@ -17,7 +17,7 @@ $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 		array(
 			'name' => 'page_header_type_info',
 			'title' => __('Lütfen eklediğiniz resimin televizyon ekranlarında iyi görünmesi icin <span style="color:red">1815 px(genislik) * 2510 px (yukseklik) de</span> olmasına dikkat ediniz
-			. <br> Resimi sistem tarafindan 1815*2510 px e tekrar boyutlandırılacak şekilde yaptim ama belirtilen genişlik ve yükseklikden düşük olursa resim kalitesi televizyonda kötü görünecektir.', 'stnc_wp_kiosk-lang'),
+			. <br> Yüklenen sistem tarafindan 1815*2510 px e tekrar boyutlandırılacak şekilde ayarlandı fakat belirtilen genişlik ve yükseklikden düşük olursa resim kalitesi televizyonda kötü görünecektir.', 'stnc_wp_kiosk-lang'),
 			'type' => 'info',
 			'description' => '',
 			'style' => '',
