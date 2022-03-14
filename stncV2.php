@@ -434,8 +434,7 @@ function weather6today(){ ?>
         <div class="col-md-2 col-lg-2 text-center">
             <div class="h1 temperature">
                 <span class="weatherTodayDegreeJson">2</span> <span>°</span>
-                <br>
-                <small>Gece <span class="weatherTodayNightJson">0</span> <span>°</span> </small>
+                
             </div>
         </div>
 
@@ -443,6 +442,7 @@ function weather6today(){ ?>
         <div class="col-md-7 col-lg-7 text-center">
 
             <div class="row">
+
                 <div class="col-md-12 col-lg-12 text-center">
                      <strong class="weatherTodayDescriptionJson todays6">Açık</strong>
                 </div>
@@ -452,8 +452,15 @@ function weather6today(){ ?>
                 </div>
 
                 <div class="col-md-12 col-lg-12 text-center">
-                <span class="humidity">Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></span>
+                    <span class="humidity">Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></span>
                 </div>
+
+                <div class="col-md-12 col-lg-12 text-center">
+                    <strong>Gece <span class="weatherTodayNightJson">0</span> <span>°</span> </strong>
+                </div>
+
+                
+
             </div>
 
 
