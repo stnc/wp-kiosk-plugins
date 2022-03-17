@@ -139,13 +139,13 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
     }
 
 
-    .weather-panel ul.forecast>li h3{
-     font-weight:bold;
+    .weather-panel ul.forecast>li h3 {
+        font-weight: bold;
     }
 
     .weather-panel .temperature>span {
-        font-size: 1.2em;
-        font-weight:bold;
+        font-size: 1.0em;
+        font-weight: bold;
     }
 
     /*CLOCK */
@@ -315,7 +315,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
     .todays6 {
         display: block;
-font-size: 2.0em;
+        font-size: 1.7em;
     }
 
     .single-weather-widget .wind {
@@ -382,14 +382,14 @@ font-size: 2.0em;
 
     .forecast img {
         width: 70px;
-    /* margin-left: 35px; */
-    text-align: center;
-    margin: 0 auto;
+        /* margin-left: 35px; */
+        text-align: center;
+        margin: 0 auto;
     }
 
 
     .weather-panel-top-img {
-        width: 105px;
+        width: 90px;
         text-align: center;
 
         margin: 15px;
@@ -402,15 +402,16 @@ font-size: 2.0em;
 
     .weather-panel-top p {
         float: right;
-     
+
         text-align: center;
     }
 
-    .weatherTodayDayJson{
-        font-size:  1.8em;
+    .weatherTodayDayJson {
+        font-size: 1.8em;
     }
-    .humidity{
-        font-size:1.2em;
+
+    .humidity {
+        font-size: 1.2em;
     }
     </style>
 </head>
@@ -434,7 +435,7 @@ function weather6today(){ ?>
         <div class="col-md-2 col-lg-2 text-center">
             <div class="h1 temperature">
                 <span class="weatherTodayDegreeJson">2</span> <span>°</span>
-                
+
             </div>
         </div>
 
@@ -444,7 +445,7 @@ function weather6today(){ ?>
             <div class="row">
 
                 <div class="col-md-12 col-lg-12 text-center">
-                     <strong class="weatherTodayDescriptionJson todays6">Açık</strong>
+                    <strong class="weatherTodayDescriptionJson todays6">Açık</strong>
                 </div>
 
                 <div class="col-md-12 col-lg-12 text-center">
@@ -459,7 +460,7 @@ function weather6today(){ ?>
                     <strong>Gece <span class="weatherTodayNightJson">0</span> <span>°</span> </strong>
                 </div>
 
-                
+
 
             </div>
 
@@ -476,27 +477,27 @@ function weather6today(){ ?>
                     <h3 class="h5">CMT</h3>
 
                     <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="">
-<br>
-             <span> <span class="day">2</span>  <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
 
                 </li>
                 <li class="col-xs-4 col-sm-2 text-center weatherToday2">
                     <h3 class="h5">PAZ</h3>
                     <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png" alt="">
                     <br>
-                    <span> <span class="day">2</span>  <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
                 </li>
                 <li class="col-xs-4 col-sm-2 text-center weatherToday3">
                     <h3 class="h5">PZT</h3>
                     <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="">
                     <br>
-                    <span> <span class="day">2</span>  <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
                 </li>
                 <li class="col-xs-4 col-sm-2 text-center weatherToday4">
                     <h3 class="h5">SAL</h3>
                     <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png" alt="">
                     <br>
-                    <span> <span class="day">2</span>  <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
                 </li>
                 <li class="col-xs-4 col-sm-2 text-center weatherToday5">
                     <h3 class="h5">ÇAR</h3>
@@ -510,7 +511,7 @@ function weather6today(){ ?>
                     <h3 class="h5">PER</h3>
                     <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png" alt="">
                     <br>
-                    <span> <span class="day">2</span>  <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
                 </li>
 
             </ul>
