@@ -1054,7 +1054,7 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
     function ajaxCall() {
 
         const ajax_obj = {
-            nonce: "<?php echo wp_create_nonce('stnc-kiosk-ajax-script')?>",
+            nonce: "<?php  wp_create_nonce('user-form');?>",
             ajaxurl: "<?php echo admin_url( 'admin-ajax.php' )?>",
         };
 

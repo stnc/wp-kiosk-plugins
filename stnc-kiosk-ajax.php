@@ -39,12 +39,22 @@ function gun_Kısaltma($gun) {
 
 
 function stncStatus_ajax_request() {
-    $nonce = $_POST['nonce'];
-    if ( ! wp_verify_nonce( $nonce, 'stnc-kiosk-ajax-script' ) ) {
-        die( 'Nonce value cannot be verified.' );
-    }
-   // wp_send_json_success( 'It works' );
+  
+    
+// if ( isset( $_POST['user-form'] ) && wp_verify_nonce( $_POST['user-form'], 'name_of_my_action' ) ) {
+//   // process form data
+// } else {
+//   print "Sorry, your nonce did not verify. It is a secure WordPress site. go get a coffee !!";
+//   die;
+//   }
 
+//     if ( ! wp_create_nonce( $retrieved_nonce, 'stnc-kiosk-ajax-script' ) ) {
+//         die( 'Nonce value cannot be verified.' );
+//     }
+//    // wp_send_json_success( 'It works' );
+//    if ( ! check_ajax_referer( 'stnc-kiosk-ajax-script',  $retrieved_nonce ) ){
+//      die( 'Nonce value cannot be verified.' );
+//   }
 
    $optionsWeather6Today = get_option('stncWpKiosk_Weather_Today');
    $weather6Today = json_decode($optionsWeather6Today, true);
