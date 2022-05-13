@@ -37,3 +37,14 @@ include("pages/configurationPages/init.php");//ek 2
 include("pages/about/about.php");//ek 2
 include("pages/onizleme/onizleme.php");//ek 2
 include("stnc-kiosk-ajax.php");
+
+
+//bu custom page eklemek içindir, çalışması için kiosk isminde bir sayfa açınız.
+add_filter( 'page_template', 'stnc_kat_page_template' );
+function stnc_kat_page_template( $page_template )
+{
+    if ( is_page( 'kiosk' ) ) {
+        $page_template = dirname( __FILE__ ) . '/stnc-kiosk-page-frontpage.php';
+    }
+    return $page_template;
+}
