@@ -6,36 +6,17 @@
  *@subpackage stnc-kiosk
  *@since stnc-kiosk 2.0
  */
-
 $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 // print_r($options );
  $domainName=$options_Other ["stncWpKiosk_text_field_domain_name"];
  $allPageRenewTime=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
-// echo "<br>";
-
-
-/*
-    ?bina parametesi kaldı 
-    resım sıralaması kaldı 
-    6 gunluk hava durumunun ekranda gorunme suresi	
-    6 gunluk hava durumu	
-    doviz gorunsun gorunmesin ayari 
-*/
-
 // https://stackoverflow.com/questions/28249774/add-custom-css-to-a-page-template-in-wordpress
 //https://stackoverflow.com/questions/20780422/wordpress-get-plugin-directory
 // https://stackoverflow.com/questions/39652122/how-to-list-all-category-from-custom-post-type
 //search wordpress plugin page path
-
-
-
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -315,7 +296,7 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
 
     .todays6 {
         display: block;
-        font-size: 1.7em;
+        font-size: 1.6em;
     }
 
     .single-weather-widget .wind {
@@ -432,7 +413,7 @@ function weather6today(){ ?>
         </div>
 
 
-        <div class="col-md-2 col-lg-2 text-center">
+        <div class="col-md-4 col-lg-2 text-center">
             <div class="h1 temperature">
                 <span class="weatherTodayDegreeJson">2</span> <span>°</span>
 
@@ -440,7 +421,7 @@ function weather6today(){ ?>
         </div>
 
 
-        <div class="col-md-7 col-lg-7 text-center">
+        <div class="col-md-6 col-lg-7 text-center">
 
             <div class="row">
 
@@ -698,16 +679,16 @@ if(!empty($video[0])):
                     </div>
                 </div>
                 <?php
-$options_Other = get_option( 'stncWpKiosk_Other_Settings' );
-// print_r($options );
- $WeatherShowType=$options_Other ["stncWpKiosk_text_field_Other_WeatherShowType"];
-// echo "<br>";
- $WeatherExchangeStatus=$options_Other ["stncWpKiosk_text_field_Other_exchange_status"];
- $WeatherWeatherRenewTime=$options_Other ["stncWpKiosk_text_field_Other_exchange_weather_renew_time"];
- $Other6todayTime=$options_Other ["stncWpKiosk_text_field_Other_6today_time"];
- $OtherAllPageRenew=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
+                $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
+                // print_r($options );
+                $WeatherShowType=$options_Other ["stncWpKiosk_text_field_Other_WeatherShowType"];
+                // echo "<br>";
+                $WeatherExchangeStatus=$options_Other ["stncWpKiosk_text_field_Other_exchange_status"];
+                $WeatherWeatherRenewTime=$options_Other ["stncWpKiosk_text_field_Other_exchange_weather_renew_time"];
+                $Other6todayTime=$options_Other ["stncWpKiosk_text_field_Other_6today_time"];
+                $OtherAllPageRenew=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
 
- ?>
+                ?>
                 <div class="col-sm-12 col-lg-12">
                     <div class="stnc-kiosk-bottom">
 
@@ -778,15 +759,15 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
                         <div class="row">
                             <!-- weather start -->
                             <?php
-if  ($WeatherShowType != "close"){ ?>
-                            <div class="col-sm-7 col-md-7 col-lg-7">
-                                <?php     
-    if  ($WeatherShowType == "tek") { 
-    singleWeather();
-    } else if  ($WeatherShowType == "alti") { 
-    weather6today();
-    }
-    else if ( $WeatherShowType == "both") { ?>
+                        if  ($WeatherShowType != "close"){ ?>
+                                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                                    <?php     
+                        if  ($WeatherShowType == "tek") { 
+                        singleWeather();
+                        } else if  ($WeatherShowType == "alti") { 
+                        weather6today();
+                        }
+                        else if ( $WeatherShowType == "both") { ?>
                                 <div class="swiper-container-weather">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
@@ -797,18 +778,14 @@ if  ($WeatherShowType != "close"){ ?>
                                         </div>
                                     </div>
                                 </div>
-                                <?php   
-    }
-?>
+                                <?php    } ?>
                             </div>
-                            <?php   
-    }
-?>
+                            <?php    } ?>
                             <!-- weather  !!end -->
 
                             <!-- doviz start -->
                             <?php
-if  ($WeatherExchangeStatus == "hayir"){ ?>
+                          if  ($WeatherExchangeStatus == "hayir"){ ?>
                             <div style="margin-top:30px" class="col-md-5 col-sm-5 col-lg-5">
 
                                 <div class="row">
