@@ -407,13 +407,13 @@ function weather6today(){ ?>
 
     <div class="row">
 
-        <div class="col-md-3 col-lg-3 text-center">
+        <div class="col-md-2 col-lg-2 text-center">
             <img class="weather-panel-top-img weatherTodayIconJson"
                 src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="weather">
         </div>
 
 
-        <div class="col-md-4 col-lg-2 text-center">
+        <div class="col-md-3 col-lg-3 text-center">
             <div class="h1 temperature">
                 <span class="weatherTodayDegreeJson">2</span> <span>°</span>
 
@@ -421,7 +421,7 @@ function weather6today(){ ?>
         </div>
 
 
-        <div class="col-md-6 col-lg-7 text-center">
+        <div class="col-md-7 col-lg-7 text-center">
 
             <div class="row">
 
