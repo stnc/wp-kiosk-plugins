@@ -1,0 +1,90 @@
+{
+    "success": true,
+    "city": "kayseri",
+    "result": [
+        {
+            "date": "20.02.2022",
+            "day": "Pazar",
+            "icon": "https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png",
+            "description": "parçalı az bulutlu",
+            "status": "Clouds",
+            "degree": "4.67",
+            "min": "-0.8",
+            "max": "6.15",
+            "night": "3.53",
+            "humidity": "63"
+        },
+        {
+            "date": "21.02.2022",
+            "day": "Pazartesi",
+            "icon": "https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png",
+            "description": "kapalı",
+            "status": "Clouds",
+            "degree": "8.83",
+            "min": "3.23",
+            "max": "11.84",
+            "night": "5.14",
+            "humidity": "47"
+        },
+        {
+            "date": "22.02.2022",
+            "day": "Salı",
+            "icon": "https://cdnydm.com/media/0wxKjdLS0A-RzdsoKoI1kA.png",
+            "description": "hafif yağmur",
+            "status": "Rain",
+            "degree": "7.95",
+            "min": "3.95",
+            "max": "7.95",
+            "night": "5.05",
+            "humidity": "74"
+        },
+        {
+            "date": "23.02.2022",
+            "day": "Çarşamba",
+            "icon": "https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png",
+            "description": "açık",
+            "status": "Clear",
+            "degree": "10.93",
+            "min": "3.02",
+            "max": "12.12",
+            "night": "5.84",
+            "humidity": "53"
+        },
+        {
+            "date": "24.02.2022",
+            "day": "Perşembe",
+            "icon": "https://cdnydm.com/media/0wxKjdLS0A-RzdsoKoI1kA.png",
+            "description": "hafif yağmur",
+            "status": "Rain",
+            "degree": "10.34",
+            "min": "4.74",
+            "max": "10.34",
+            "night": "6.42",
+            "humidity": "63"
+        },
+        {
+            "date": "25.02.2022",
+            "day": "Cuma",
+            "icon": "https://cdnydm.com/media/0wxKjdLS0A-RzdsoKoI1kA.png",
+            "description": "orta şiddetli yağmur",
+            "status": "Rain",
+            "degree": "3.87",
+            "min": "3.77",
+            "max": "6.19",
+            "night": "3.77",
+            "humidity": "96"
+        },
+        {
+            "date": "26.02.2022",
+            "day": "Cumartesi",
+            "icon": "https://cdnydm.com/media/0wxKjdLS0A-RzdsoKoI1kA.png",
+            "description": "hafif yağmur",
+            "status": "Rain",
+            "degree": "4.1",
+            "min": "3.81",
+            "max": "5.55",
+            "night": "5.47",
+            "humidity": "96"
+        }
+    ]
+}

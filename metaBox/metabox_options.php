@@ -4,7 +4,7 @@ $stnc_wp_kiosk_prefix_kiosk = $stnc_wp_kiosk_themeName . "_Metabox_";
 $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 	'name' => $stnc_wp_kiosk_prefix_kiosk . 'meta-box-page',
 	'nonce' => 'st_studio_kiosk',
-	'title' => __('Video Ekleme Alanı [Buraya Resim Eklemeyiniz Video Eklemek içindir]', 'chthemes-kiosk'),
+	'title' => __('EK Bilgiler', 'chthemes-kiosk'),
 	'page' => 'stnc_kiosk',
 	//'context' => 'side',
 	'context' => 'normal',
@@ -16,8 +16,8 @@ $stnc_wp_kiosk_OptionsPageSettingkiosk = array(
 
 		array(
 			'name' => 'page_header_type_info',
-			'title' => __('<span style="color:red">UYARI </span>Lütfen eklediğiniz görselin "resim / video" televizyon ekranlarında iyi görünmesi icin <span style="color:red">1815 px(genislik) * 2510 px (yukseklik) de</span> olmasına dikkat ediniz
-			. <br> Yüklenen sistem tarafindan <span style="color:red">1815px*2510px</span> e tekrar boyutlandırılacak şekilde ayarlandı fakat belirtilen genişlik ve yükseklikden düşük olursa resim kalitesi televizyonda kötü görünecektir.', 'stnc_wp_kiosk-lang'),
+			'title' => __('Lütfen eklediğiniz resimin televizyon ekranlarında iyi görünmesi icin <span style="color:red">1815 px(genislik) * 2510 px (yukseklik) de</span> olmasına dikkat ediniz
+			. <br> Resimi sistem tarafindan 1815*2510 px e tekrar boyutlandırılacak şekilde yaptim ama belirtilen genişlik ve yükseklikden düşük olursa resim kalitesi televizyonda kötü görünecektir.', 'stnc_wp_kiosk-lang'),
 			'type' => 'info',
 			'description' => '',
 			'style' => '',

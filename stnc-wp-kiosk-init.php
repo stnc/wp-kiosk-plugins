@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Teknopark Kiosk 
+Plugin Name:teknopark kiosk 
 Plugin URI:			
-Description: Erciyes Teknopark Tv Ekranları (by stnc)
+Description: erciyes teknopark tv ekranları (by stnc)
 Version: 2.0.0
-Author: https://github.com/stnc/wp-kiosk-plugins
+Author: Chrom Themes
 Text Domain: stnc-wp-kiosk
 Domain Path: /languages/
 */ 
@@ -19,13 +19,12 @@ $stnc_wp_kiosk_post_type_post = isset($_REQUEST['post_type']) ? $_REQUEST['post_
 define('stnc_wp_kiosk_PATH', plugin_dir_path(__FILE__) . 'metaBox/');
 
 include ('register_custom_types.php');
-include ('installTable.php');
 
 require(stnc_wp_kiosk_PATH . "sideBarMetaBox.php");
 
 require(stnc_wp_kiosk_PATH . "metabox_engine_class.php");
 
-// require(stnc_wp_kiosk_PATH . "kullanilamayan_ajax.php");
+require(stnc_wp_kiosk_PATH . "kullanilamayan_ajax.php");
 
 include ('register_css_js.php');
 
@@ -35,16 +34,8 @@ include ('register_Pages.php');//ek 1
 
 include("pages/configurationPages/init.php");//ek 2
 include("pages/about/about.php");//ek 2
-include("pages/onizleme/onizleme.php");//ek 2
 include("stnc-kiosk-ajax.php");
+include("initCustomPage.php");
 
 
-//bu custom page eklemek içindir, çalışması için kiosk isminde bir sayfa açınız.
-add_filter( 'page_template', 'stnc_kat_page_template' );
-function stnc_kat_page_template( $page_template )
-{
-    if ( is_page( 'kiosk' ) ) {
-        $page_template = dirname( __FILE__ ) . '/stnc-kiosk-page-frontpage.php';
-    }
-    return $page_template;
-}
+

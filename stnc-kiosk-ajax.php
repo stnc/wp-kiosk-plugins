@@ -39,22 +39,12 @@ function gun_Kısaltma($gun) {
 
 
 function stncStatus_ajax_request() {
-  
-    
-// if ( isset( $_POST['user-form'] ) && wp_verify_nonce( $_POST['user-form'], 'name_of_my_action' ) ) {
-//   // process form data
-// } else {
-//   print "Sorry, your nonce did not verify. It is a secure WordPress site. go get a coffee !!";
-//   die;
-//   }
+    $nonce = $_POST['nonce'];
+    if ( ! wp_verify_nonce( $nonce, 'stnc-kiosk-ajax-script' ) ) {
+        die( 'Nonce value cannot be verified.' );
+    }
+   // wp_send_json_success( 'It works' );
 
-//     if ( ! wp_create_nonce( $retrieved_nonce, 'stnc-kiosk-ajax-script' ) ) {
-//         die( 'Nonce value cannot be verified.' );
-//     }
-//    // wp_send_json_success( 'It works' );
-//    if ( ! check_ajax_referer( 'stnc-kiosk-ajax-script',  $retrieved_nonce ) ){
-//      die( 'Nonce value cannot be verified.' );
-//   }
 
    $optionsWeather6Today = get_option('stncWpKiosk_Weather_Today');
    $weather6Today = json_decode($optionsWeather6Today, true);
@@ -105,10 +95,10 @@ $NEWweather6Today = array();
    $newOptions = array(
     "jsonData" => array(          
 
-    'dolar' =>  round($optionsExchange ["stncWpKiosk_text_field_dolar"],2) ,
-    'euro' =>  round($optionsExchange ["stncWpKiosk_text_field_euro"],2) ,
-    'altin' =>  round($optionsExchange ["stncWpKiosk_text_field_altin"],2) ,
-    'ceyrek_altin' =>  round($optionsExchange ["stncWpKiosk_text_field_ceyrek_altin"],2) ,
+    'dolar' => $optionsExchange ["stncWpKiosk_text_field_dolar"],
+    'euro' => $optionsExchange ["stncWpKiosk_text_field_euro"],
+    'altin' => $optionsExchange ["stncWpKiosk_text_field_altin"],
+    'ceyrek_altin' => $optionsExchange ["stncWpKiosk_text_field_ceyrek_altin"],
     //hava durumu 
     'weatherTodayDegree' => round($optionsWeather ["stncWpKiosk_text_field_weather_degree"]),
     'weatherTodayDescription' => $optionsWeather ["stncWpKiosk_text_field_weather_description"],

@@ -19,41 +19,25 @@ function stnc_wp_kiosk_about(){
     margin: 5px 5px 2px;
     padding: 1px 12px;"
     >
-    <p>Eklenti Selman Tunç tarafından geliştirilmiştir. sorularınız için selmantunc@gmail.com adresine mail atınız.</p>
-   <a target="_blank" href="/kiosk/?onizleme=1">Televizyon Ekranları Önizleme Sayfası</a>
          <p>Bu yazılım <a href="https://collectapi.com/">collect api</a> sisteminden veri çeker</p>
-         <p> <a href="https://collectapi.com/"> collect api de</a>  şu gmail adresine bağlıdır  erciyes.teknopark.it@gmail.com</p>
-         <br>
-         <a href="https://collectapi.com/"> collect api den</a> veriler hava durumu verileri cuma gunu saat 5 de çekilir 
-         <br>
+         <p>collect api de şu gmail adresine bağlıdır bla bla </p>
+         collect api den veriler hava durumu verileri cuma gunu saat 5 de cekılır 
          altın ve dovız gunde 2 defa saat 8 ve  12 de guncellenır
-         ücretsiz versiyon da 100 adet krediniz var <a href="https://collectapi.com/"> collect api de</a> 
-         <br>
-         <br>
-     
+         100 adet krediniz var api de 
+         şu mail adresi ve şu apikeyi kullanıyor
+         
 
-         <strong>  Kullanımı </strong>
-         <br>
-     
-         <br>
-     
+         kullanımı 
          admin den bir sayfa açınız 
-         <br>
          sayfalar yeni sayfa deyiniz yan tarafdakı şablon (template) alanından ekranlar kiosk sayfasını seçiniz 
-         <br>
-         collect api kapanırsa eğer elle güncelleme veya başka bir api ye geçiniz.
-         <br>
-         cpanel cron işlemleri anadizinde bulunan curl.php dosyasını kullanır. 
-         <br>
-         plugin içinde bulunan curl.php yedek amaçlıdır, kullanılmaz
-         <br>         
 
-           cron işleri için kullanılacak yollar 
-           
-         https://erciyesteknopark.com/curl.php?dghjghhdd=sssd&sageon=hava
-         <br>    
-         https://erciyesteknopark.com/curl.php?dghjghhdd=sssd&sageon=exchange
+         collect api kapanırsa eğer elle güncelleme veya başka bir api ye geçiniz 
+         bunun için curlddasfdsds.php dosyasını yazılımcı arkadaşa güncelletebilirsiniz.
 
+
+         veriyi  pluginin adresi içindeki curl dosyasi yapar 
+         cpanel e şu parametreleri ekle 
+         
          </div>
       </div>
     <?php

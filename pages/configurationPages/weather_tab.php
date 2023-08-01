@@ -158,13 +158,12 @@ function weather_humidity_stncWpKiosk_text_field_render(  ) {
 
 function weather_humidity_stncWpKiosk_read_field_render(  ) {
     $optionsWeather6Today = get_option('stncWpKiosk_Weather_Today');
-    $weather6Today = json_decode($optionsWeather6Today, true);
-  $optionsWeather6Today = json_encode($weather6Today, JSON_PRETTY_PRINT);
+  //  $weather6Today = json_decode($optionsWeather6Today, true);
     ?>
 <textarea rows="4" cols="50">
 <?php echo $optionsWeather6Today; ?>
 </textarea>
-<small>Kaydetmek için değildir,  bilgi amaçlıdır</small>
+<small>kaydetmek için değildir,  bilgi amaclidir</small>
     <?php
 }
 

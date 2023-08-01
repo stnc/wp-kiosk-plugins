@@ -46,7 +46,7 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
 
     add_settings_field(
         'stncWpKiosk_text_field_guncelleme_zamani',
-        __( 'Api son güncelleme zamanı', 'wordpress' ),
+        __( 'güncelleme zamanı', 'wordpress' ),
         'guncelleme_zamani_stncWpKiosk_text_field_render',
         'stncWpKiosk_ExchangeConfig',
         'stncWpKiosk_Exchange_section'
