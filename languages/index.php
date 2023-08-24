@@ -1,3 +1,0 @@
-<?php 
-// scilent is golden
- ?>

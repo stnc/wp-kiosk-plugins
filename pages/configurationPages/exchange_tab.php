@@ -57,7 +57,7 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
 function dolar_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_dolar]' value='<?php echo $options['stncWpKiosk_text_field_dolar']; ?>'>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_dolar]' value='<?php  print (isset($options['stncWpKiosk_text_field_dolar'])) ? $options['stncWpKiosk_text_field_dolar'] : "";  ?>'>
     <?php
 }
 
@@ -65,28 +65,28 @@ function dolar_stncWpKiosk_text_field_render(  ) {
 function euro_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_euro]' value='<?php echo $options['stncWpKiosk_text_field_euro']; ?>'>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_euro]' value='<?php  print (isset($options['stncWpKiosk_text_field_euro'])) ? $options['stncWpKiosk_text_field_euro'] : ""; ?>'>
     <?php
 }
 
 function altin_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_altin]' value='<?php echo $options['stncWpKiosk_text_field_altin']; ?>'>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_altin]' value='<?php  print (isset($options['stncWpKiosk_text_field_altin'])) ? $options['stncWpKiosk_text_field_altin'] : "";  ?>'>
     <?php
 }
 
 function ceyrek_altin_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_ceyrek_altin]' value='<?php echo $options['stncWpKiosk_text_field_ceyrek_altin']; ?>'>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_ceyrek_altin]' value='<?php print (isset($options['stncWpKiosk_text_field_ceyrek_altin'])) ? $options['stncWpKiosk_text_field_ceyrek_altin'] : ""; ?>'>
     <?php
 }
 
 function guncelleme_zamani_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_guncelleme_zamani]' value='<?php echo $options['stncWpKiosk_text_field_guncelleme_zamani']; ?>'>
+    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_guncelleme_zamani]' value='<?php  print (isset($options['stncWpKiosk_text_field_guncelleme_zamani'])) ? $options['stncWpKiosk_text_field_weatherstncWpKiosk_text_field_guncelleme_zamani_icon'] : ""; ?>'>
     <?php
 }
 

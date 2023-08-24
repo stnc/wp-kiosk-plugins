@@ -1,6 +1,6 @@
 <?php
 add_action( 'admin_init', 'stncWpKiosk_Weather_Settings_init' );
-
+$stncWpKiosk_Weather_Settingsoptions = get_option('stncWpKiosk_Weather_Settings');
 function stncWpKiosk_Weather_Settings_init(  ) {
 
     register_setting('stncWpKiosk_WeatherConfig', 'stncWpKiosk_Weather_Settings');
@@ -88,70 +88,78 @@ function stncWpKiosk_Weather_Settings_init(  ) {
 }
 
 function weather_day_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+    $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
-    <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_day]' value='<?php echo $options['stncWpKiosk_text_field_weather_day']; ?>'>
+    <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_day]' value='<?php   print (isset($options['stncWpKiosk_text_field_weather_day'])) ? $options['stncWpKiosk_text_field_weather_day'] : "";?>'>
     <small>Kullanimda degildir  bilgi amaclidir</small>
   <?php
 }
 
 
 function weather_date_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+   global  $stncWpKiosk_Weather_Settingsoptions;
+   $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
-    <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_date]' value='<?php echo $options['stncWpKiosk_text_field_weather_date']; ?>'>
+    <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_date]' value='<?php print (isset($options['stncWpKiosk_text_field_weather_date'])) ? $options['stncWpKiosk_text_field_weather_date'] : "";?>'>
     <small>Kullanimda degildir  bilgi amaclidir</small>
     <?php
 }
 
 function weather_icon_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+    $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
-    <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_icon]' value='<?php echo $options['stncWpKiosk_text_field_weather_icon']; ?>'>
-  <?php if ($options['stncWpKiosk_text_field_weather_icon']!=""):
+    <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_icon]' value='<?php print (isset($options['stncWpKiosk_text_field_weather_icon'])) ? $options['stncWpKiosk_text_field_weather_icon'] : ""; ?>'>
+  <?php if ($options['stncWpKiosk_text_field_weather_icon']!="" && isset($options['stncWpKiosk_text_field_weather_icon'])):
     ?>
-    <img src="<?php echo $options['stncWpKiosk_text_field_weather_icon']; ?>" alt="" style="width: 85px; height: 100px;">
+    <img src="<?php print (isset($options['stncWpKiosk_text_field_weather_icon'])) ? $options['stncWpKiosk_text_field_weather_icon'] : "";  ?>" alt="" style="width: 85px; height: 100px;">
     <?php
       endif;
 }
 function weather_description_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+    $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_description]' 
-    value='<?php echo $options['stncWpKiosk_text_field_weather_description']; ?>'>
+    value='<?php print (isset($options['stncWpKiosk_text_field_weather_description'])) ? $options['stncWpKiosk_text_field_weather_description'] : ""; ?>'>
     <?php
 }
 
 function weather_description_en_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+    $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_description_en]' 
-    value='<?php echo $options['stncWpKiosk_text_field_weather_description_en']; ?>'>
+    value='<?php print (isset($options['stncWpKiosk_text_field_weather_description_en'])) ? $options['stncWpKiosk_text_field_weather_description_en'] : "";  ?>'>
     <small>Kullanimda degildir  bilgi amaclidir</small>
     <?php
 }
 function weather_degree_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+    $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_degree]' 
-    value='<?php echo $options['stncWpKiosk_text_field_weather_degree']; ?>'>
+    value='<?php print (isset($options['stncWpKiosk_text_field_weather_degree'])) ? $options['stncWpKiosk_text_field_weather_degree'] : "";  ?>'>
     <?php
 }
 
 function weather_night_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+   $options = $stncWpKiosk_Weather_Settingsoptions;
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_night]' 
-    value='<?php echo $options['stncWpKiosk_text_field_weather_night']; ?>'>
+    value='<?php  print (isset($options['stncWpKiosk_text_field_weather_night'])) ? $options['stncWpKiosk_text_field_weather_night'] : ""; ?>'>
     <?php
 }
 
 function weather_humidity_stncWpKiosk_text_field_render(  ) {
-    $options = get_option('stncWpKiosk_Weather_Settings');
+    global  $stncWpKiosk_Weather_Settingsoptions;
+    $options = $stncWpKiosk_Weather_Settingsoptions;
     
     ?>
     <input type='text' name='stncWpKiosk_Weather_Settings[stncWpKiosk_text_field_weather_humidity]' 
-    value='<?php echo $options['stncWpKiosk_text_field_weather_humidity']; ?>'>
+    value='<?php print (isset($options['stncWpKiosk_text_field_weather_humidity'])) ? $options['stncWpKiosk_text_field_weather_humidity'] : "";  ?>'>
     <?php
 }
 
@@ -168,7 +176,7 @@ function weather_humidity_stncWpKiosk_read_field_render(  ) {
 }
 
 function stncWpKiosk_Weather_Settings_section_callback(  ) {
-    echo __( 'bu konuda ayrintili bilgi icin bu sayfaya bakiniz ', 'wordpress' );
+    //echo __( 'bu konuda ayrintili bilgi icin bu sayfaya bakiniz ', 'wordpress' );
 }
 
 function stncWpKiosk_config_weather(  ) {
