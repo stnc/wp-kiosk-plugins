@@ -1,4 +1,37 @@
 <?php
+//https://stackoverflow.com/questions/55223576/docker-wordpress-connection-to-the-database-server-on-the-localhost
+
+//
+//https://www.google.com/search?client=firefox-b-1-d&sca_esv=595731386&sxsrf=AM9HkKkSH_5DQ6P4-tZ4tMMrAKJZTZMPqA:1704393892017&q=docker+wordpress+mysql+hostname&spell=1&sa=X&ved=2ahUKEwiJv_aDssSDAxVnmO4BHXAfBX0QBSgAegQICBAC&biw=1728&bih=905&dpr=2
+
+//wp-content/plugins/stnc-kiosk/stnc-kiosk-ajax.php
+
+//    echo  $nonce = $_POST['nonce'];
+//     if ( ! wp_verify_nonce( $nonce, 'my-special-string' ) ) {
+//         die( 'Nonce value cannot be verified.' );
+//     }
+
+
+// function stncKiosk_ajax_enqueue() {
+
+//     wp_enqueue_script(
+// 		'stncKiosk-ajax-script',
+// 		 get_template_directory_uri() . '/js/simple-ajax-example.js',
+// 		array( 'jquery' )
+// 	);
+// 	// The wp_localize_script allows us to output the ajax_url path for our script to use.
+// 	wp_localize_script(
+// 		'stncKiosk-ajax-script',
+// 		'stncKiosk_ajax_obj',
+// 		array(
+// 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+// 			'nonce' => wp_create_nonce( 'my_user_like_nonce' )
+// 		)
+// 	);
+
+// }
+// add_action( 'wp_enqueue_scripts', 'stncKiosk_ajax_enqueue' );
+
 function gun_Kısaltma($gun) {
     switch($gun) :
         case "Pazartesi":
@@ -39,16 +72,21 @@ function gun_Kısaltma($gun) {
 
 
 function stncStatus_ajax_request() {
-    $nonce = $_POST['nonce'];
-    if ( ! wp_verify_nonce( $nonce, 'stnc-kiosk-ajax-script' ) ) {
-        die( 'Nonce value cannot be verified.' );
-    }
+
+
+
+if ( !wp_verify_nonce( $_REQUEST['nonce'], "my_user_like_nonce")) {
+    exit("Woof Woof Woof");
+ }   
+ 
+
+    // check_ajax_referer( 'my-special-string', 'nonce' );
    // wp_send_json_success( 'It works' );
 
 
    $optionsWeather6Today = get_option('stncWpKiosk_Weather_Today');
    $weather6Today = json_decode($optionsWeather6Today, true);
-//    print_r ( $weather6Today);
+    // print_r ( $weather6Today);
    date_default_timezone_set('Europe/Istanbul');
 //    $date = date('m/d/Y h:i:s a', time());
    $today = date('d.m.Y');
@@ -65,7 +103,6 @@ function stncStatus_ajax_request() {
             'stncWpKiosk_text_field_weather_night' => $row ["night"],
             'stncWpKiosk_text_field_weather_humidity' => $row ["humidity"],
             'stncWpKiosk_text_field_weather_icon' => $row ["icon"],
- 
             );
         update_option('stncWpKiosk_Weather_Settings', $myopt);//burada aynı zamanda wp ıcın guncelleme yapar 
         unset ($weather6Today["result"][$key]);

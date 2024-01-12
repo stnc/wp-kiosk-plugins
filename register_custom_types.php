@@ -2,7 +2,7 @@
 function stnc_wp_kiosk_register_post_type()
 {
     $singular = 'Stnc Kiosk';
-    $plural = __('Teknopark Ekran Resimleri', 'stnc_wp_kiosk-Staff');
+    $plural = __('Teknopark Kiosk', 'stnc_wp_kiosk-Staff');
     $slug = str_replace(' ', '_', strtolower($singular));
     $labels = array(
         'name' => $plural,

@@ -51,5 +51,3 @@ function stnc_wp_kiosk_mp_staff_posts_per_page($query)
 if (!is_admin()) {
     add_filter('pre_get_posts', 'stnc_wp_kiosk_mp_staff_posts_per_page');
 }
-
-

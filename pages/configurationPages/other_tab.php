@@ -1,6 +1,5 @@
 <?php
 add_action( 'admin_init', 'stncWpKiosk_Other_Settings_init' );
-
 function stncWpKiosk_Other_Settings_init(  ) {
 
     register_setting('stncWpKiosk_OtherConfig', 'stncWpKiosk_Other_Settings');
@@ -12,6 +11,25 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_OtherConfig'
     );
 
+    // add_settings_field(
+    //     'stncWpKiosk_text_field_domain_name',
+    //     __( 'Domain Name ', 'wordpress' ),
+    //     'stncWpKiosk_text_field_Other_donain_name_render',
+    //     'stncWpKiosk_OtherConfig',
+    //     'stncWpKiosk_Other_section'
+    // ); 
+    
+
+    add_settings_field(
+        'stncWpKiosk_text_field_Other_apikey',
+        __( 'APi ', 'wordpress' ),
+        'stncWpKiosk_text_field_Other_apikey_field_render',
+        'stncWpKiosk_OtherConfig',
+        'stncWpKiosk_Other_section'
+    ); 
+    
+
+    
     add_settings_field(
         'stncWpKiosk_text_field_Other_orderby',
         __( 'Resimlerin Sıralanma Şekli', 'wordpress' ),
@@ -68,6 +86,25 @@ function stncWpKiosk_Other_Settings_init(  ) {
         'stncWpKiosk_Other_section'
     ); 
 }
+
+
+function stncWpKiosk_text_field_Other_apikey_field_render(  ) {
+    $options = get_option( 'stncWpKiosk_Other_Settings' );
+    ?>
+    <input type='text' name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_Other_apikey]' value='<?php   print (isset($options['stncWpKiosk_text_field_Other_apikey'])) ? $options['stncWpKiosk_text_field_Other_apikey'] : "";?>'>
+    <small></small>
+  <?php
+}
+
+
+function stncWpKiosk_text_field_Other_donain_name_render(  ) {
+    $options = get_option( 'stncWpKiosk_Other_Settings' );
+    ?>
+    <input type='text' name='stncWpKiosk_Other_Settings[stncWpKiosk_text_field_domain_name]' value='<?php   print (isset($options['stncWpKiosk_text_field_domain_name'])) ? $options['stncWpKiosk_text_field_domain_name'] : "";?>'>
+    <small></small>
+  <?php
+}
+
 
 function Other_picture_sort_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Other_Settings' );

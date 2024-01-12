@@ -29,13 +29,13 @@ function stncWpKiosk_Weather_Settings_init(  ) {
         'stncWpKiosk_Weather_section'
     ); 
     
-    add_settings_field(
-        'stncWpKiosk_text_field_weather_icon',
-        __( 'Ikon resmi', 'wordpress' ),
-        'weather_icon_stncWpKiosk_text_field_render',
-        'stncWpKiosk_WeatherConfig',
-        'stncWpKiosk_Weather_section'
-    ); 
+    // add_settings_field(
+    //     'stncWpKiosk_text_field_weather_icon',
+    //     __( 'Ikon resmi', 'wordpress' ),
+    //     'weather_icon_stncWpKiosk_text_field_render',
+    //     'stncWpKiosk_WeatherConfig',
+    //     'stncWpKiosk_Weather_section'
+    // ); 
 
     add_settings_field(
         'stncWpKiosk_text_field_weather_description',

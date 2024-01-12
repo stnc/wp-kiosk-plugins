@@ -6,66 +6,18 @@
  *@subpackage stnc-kiosk
  *@since stnc-kiosk 2.0
  */
-
-/*
-    ?bina parametesi kaldı 
-    resım sıralaması kaldı 
-    6 gunluk hava durumunun ekranda gorunme suresi	
-    6 gunluk hava durumu	
-    doviz gorunsun gorunmesin ayari 
-*/
-
+$options_Other = get_option( 'stncWpKiosk_Other_Settings' );
+// print_r($options );
+//  $domainName=$options_Other ["stncWpKiosk_text_field_domain_name"];
+ $domainName=  get_option('siteurl'); 
+ $allPageRenewTime=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
 // https://stackoverflow.com/questions/28249774/add-custom-css-to-a-page-template-in-wordpress
 //https://stackoverflow.com/questions/20780422/wordpress-get-plugin-directory
 // https://stackoverflow.com/questions/39652122/how-to-list-all-category-from-custom-post-type
 //search wordpress plugin page path
-
-
-/*
-
-$list_child_terms_args = array(
-    'taxonomy' => 'stnc_kiosk_binalar',
-    'use_desc_for_title' => 0, // best practice: don't use title attributes ever
-    'orderby' => 'name',
-    'order'   => 'ASC',
-    'slug'=> 'tekno-1',
-);
-$root_categories = get_categories($list_child_terms_args);
-	print_r ($root_categories);
-$mp_events = array(
-    // 'offset' => -1,
-    'post_type' => 'stnc_kiosk',
-    'posts_per_page' => -1,
-    'numberposts' => -1,
-    "orderby" => "post_date",
-    "order" => "DESC",
-    "post_status" => "publish",
-    'parent' => 0,
-    'tax_query' => array(
-        'relation' => 'OR',
-        array(
-            'taxonomy' => 'stnc_kiosk_binalar',
-            'field' => 'term_id',
-            'terms' => 22,//$root_categories[0]->term_id,
-            'include_children' => true,
-        ),
-    )
-);
-$myposts_display_doctor_department = get_posts($mp_events);
-?>
-<select name="" id="">
-    <?php foreach ($myposts_display_doctor_department as $mypost) { ?>
-    <option value="<?php echo $mypost->ID ?>"><?php echo $mypost->post_title ?></option>
-    <?php } ?>
-
-</select>*/
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -76,7 +28,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
     <title>Erciyes Teknopark KİOSK V2.00</title>
     <meta name="robots" content="noindex">
 
-    <link rel="canonical" href="https://kiosk.erciyesteknopark.com/">
+    <link rel="canonical" href="<?php echo  $domainName?>">
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -93,10 +45,22 @@ $myposts_display_doctor_department = get_posts($mp_events);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> -->
-    
+
+
+
+    <?php
+
+    wp_localize_script(
+		'stncKiosk-ajax-script',
+		'stncKiosk_ajax_obj',
+		array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'my_user_like_nonce' )
+        ));
+    ?>
     <style>
     body {
-        background-color: #000;
+        background-color: #fff;
         padding: 10px;
         margin-top: 15px;
     }
@@ -168,8 +132,14 @@ $myposts_display_doctor_department = get_posts($mp_events);
         padding-top: 10px;
     }
 
+
+    .weather-panel ul.forecast>li h3 {
+        font-weight: bold;
+    }
+
     .weather-panel .temperature>span {
-        font-size: 2em;
+        font-size: 1.0em;
+        font-weight: bold;
     }
 
     /*CLOCK */
@@ -230,7 +200,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     .tarih {
         display: block;
-        font-size: 50px;
+        font-size: 2.5em;
         margin-top: 15px;
         margin-bottom: 15px;
         color: #fff;
@@ -333,14 +303,13 @@ $myposts_display_doctor_department = get_posts($mp_events);
         font-weight: bold;
     }
 
-    .weatherTodayDescriptionJson{
+    .weatherTodayDescriptionJson {
         text-transform: capitalize;
     }
 
-    .todays6{
-       margin-top: 10px;
-        margin-bottom: 20px;
+    .todays6 {
         display: block;
+        font-size: 1.6em;
     }
 
     .single-weather-widget .wind {
@@ -349,7 +318,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
 
     .single-weather-widget .details {
-     
+
         display: flex;
         flex-direction: column;
 
@@ -360,7 +329,7 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     .exchange {
         margin-top: 15px;
-        
+
         text-align: center;
     }
 
@@ -406,15 +375,18 @@ $myposts_display_doctor_department = get_posts($mp_events);
     }
 
     .forecast img {
-        width: 40px;
-        margin-left: 35px;
+        width: 70px;
+        /* margin-left: 35px; */
+        text-align: center;
+        margin: 0 auto;
     }
 
 
     .weather-panel-top-img {
-        width: 70px;
-        /* text-align: center; */
-        margin: 0 auto;
+        width: 90px;
+        text-align: center;
+
+        margin: 15px;
     }
 
     .weather-panel-top h2 {
@@ -424,113 +396,184 @@ $myposts_display_doctor_department = get_posts($mp_events);
 
     .weather-panel-top p {
         float: right;
-        font-size: 40px;
+
+        text-align: center;
     }
 
- 
+    .weatherTodayDayJson {
+        font-size: 1.8em;
+    }
+
+    .humidity {
+        font-size: 1.2em;
+    }
     </style>
 </head>
 <?php
 function weather6today(){ ?>
 
+
+
+
+
 <div class="weather-panel">
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-lg-8">
-                                                        <div class="weather-panel-top">
-                                                            <h2><span class="weatherTodayDayJson">Pazartesi</span><br><small>Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></small></h2>
-                                                            <p class="h3">
-                                                                <img class="weather-panel-top-img weatherTodayIconJson" src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="weather">
-                                                                 <span class="weatherTodayDescriptionJson todays6">Açık</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="col-sm-4 col-lg-4 text-center">
-                                                        <div class="h1 temperature">
-                                                            <span class="weatherTodayDegreeJson">2</span> <span>°</span>
-                                                            <br>
-                                                            <small>Gece Sıcaklığı  <span class="weatherTodayNightJson">0</span> <span>°</span>  </small>
-                                                        </div>
-                                                    </div>
+    <div class="row">
 
-                                                    <div class="col-lg-12">
-                                                        <ul class="list-inline row forecast">
-                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday1">
-                                                                <h3 class="h5">CMT</h3>
-                                                                <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png"
-                                                                    alt="">
-                                                                <span> 3°/-3°</span>
-                                                            </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday2">
-                                                                <h3 class="h5">PAZ</h3>
-                                                                <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png"
-                                                                    alt="">
-                                                                <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
-                                                            </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday3">
-                                                                <h3 class="h5">PZT</h3>
-                                                                <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png"
-                                                                    alt="">
-                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
-                                                            </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday4">
-                                                                <h3 class="h5">SAL</h3>
-                                                                <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png"
-                                                                    alt="">
-                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
-                                                            </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday5">
-                                                                <h3 class="h5">ÇAR</h3>
-                                                                <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png"
-                                                                    alt="">
-                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
+        <div class="col-md-2 col-lg-2 text-center">
+            <img class="weather-panel-top-img weatherTodayIconJson"
+                src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="weather">
+        </div>
 
 
-                                                            </li>
-                                                            <li class="col-xs-4 col-sm-2 text-center weatherToday6">
-                                                                <h3 class="h5">PER</h3>
-                                                                <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png"
-                                                                    alt="">
-                                                                    <span> <span class="day">2</span>°/- <span class="night">2</span>°</span>
-                                                            </li>
+        <div class="col-md-3 col-lg-3 text-center">
+            <div class="h1 temperature">
+                <span class="weatherTodayDegreeJson">2</span> <span>°</span>
 
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-?>   
+            </div>
+        </div>
+
+
+        <div class="col-md-7 col-lg-7 text-center">
+
+            <div class="row">
+
+                <div class="col-md-12 col-lg-12 text-center">
+                    <strong class="weatherTodayDescriptionJson todays6">Açık</strong>
+                </div>
+
+                <div class="col-md-12 col-lg-12 text-center">
+                    <strong class="weatherTodayDayJson">cuma</strong>
+                </div>
+
+                <div class="col-md-12 col-lg-12 text-center">
+                    <span class="humidity">Nem Oranı: %<span class="weatherTodayHumidityJson">0</span></span>
+                </div>
+
+                <div class="col-md-12 col-lg-12 text-center">
+                    <strong>Gece <span class="weatherTodayNightJson">0</span> <span>°</span> </strong>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="col-lg-12">
+            <ul class="list-inline row forecast">
+                <li class="col-xs-4 col-sm-2 text-center weatherToday1">
+
+                    <h3 class="h5">CMT</h3>
+
+                    <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="">
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+
+                </li>
+                <li class="col-xs-4 col-sm-2 text-center weatherToday2">
+                    <h3 class="h5">PAZ</h3>
+                    <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png" alt="">
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                </li>
+                <li class="col-xs-4 col-sm-2 text-center weatherToday3">
+                    <h3 class="h5">PZT</h3>
+                    <img src="https://cdnydm.com/media/tr-Z7uMGW668t0R024tdJA.png" alt="">
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                </li>
+                <li class="col-xs-4 col-sm-2 text-center weatherToday4">
+                    <h3 class="h5">SAL</h3>
+                    <img src="https://cdnydm.com/media/7FbW8fgzadAEm9nU6aT7Iw.png" alt="">
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                </li>
+                <li class="col-xs-4 col-sm-2 text-center weatherToday5">
+                    <h3 class="h5">ÇAR</h3>
+                    <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png" alt="">
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+
+
+                </li>
+                <li class="col-xs-4 col-sm-2 text-center weatherToday6">
+                    <h3 class="h5">PER</h3>
+                    <img src="https://cdnydm.com/media/QIoLslqq8kRklYCNiIjvVw.png" alt="">
+                    <br>
+                    <span> <span class="day">2</span> <span clas="sprit">°/</span> <span class="night">2</span>°</span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+?>
 <?php 
 }
  function singleWeather(){ ?>
-           <div class="single-weather-widget">
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-md-8 ">
-                                                        <div class="details">
-                                                            <div class=" temperature"><span class="weatherTodayDegreeJson">1</span> <span>°</span> </div>
-                                                            <div class="summary">
-                                                                <p class="summaryText weatherTodayDescriptionJson">Açık</p>
-                                                            </div>
-                                                            <div class="precipitation">Gece Sıcaklığı: <span class="weatherTodayNightJson">0</span><span>°</span> </div>
-                                                            <div class="wind">Nem: <span>%</span><span class="weatherTodayHumidityJson">0</span> </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4">
-                                                        <figure
-                                                            class="mx-auto justify-content-center align-self-center float-right">
-                                                            <img  class="weatherTodayIconJson" src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
-                                                                height="250px" width="250px" class="img-fluid" alt="">
-                                                        </figure>
+<div class="single-weather-widget">
+    <div class="row">
+        <div class="col-sm-8 col-md-8 ">
+            <div class="details">
+                <div class=" temperature"><span class="weatherTodayDegreeJson">1</span> <span>°</span> </div>
+                <div class="summary">
+                    <p class="summaryText weatherTodayDescriptionJson">Açık</p>
+                </div>
+                <div class="precipitation">Gece Sıcaklığı: <span class="weatherTodayNightJson">0</span><span>°</span>
+                </div>
+                <div class="wind">Nem: <span>%</span><span class="weatherTodayHumidityJson">0</span> </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <figure class="mx-auto justify-content-center align-self-center float-right">
+                <img class="weatherTodayIconJson" src="https://cdnydm.com/media/T42wPWSnBp4JWAnxJT6TWA.png"
+                    height="250px" width="250px" class="img-fluid" alt="">
+            </figure>
 
-                                                    </div>
-                                                </div>
+        </div>
+    </div>
 
-                                            </div>
-
-  ?>
-  <?php 
+</div>
+<?php 
  }
+
+
+
+if (!isset($_GET['bina'])){
+$list_child_terms_args = array(
+    'taxonomy' => 'stnc_kiosk_binalar',
+    'use_desc_for_title' => 0, // best practice: don't use title attributes ever
+    'orderby' => 'name',
+    'order'   => 'ASC',
+);
+$root_categories = get_categories($list_child_terms_args);
+	// print_r($root_categories[0] );
+	// print_r($root_categories[0]->name );
 ?>
 
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="alert alert-danger" role="alert"> Lütfen görüntülenmesini istediğiniz binayı seçiniz</div>
+                <?php foreach ($root_categories as $key => $row ):?>
+                <a href="?bina=<?php echo $row->term_id?>" class="btn btn-primary"><?php echo $row->name?></a>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<?php
+die;
+}
+?>
 
 <body>
     <div class="container-fluid ">
@@ -546,9 +589,47 @@ function weather6today(){ ?>
                                     <div class="swiper-wrapper">
 
                                         <?php
+// 2020/10/10 12:34:56
+//2022/03/07 11:21:38 -- benım kı 
+
 
 $options = get_option( 'stncWpKiosk_Other_Settings' );
 $order=$options ["stncWpKiosk_text_field_Other_orderby"];
+
+
+if (!isset($_GET['onizleme'])){
+    // $options = get_option( 'stncWpKiosk_Other_Settings' );
+    function timers($hours){
+        if ($hours=="3600000"){
+            $returnTime="1";
+        } 
+        else if ($hours=="7200000"){
+            $returnTime="2";
+        }
+        else if ($hours=="10800000"){
+            $returnTime="3";
+        }
+        else if ($hours=="14400000"){
+            $returnTime="4";
+        }
+        return  $returnTime;
+        }
+
+ $hours=   timers( $options ["Other_all_page_renew_stncWpKiosk_text_field_render"]) ;
+ 
+    date_default_timezone_set('Europe/Istanbul');
+    $time=date("Y/m/d H:i:s",strtotime("+".$hours." hours"));
+    update_option('stncWpKiosk_allPage_last_update',  $time  );
+
+  
+}
+
+
+if ($order==""){
+    $order="id";
+}
+
+
 $query = array(
     // 'offset' => -1,
     'post_type' => 'stnc_kiosk',
@@ -563,7 +644,7 @@ $query = array(
         array(
             'taxonomy' => 'stnc_kiosk_binalar',
             'field' => 'term_id',
-            'terms' => 22,//$root_categories[0]->term_id,
+            'terms' => $_GET['bina'],
             'include_children' => true,
         ),
     )
@@ -573,10 +654,6 @@ while ( $loop->have_posts() ) : $loop->the_post();
 $imagewow = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'stnc_wp_kiosk_size' );
 $time=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_slide_time_metaBox' );
 $video=get_post_meta( get_the_ID(), 'stnc_wp_kiosk_Metabox_video' );
-// the_post_thumbnail( 'stnc_wp_kiosk_size' );
-//echo esc_attr(trim(CHfw_get_metaSingle(get_the_ID(), 'CHfw-staffSetting_title', $CHfw_meta_key_staff))) . ' ' . get_the_title() 
-// print_r($video);
-// die;
 if(!empty($video[0])):
 ?>
                                         <div class="swiper-slide videoSlide"
@@ -608,21 +685,35 @@ if(!empty($video[0])):
                         </div>
                     </div>
                 </div>
-<?php
-$options_Other = get_option( 'stncWpKiosk_Other_Settings' );
-// print_r($options );
- $WeatherShowType=$options_Other ["stncWpKiosk_text_field_Other_WeatherShowType"];
-// echo "<br>";
- $WeatherExchangeStatus=$options_Other ["stncWpKiosk_text_field_Other_exchange_status"];
- $WeatherWeatherRenewTime=$options_Other ["stncWpKiosk_text_field_Other_exchange_weather_renew_time"];
- $Other6todayTime=$options_Other ["stncWpKiosk_text_field_Other_6today_time"];
- $OtherAllPageRenew=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
+                <?php
+                $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
+                // print_r($options );
+                $WeatherShowType=$options_Other ["stncWpKiosk_text_field_Other_WeatherShowType"];
+                // echo "<br>";
+                $WeatherExchangeStatus=$options_Other ["stncWpKiosk_text_field_Other_exchange_status"];
+                $WeatherWeatherRenewTime=$options_Other ["stncWpKiosk_text_field_Other_exchange_weather_renew_time"];
+                $Other6todayTime=$options_Other ["stncWpKiosk_text_field_Other_6today_time"];
+                $OtherAllPageRenew=$options_Other ["Other_all_page_renew_stncWpKiosk_text_field_render"];
 
- ?>
+                ?>
                 <div class="col-sm-12 col-lg-12">
                     <div class="stnc-kiosk-bottom">
 
                         <div class="row">
+
+                            <!-- time start -->
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-lg-12">
+                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2
+                                            Nisan
+                                            Cuma</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- time  !!end -->
+
+
                             <!-- date time start -->
                             <div class="col-md-6 col-sm-6 col-lg-6">
                                 <div class="row">
@@ -669,53 +760,40 @@ $options_Other = get_option( 'stncWpKiosk_Other_Settings' );
                             </div>
                             <!-- date time !!end -->
 
-                            <!-- time start -->
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-lg-12">
-                                        <div id="tarih" class="tarih justify-content-center align-self-center ">2 Nisan
-                                            Cuma</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- time  !!end -->
+
                         </div>
 
                         <div class="row">
                             <!-- weather start -->
                             <?php
-if  ($WeatherShowType != "close"){ ?>
-  <div class="col-sm-7 col-md-7 col-lg-7">
-    <?php     
-    if  ($WeatherShowType == "tek") { 
-    singleWeather();
-    } else if  ($WeatherShowType == "alti") { 
-    weather6today();
-    }
-    else if ( $WeatherShowType == "both") { ?>
-      <div class="swiper-container-weather">
+                        if  ($WeatherShowType != "close"){ ?>
+                                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                                    <?php     
+                        if  ($WeatherShowType == "tek") { 
+                        singleWeather();
+                        } else if  ($WeatherShowType == "alti") { 
+                        weather6today();
+                        }
+                        else if ( $WeatherShowType == "both") { ?>
+                                <div class="swiper-container-weather">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-                                             <?php  weather6today(); ?>
+                                            <?php  weather6today(); ?>
                                         </div>
                                         <div class="swiper-slide">
-                                           <?php singleWeather(); ?>
+                                            <?php singleWeather(); ?>
                                         </div>
-                                   </div>
-     </div>
-    <?php   
-    }
-?>
+                                    </div>
+                                </div>
+                                <?php    } ?>
                             </div>
-                            <?php   
-    }
-?>
+                            <?php    } ?>
                             <!-- weather  !!end -->
 
                             <!-- doviz start -->
                             <?php
-if  ($WeatherExchangeStatus == "hayir"){ ?>
-                            <div class="col-md-5 col-sm-5 col-lg-5">
+                          if  ($WeatherExchangeStatus == "hayir"){ ?>
+                            <div style="margin-top:30px" class="col-md-5 col-sm-5 col-lg-5">
 
                                 <div class="row">
 
@@ -758,8 +836,7 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
                                             <i class="fa fa-sun-o" aria-hidden="true"> </i>
                                             <br>
 
-                                            <span id="jsonCeyrekAltinData"> 00 </span> <span
-                                                class="birim">TL</span>
+                                            <span id="jsonCeyrekAltinData"> 00 </span> <span class="birim">TL</span>
                                             <br> <strong style="color: white; "> Çeyrek altın </strong>
                                         </div>
                                     </div>
@@ -768,7 +845,7 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
                                 </div>
 
                             </div>
- <?php } ?>
+                            <?php } ?>
                             <!-- doviz  !!end -->
 
                         </div>
@@ -780,11 +857,12 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js" integrity="sha512-BrvVYNhKh6yST24E5DY/LopLO5d+8KYmIXyrpBIJ2PK+CyyJw/cLSG/BfJomWLC1IblNrmiJWGlrGueKLd/Ekw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"
+        integrity="sha512-BrvVYNhKh6yST24E5DY/LopLO5d+8KYmIXyrpBIJ2PK+CyyJw/cLSG/BfJomWLC1IblNrmiJWGlrGueKLd/Ekw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.5/video.min.js"></script>
     <script>
-
     var timeOut = <?php echo $WeatherWeatherRenewTime;?>;
     var OtherAllPageRenew = <?php echo $OtherAllPageRenew;?>;
 
@@ -935,13 +1013,14 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
     </script>
 
     <script>
-     //1000 one second 
+    //1000 one second 
     //1 minute  =  60*1000 = 60000 one minute 
 
     // 15 minute 15*60000
     //45 minute 
     // var timeOut =45*60000;
-    var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
+    var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
+        "Ekim",
         "Kasım", "Aralık");
     var gunler = new Array("Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi");
 
@@ -957,20 +1036,20 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
     tarih();
 
     function ajaxCall() {
-
+   
         const ajax_obj = {
-            nonce: "<?php echo wp_create_nonce('stnc-kiosk-ajax-script')?>",
+            nonce: "<?php echo wp_create_nonce("my_user_like_nonce"); ?>",
             ajaxurl: "<?php echo admin_url( 'admin-ajax.php' )?>",
         };
 
         const data = new FormData();
-        data.append( 'action', 'stncStatus_ajax_request' );
-        data.append( 'nonce', ajax_obj.nonce );
+        data.append('action', 'stncStatus_ajax_request');
+         data.append('nonce', ajax_obj.nonce);
 
         fetch(ajax_obj.ajaxurl, {
-            method: "POST",
-            credentials: 'same-origin',
-            body: data,
+                method: "POST",
+                credentials: 'same-origin',
+                body: data,
             })
             .then(response => {
                 if (response.ok) {
@@ -982,26 +1061,26 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
             .then(data => {
                 // console.log(data)
                 // console.log(data.renewal)
-                $('#jsonDolarData').html( data.jsonData.dolar);
-                $('#jsonEuroData').html( data.jsonData.euro);
-                $('#jsonAltinData').html( data.jsonData.altin);
-                $('#jsonCeyrekAltinData').html( data.jsonData.ceyrek_altin);
+                $('#jsonDolarData').html(data.jsonData.dolar);
+                $('#jsonEuroData').html(data.jsonData.euro);
+                $('#jsonAltinData').html(data.jsonData.altin);
+                $('#jsonCeyrekAltinData').html(data.jsonData.ceyrek_altin);
 
-                $('.weatherTodayDegreeJson').html( data.jsonData.weatherTodayDegree);
-                $('.weatherTodayDescriptionJson').html( data.jsonData.weatherTodayDescription);
-                $('.weatherTodayNightJson').html( data.jsonData.weatherTodayNight);
-                $('.weatherTodayHumidityJson').html( data.jsonData.weatherTodayHumidity);
-                $('.weatherTodayDayJson').html( data.jsonData.weatherTodayDay);
-                $('.weatherTodayIconJson').attr('src',data.jsonData.weatherTodayIcon);
-    
-                $.each(data.jsonData.todays, function(key, value){
-                    $('.weatherToday'+key+' h3').html( value.weatherToday_gun);
-                    $('.weatherToday'+key+' .night').html( value.weatherToday_night);
-                    $('.weatherToday'+key+' .day').html( value.weatherToday_degree);
-                    $('.weatherToday'+key+' img').attr('src',value.weatherToday_icon);
-              })
-           
-            
+                $('.weatherTodayDegreeJson').html(data.jsonData.weatherTodayDegree);
+                $('.weatherTodayDescriptionJson').html(data.jsonData.weatherTodayDescription);
+                $('.weatherTodayNightJson').html(data.jsonData.weatherTodayNight);
+                $('.weatherTodayHumidityJson').html(data.jsonData.weatherTodayHumidity);
+                $('.weatherTodayDayJson').html(data.jsonData.weatherTodayDay);
+                $('.weatherTodayIconJson').attr('src', data.jsonData.weatherTodayIcon);
+
+                $.each(data.jsonData.todays, function(key, value) {
+                    $('.weatherToday' + key + ' h3').html(value.weatherToday_gun);
+                    $('.weatherToday' + key + ' .night').html(value.weatherToday_night);
+                    $('.weatherToday' + key + ' .day').html(value.weatherToday_degree);
+                    $('.weatherToday' + key + ' img').attr('src', value.weatherToday_icon);
+                })
+
+
                 // if (data.jsonData.pageRenewStatus) {
                 //     location.reload()
                 // }
@@ -1017,20 +1096,28 @@ if  ($WeatherExchangeStatus == "hayir"){ ?>
             });
     }
 
-        setTimeout(function() {
-            ajaxCall();
-        }, 3000);
+    setTimeout(function() {
+        ajaxCall();
+    }, 3000);
 
-        //tum sayfa yenilenme 
-       setInterval(function() {
-          location.reload()
-       },OtherAllPageRenew);
+    //     //tum sayfa yenilenme 
+    //    setInterval(function() {
+    //       location.reload()
+    //    },OtherAllPageRenew);
 
-          //dolar hava durumu  yenilenme 
-        setInterval(function() {
-            ajaxCall();
-        },timeOut);
-        
+    <?php 
+        $bina= isset($_GET['bina']) ? "/?bina=".$_GET['bina'] : '';
+        ?>
+    setInterval(function() {
+        window.location.href = "<?php echo  $domainName.$bina?>"
+    }, <?php echo  $allPageRenewTime?>);
+
+
+
+    //dolar ve hava durumu  yenilenme 
+    setInterval(function() {
+        ajaxCall();
+    }, timeOut);
     </script>
 </body>
 

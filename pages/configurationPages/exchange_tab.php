@@ -44,14 +44,8 @@ function stncWpKiosk_Exchange_Settings_init(  ) {
     );
 
 
-    add_settings_field(
-        'stncWpKiosk_text_field_guncelleme_zamani',
-        __( 'güncelleme zamanı', 'wordpress' ),
-        'guncelleme_zamani_stncWpKiosk_text_field_render',
-        'stncWpKiosk_ExchangeConfig',
-        'stncWpKiosk_Exchange_section'
-    );
 
+    
 }
 
 function dolar_stncWpKiosk_text_field_render(  ) {
@@ -75,7 +69,6 @@ function altin_stncWpKiosk_text_field_render(  ) {
     <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_altin]' value='<?php  print (isset($options['stncWpKiosk_text_field_altin'])) ? $options['stncWpKiosk_text_field_altin'] : "";  ?>'>
     <?php
 }
-
 function ceyrek_altin_stncWpKiosk_text_field_render(  ) {
     $options = get_option( 'stncWpKiosk_Exchange_Settings' );
     ?>
@@ -83,12 +76,6 @@ function ceyrek_altin_stncWpKiosk_text_field_render(  ) {
     <?php
 }
 
-function guncelleme_zamani_stncWpKiosk_text_field_render(  ) {
-    $options = get_option( 'stncWpKiosk_Exchange_Settings' );
-    ?>
-    <input type='text' name='stncWpKiosk_Exchange_Settings[stncWpKiosk_text_field_guncelleme_zamani]' value='<?php  print (isset($options['stncWpKiosk_text_field_guncelleme_zamani'])) ? $options['stncWpKiosk_text_field_weatherstncWpKiosk_text_field_guncelleme_zamani_icon'] : ""; ?>'>
-    <?php
-}
 
 
 
