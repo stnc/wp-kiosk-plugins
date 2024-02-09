@@ -2,7 +2,7 @@
 /*
 Plugin Name:Teknopark Kiosk 
 Plugin URI:	https://github.com/stnc/wp-kiosk-plugins	
-Description: Erciyes Teknopark tv ekranları yonetim eklentisi
+Description: Kiosk Tv management 
 Version: 2.5.0
 Author: SELMAN TUNC
  * Author URI: https://selmantunc.com.tr
